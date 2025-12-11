@@ -949,12 +949,15 @@ ul .level1 li a:hover {
 .btn-gototop {
     color: var(--white-color);
     font-size: 18px;
+    background-color: var(--black-color);
 
 
 }
 .btn-gototop:hover {
     text-decoration: none;
     color: var(--white-color);
+        background-color: var(--black-color);
+
 }
 .breadcrumb {
     box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
@@ -1183,7 +1186,7 @@ ul .level1 li a:hover {
     margin: 6px 10px 0;
 }
 .home-product-item__like {
-    font-size: 1.4rem;
+    font-size: 1.9rem;
 }
 i.home-product-item__like-icon-fill {
     color: #d63d30;
@@ -1196,14 +1199,13 @@ i.home-product-item__like-icon-fill {
     display: none;
 }
 .home-product-item__rating {
-    font-size: 1rem;
-    transform: scale(0.8);
+    font-size: 140%;
     transform-origin: right;
     color: #d5d5d5;
     margin: -1px 0 0 auto;
 }
 .home-product-item__star--gold {
-    color: yellow;
+    color: #FFE839;
 }
 .home-product-item__sold {
     margin-left: 6px;
