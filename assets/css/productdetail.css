@@ -41,7 +41,14 @@
     border:3px solid #eee!important;
     cursor: pointer;
 }
+.product__comment .container{
+    display: flex;
+    justify-content: center;
+}
 
+.comment{
+    width: 800px;
+}
 .product__color-item:focus {
     outline:none;
     border:3px solid #333!important;
@@ -240,6 +247,8 @@ input[type="radio"] + .label-css::after{
 .product__describe-heading {
     font-weight: 500;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
 }
 .name__product {
     font-size: 16px;
@@ -418,9 +427,11 @@ input[type="radio"] + .label-css::after{
     border-radius: unset;
 }
 .body__comment {
-    background-color: #eee;
-    height: 400px;
-    overflow-y: auto;
+    background-color:none;
+    height: auto;
+    padding: 30px;
+    border: 1px solid #dddd;
+    border-radius: 15px;
 }
 .comment {
     display:flex;

@@ -1,8 +1,8 @@
 export const API_URL = 'https://sweetpaw-be.azurewebsites.net';
 
 // export async function apiPostAuthNonContent(path, body) {
-//   const token = localStorage.getItem('adminToken');
-//   const admin_id = localStorage.getItem('admin_id');
+//   const token = localStorage.getItem('token');
+//   const user_id = localStorage.getItem('user_id');
 
 //   console.log('Token gửi lên:', token);
 
@@ -35,8 +35,8 @@ export async function apiPost(path, body) {
 
 
 export async function apiPostAuth(path, body) {
-  const token = localStorage.getItem('adminToken');
-  const admin_id = localStorage.getItem('admin_id');
+  const token = localStorage.getItem('token');
+  const admin_id = localStorage.getItem('user_id');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'POST',
@@ -55,10 +55,10 @@ export async function apiPostAuth(path, body) {
 
 // Hàm GET có token (dành cho admin)
 export async function apiGetAuth(path) {
-  const token = localStorage.getItem('adminToken');
-  const admin_id = localStorage.getItem('admin_id');
+  const token = localStorage.getItem('token');
+  const user_id = localStorage.getItem('user_id');
   console.log('Token lấy từ localStorage:', token);
-  console.log('Admin_ID:', admin_id);
+  console.log('user_id:', user_id);
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'GET',
@@ -74,6 +74,7 @@ export async function apiGetAuth(path) {
 
   return res.json();
 }
+
 
 // Hàm PUT
 export async function apiPutAuth(path, body) {
@@ -118,7 +119,7 @@ export async function apiPutAuth(path, body) {
 // }
 
 export async function apiDeleteAuth(path) {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem('token');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'DELETE',

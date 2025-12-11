@@ -753,6 +753,10 @@ ul .level1 li a:hover {
     padding-bottom: 4px;
     display: inline-flex;
 }
+#img-main{
+    border-radius: 10px;
+    width: 350px;
+}
 .btn-buynow {
     border: 1px solid var(--dark-pink);
     background: none;
@@ -798,6 +802,7 @@ ul .level1 li a:hover {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     transition: transform linear 0.1s;
     will-change: transform;
+    margin-bottom: 20px;
 }
 .card:hover {
     transform: translateY(-8px);
@@ -843,6 +848,12 @@ ul .level1 li a:hover {
     text-decoration: line-through;
 }
 .product__price-new {
+
+}
+.card-img-top{
+    height: 210px;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px;
 
 }
 /* .shoesnews {
@@ -1073,11 +1084,14 @@ ul .level1 li a:hover {
     position: relative;
     overflow: hidden;
     border: 1px solid var(--black-color);
+    margin-right: 10px;
+    border-radius: 10px;
 }
 .shopnow2:hover {
     background: none;
     color: #000;
 }
+
 .circlecheck {
     margin: unset !important;
     width: 20% !important;
@@ -1111,6 +1125,7 @@ ul .level1 li a:hover {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     padding-bottom: 10px;
+    font-style: italic;
 }
 .btn-default {
     position: absolute;
