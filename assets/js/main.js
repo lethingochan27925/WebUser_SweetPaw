@@ -125,3 +125,10 @@ function tru(id) {
 function xoa(id) {
     $(`.cart-body-row-${id}`).fadeOut();
 }
+
+function handleLogout() {
+    //localStorage.removeItem("logged_in");
+
+    // Hoặc xóa hết
+    localStorage.clear();
+  }

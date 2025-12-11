@@ -117,35 +117,42 @@
         </div>
         <!-- end login form -->
         <div class="sweetpaw">
-          <img src="assets/img/logo/login.png" alt="">
+          <img src="assets/img/logo/login2.png" alt="">
         </div>
 
   </div>
  
 </body>
+<script type="module" src="./services/auth.js"></script>
 <script src="./assets/js/validator.js"></script>
 <script src="./assets/js/main.js"></script>
+
 <script>
   Validator({
     form: '#form-2',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
     rules: [
-      // Validator.isRequired('#fullname','Vui lòng nhập tên đầy đủ'),
       Validator.isRequired('#email'),
       Validator.isEmail('#email'),
       Validator.isRequired('#password'),
       Validator.minLength('#password', 6),
-      // Validator.isRequired('input[name="gender"]'),
-      // Validator.isConfirmed('#password_confirmation', function(){
-      //   return document.querySelector('#form-1 #password').value;
-      // }, 'Mật khẩu nhập lại không chính xác')
     ],
-    onSubmit: function (data) {
+    onSubmit: async  function (data) {
       // call api
-      localStorage.setItem("logged_in", true);
-      window.location.href = "index.html";
-      console.log(data);
+      // localStorage.setItem("logged_in", true);
+      // window.location.href = "index.html";
+      // console.log(data);
+      const email = data.email;
+      const password = data.password;
+
+      const res = await login(email, password);
+
+      if (res.success === true) {
+          window.location.href = "index.html";
+      } else {
+          alert(res.message || "Sai tài khoản hoặc mật khẩu");
+      }
     }
   });
 </script>

@@ -87,8 +87,8 @@
 } 
 </style>
 <script>
-    // Nếu chưa đăng nhập thì chuyển sang login.html
-    if (!localStorage.getItem("logged_in")) {
+   // Nếu chưa đăng nhập thì chuyển sang login.html
+    if (!localStorage.getItem("token") && !localStorage.getItem("user_id")) {
         window.location.href = "login.html";
     }
 </script>

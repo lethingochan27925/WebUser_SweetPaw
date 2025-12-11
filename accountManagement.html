@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <!-- <link rel="stylesheet" href="./assets/css/base.css"> -->
   <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="./assets/css/login.css">
   <link rel="stylesheet" href="./assets/css/account.css">
   <link rel="stylesheet" href="./assets/css/reponsive1.css">
   <!-- <link rel="icon" href="./assets/img/logo/main.png" type="image/x-icon" /> -->
@@ -257,11 +256,11 @@
       <div class="top-link clearfix hidden-sm hidden-xs">
         <div class="row">
           <div class="col-6 social_link">
-            <div class="social-title">Theo dõi: </div>
+            <!-- <div class="social-title">Theo dõi: </div>
             <a href=""><i class="fab fa-facebook" style="font-size: 24px; margin-right: 10px"></i></a>
             <a href=""><i class="fab fa-instagram" style="font-size: 24px; margin-right: 10px;color: pink;"></i></a>
             <a href=""><i class="fab fa-youtube" style="font-size: 24px; margin-right: 10px;color: red;"></i></a>
-            <a href=""><i class="fab fa-twitter" style="font-size: 24px; margin-right: 10px"></i></a>
+            <a href=""><i class="fab fa-twitter" style="font-size: 24px; margin-right: 10px"></i></a> -->
           </div>
           <div class="col-6 login_link">
             <ul class="header_link right m-auto">
@@ -272,7 +271,7 @@
                 <a href=""><i class="fas fa-user-plus mr-3" style="margin-left: 10px;"></i>Đăng kí</a>
               </li> -->
             </ul>
-            <!-- <ul class="nav nav__first right">
+            <ul class="nav nav__first right">
                 <li class="nav-item nav-item__first nav-item__first-user">
                   <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
                   <span class="nav-item__first-name">Quốc Trung</span>
@@ -287,11 +286,11 @@
                       <a href="">Đơn mua</a>
                     </li>
                     <li class="nav-item__first-item">
-                      <a href="">Đăng xuất</a>
+                      <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
                     </li>
                   </ul>
                 </li>
-              </ul> -->
+              </ul>
           </div>
         </div>
       </div>
@@ -347,9 +346,9 @@
             <a href="#">Sản phẩm<i class="fas fa-angle-right" style="margin-left: 5px;"></i></a>
             <div class="mega-content" style="overflow-x: hidden;">
               <div class="row">
-                <ul class="col-8 no-padding level0">
-                  <li class="level1">
-                    <a class="hmega" href="#">Tất cả sản phẩm</a>
+                <ul class="level1">
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Bánh kem</a>
                     <!-- <ul class="level1">
                         <li class="level2"><a href="">Bóng đá</a></li>
                         <li class="level2"><a href="">Bóng đá</a></li>
@@ -357,50 +356,28 @@
                         <li class="level2"><a href="">Bóng đá</a></li>
                       </ul> -->
                   </li>
-                  <li class="level1">
-                    <a class="hmega">Giày, dép</a>
-                    <ul class="level1">
-                      <li class="level2"><a href="">Bóng đá</a></li>
-                      <li class="level2"><a href="">Chạy</a></li>
-                      <li class="level2"><a href="">Cầu lông</a></li>
-                      <li class="level2"><a href="">Bóng rổ</a></li>
-                      <li class="level2"><a href="">Quần vợt</a></li>
-                    </ul>
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Bánh mì</a>
                   </li>
-                  <li class="level1">
-                    <a class="hmega">Quần, áo</a>
-                    <ul class="level1">
-                      <li class="level2"><a href="">Bóng đá</a></li>
-                      <li class="level2"><a href="">Chạy</a></li>
-                      <li class="level2"><a href="">Cầu lông</a></li>
-                      <li class="level2"><a href="">Bóng rổ</a></li>
-                      <li class="level2"><a href="">Quần vợt</a></li>
-                    </ul>
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Bánh mini</a>
+                   </li>
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Bánh ngọt</a>
                   </li>
-                  <li class="level1">
-                    <a class="hmega">Phụ kiện</a>
-                    <ul class="level1">
-                      <li class="level2"><a href="">Bóng đá</a></li>
-                      <li class="level2"><a href="">Chạy</a></li>
-                      <li class="level2"><a href="">Cầu lông</a></li>
-                      <li class="level2"><a href="">Bóng rổ</a></li>
-                      <li class="level2"><a href="">Quần vợt</a></li>
-                      <li class="level2"><a href="">Bơi lội</a></li>
-                      <li class="level2"><a href="">Golf</a></li>
-                    </ul>
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Đồ uống</a>
                   </li>
+                  <li class="level2">
+                    <a class="hmega" href="./Product.html">Bánh quy</a>
+                   </li>
+                 
                 </ul>
-                <div class="col-4">
-                  <a href="">
-                    <picture>
-                      <img src="https://media.giphy.com/media/mj7HcKFq23oobJMcOG/giphy.gif" alt="" width="80%">
-                    </picture>
-                  </a>
-                </div>
+              
               </div>
             </div>
           </li>
-          <li class="header_nav-list-item"><a href="#">Tin tức</a></li>
+          <li class="header_nav-list-item"><a href="#">Đơn hàng</a></li>
           <li class="header_nav-list-item"><a href="#">Liên hệ</a></li>
         </ul>
       </div>
@@ -414,7 +391,7 @@
         <div class="col-4">
           <div class="heading">
             <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
-            <span class="heading-name_acc">Quốc Trung</span>
+            <span class="heading-name_acc">Tên người dùng</span>
           </div>
           <div class="menu-manager">
             <div class="my-profile" onclick="hienThiDoiThongTin()">
@@ -423,12 +400,12 @@
                 <div class="my-profile-name">Hồ sơ của tôi</div>
               </div>
             </div>
-            <div class="my-order">
+            <!-- <div class="my-order">
               <div class="my-order-title">
                 <div class="my-order-icon"><i class="fas fa-shopping-bag"></i></div>
                 <div class="my-order-name">Đơn hàng của tôi</div>
               </div>
-            </div>
+            </div> -->
             <div class="my-password" onclick="hienThiDoiMatKhau()">
               <div class="my-password-title">
                 <div class="my-password-icon"><i class="fas fa-key"></i></div>
@@ -437,6 +414,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-8">
           <div class="detial__my-profile undisplay">
             <div class="heading-edit-account">
@@ -453,33 +431,34 @@
                   value="abc@gmail.com">
                 <span class="form-message"></span>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="email" class="form-label">Địa chỉ</label>
                 <input id="email" name="email" type="text" placeholder="VD: 86/2/3 Bình Thạnh TP HCM" class="form-control"
                   value="86 Đinh Bộ Lĩnh Phường 26 Quận Bình Thạnh TP.HCM">
                 <span class="form-message"></span>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label for="sdt" class="form-label">Số điện thoại</label>
                 <input id="sdt" name="sdt" type="number" placeholder="VD: 089" class="form-control" value="0912420530">
                 <span class="form-message"></span>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="avatar" class="form-label">Cập nhật avatar</label>
                 <input id="avatar" name="avatar" type="file" class="form-control">
                 <span class="form-message"></span>
-              </div>
+              </div> -->
               <button class="form-submit">Lưu</button>
             </div>
           </div>
+          <!-- Đổi mật khẩu -->
           <div class="detail__confirm-password undisplay">
             <div class="heading-edit-password">
-              <h2>Đổi lại mật khẩu</h2>
+              <h2>Đổi mật khẩu</h2>
             </div>
             <div class="form-group form-group-old-password">
               <div style="display:flex;justify-content: space-between;">
                 <label for="password" class="form-label">Mật khẩu cũ</label>
-                <span class="show-hide"><i class="fas fa-eye"></i></span>
+                <!-- <span class="show-hide"><i class="fas fa-eye"></i></span> -->
               </div>
               <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
               <span class="form-message"></span>
@@ -487,7 +466,7 @@
             <div class="form-group form-group-new-password">
               <div style="display:flex;justify-content: space-between;">
                 <label for="password-new" class="form-label">Mật khẩu mới</label>
-                <span class="show-hide-two"><i class="fas fa-eye fa-eye-2"></i></span>
+                <!-- <span class="show-hide-two"><i class="fas fa-eye fa-eye-2"></i></span> -->
               </div>
               <input id="password-new" name="password-new" type="password" placeholder="Nhập mật khẩu"
                 class="form-control">
@@ -496,7 +475,7 @@
             <div class="form-group form-group-confirm-password">
               <div style="display:flex;justify-content: space-between;">
                 <label for="password-confirm" class="form-label">Mật khẩu mới</label>
-                <span class="show-hide-three"><i class="fas fa-eye fa-eye-3"></i></span>
+                <!-- <span class="show-hide-three"><i class="fas fa-eye fa-eye-3"></i></span> -->
               </div>
               <input id="password-confirm" name="password-confirm" type="password" placeholder="Nhập mật khẩu"
                 class="form-control">
@@ -504,7 +483,7 @@
             </div>
             <button class="form-submit">Lưu</button>
           </div>
-          <div class="detail__my-order">
+          <!-- <div class="detail__my-order">
             <div class="heading-edit-password">
               <h2>Đơn hàng của bạn</h2>
             </div>
@@ -556,7 +535,7 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
