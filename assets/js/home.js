@@ -1,4 +1,5 @@
 import { getRecommendProducts, getNewProducts, getTopProducts, getPopularProducts, getProductById } from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js";
 
 async function loadRecommendProducts() {
   const container = document.getElementById("recommend-products");
@@ -296,7 +297,52 @@ async function loadQuickView(id) {
         p.stock > 0 ? "Còn hàng" : "Hết hàng";
     document.querySelector(".infor-oder span").innerText = p.category || "Không có";
 
+    document.getElementById("btnAddToCart").dataset.productId = p._id;
+
   } catch (e) {
     console.error("Lỗi load QuickView:", e);
+  }
+}
+//---
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnIncrease")
+    .addEventListener("click", increaseQty);
+
+  document.getElementById("btnDecrease")
+    .addEventListener("click", decreaseQty);
+
+  document.getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+
+function increaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  input.value = value + 1;
+}
+
+function decreaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  if (value > 1) {
+    input.value = value - 1;
+  }
+}
+
+
+
+async function handleAddToCart() {
+  const productId = btnAddToCart.dataset.productId;
+  console.log("productId", productId)
+  const quantity = parseInt(document.getElementById("text_so_luong").value);
+  
+  try {
+    const res = await addToCart(productId, quantity);
+    alert("Đã thêm vào giỏ hàng");
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "Thêm giỏ hàng thất bại");
   }
 }

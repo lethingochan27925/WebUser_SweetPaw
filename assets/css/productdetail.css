@@ -129,9 +129,9 @@ input[type="radio"] + .label-css::after{
     height: 40px;
 }
 .control {
-    border-radius: unset;
-    border: 1px solid var(--black-color);
-    background-color: var(--white-color);
+    border-radius: 40px;
+    border: 1px solid #a9a4a49c;
+    background-color: var(--white-color);  
     font-size: 25px;
     text-align: center;
     vertical-align: middle;
@@ -156,6 +156,7 @@ input[type="radio"] + .label-css::after{
     overflow: hidden;
     border: 1px solid #d9121f;
     cursor: pointer;
+    border-radius: 20px;
 }
 .add-cart::before {
     content:"";
@@ -180,9 +181,10 @@ input[type="radio"] + .label-css::after{
 .product__shopnow {
     display: flex;
     justify-content: space-between;
+    
 }
 .shopnow {
-    width: 250px;
+    width: 300px;
     height: 40px;
     background:none;
     color: var(--white-color);
@@ -192,6 +194,7 @@ input[type="radio"] + .label-css::after{
     position: relative;
     overflow: hidden;
     border: 1px solid var(--black-color);
+    border-radius: 20px;
 }
 .shopnow::before {
     content:"";
@@ -571,3 +574,6 @@ input[type="radio"] + .label-css::after{
       cursor: pointer;
 }   
 
+.alert__body-amount{
+    margin-top: 40px;
+}

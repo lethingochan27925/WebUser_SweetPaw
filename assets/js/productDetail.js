@@ -74,7 +74,7 @@ async function handleAddToCart() {
   
   try {
     const res = await addToCart(productId, quantity);
-    // fadeInModal();
+
     showAddToCartModal(currentProduct, quantity);
 
   } catch (err) {
@@ -82,11 +82,6 @@ async function handleAddToCart() {
     alert(err.message || "Thêm giỏ hàng thất bại");
   }
 }
-document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("btnAddToCart")
-    .addEventListener("click", handleAddToCart);
-});
  
 function showAddToCartModal(product, quantity) {
   if (!product) return;

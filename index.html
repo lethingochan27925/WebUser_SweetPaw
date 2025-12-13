@@ -559,7 +559,7 @@
           <div class="row">
             <div class="col-6">
               <div class="mb-2 main-img-2">
-                <img style = "width: 360px; height: 300px;" src="" alt="" id="img-main" xoriginal="./assets/img/product/ars1.jpg">
+                <img style = "width: 360px; height: 300px;" src="" alt="" id="img-main">
               </div>
              
             </div>
@@ -588,14 +588,14 @@
                 <div class="product__wrap">
                   <div class="product__amount">
                     <label for="">Số lượng: </label>
-                    <input type="button" value="-" class="control" onclick="tru()">
+                    <input type="button" value="-" class="control" id="btnDecrease">
                     <input type="text" value="1" class="text-input" id="text_so_luong" onkeypress='validate(event)'> 
-                    <input type="button" value="+" class="control" onclick="cong()">
+                    <input type="button" value="+" class="control" id="btnIncrease">
                   </div>
                 </div>
                 <div class="product__shopnow">
                   <button id="btnBuy" class="shopnow2">Mua ngay</button>
-                  <button id="btnAddCart" class="shopnow2">Thêm vào giỏ hàng</button>
+                  <button id="btnAddToCart" class="shopnow2">Thêm vào giỏ hàng</button>
                 </div>
               </div>
             </div>
@@ -603,9 +603,7 @@
         </div>
         <button class="btn-default btn-close" data-dismiss="modal">
           <i class="fas fa-times-circle"></i>
-        </button>
-       
-        
+        </button>       
       </div>
     </div>
   </div>
