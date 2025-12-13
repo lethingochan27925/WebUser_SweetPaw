@@ -1,0 +1,126 @@
+body {
+  background: #f5f6fa;
+}
+
+.container {
+  width: 1100px;
+  margin: auto;
+  font-size: 16px;
+}
+
+.title {
+  text-align: center;
+  color: #e74c3c;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 28px;
+}
+
+.order-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+
+.order-detail {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 50%;
+}
+.order-info {
+  background: white;
+  border-radius: 15px;
+  width: 50%;
+  
+}
+
+#order_id {
+  color: #3498db;
+  font-weight: bold;
+}
+
+
+
+.unpaid {
+  color: red;
+  font-weight: bold;
+}
+
+.product {
+  display: flex;
+  gap: 15px;
+}
+
+.product img {
+  width: 80px;
+  border-radius: 8px;
+}
+
+.price p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price .total {
+  font-size: 18px;
+  color: red;
+  font-weight: bold;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  padding: 10px;
+  border-left: 4px solid #ccc;
+  margin-left: 10px;
+}
+
+.timeline .active {
+  border-color: #FE4B5E;
+  color: #FE4B5E;
+}
+
+.status-order{
+    margin-top: 20px;
+}
+
+.price{
+    border-bottom: 1px solid #dddd;
+}
+.status-left{
+    background-color: #2ecc71;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 5px 20px 5px 20px;
+    font-style: italic;
+    color: white;
+    font-weight: bold;
+}
+.order-info-content{
+    padding: 10px 20px;
+}
+h4{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.status-active{
+    font-weight: bold;
+}
+p{
+    color: #000;
+    font-style:italic;
+    font-size: 14px;
+}
+.active{
+    background-color: #ffc1c350;
+}
+.rating a {
+    padding: 0px 20px;
+    color: #FE4B5E;
+    font-style: italic;
+}
+
