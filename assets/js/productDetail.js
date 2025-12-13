@@ -1,4 +1,8 @@
 import { getProductById } from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js";
+
+let currentProduct = null;
+
 function getIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
@@ -20,6 +24,7 @@ async function loadProductDetail() {
   }
 
   const p = res.data;
+  currentProduct = p; 
 
   // Đổ dữ liệu vào HTML
   document.querySelector(".product__name h1").innerText = p.name;
@@ -30,13 +35,71 @@ async function loadProductDetail() {
   // Ảnh chính
   document.getElementById("img-main").src = p.url;
 
-  // Ảnh nhỏ – nếu bạn chỉ có 1 ảnh thì dùng ảnh chính
-  document.querySelectorAll(".small-img").forEach(img => {
-    img.src = p.url;
-  });
-
   // Mô tả
   document.querySelector(".product__describe").innerText = p.des;
+
+  
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnIncrease")
+    .addEventListener("click", increaseQty);
+
+  document.getElementById("btnDecrease")
+    .addEventListener("click", decreaseQty);
+
+  document.getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+
+function increaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  input.value = value + 1;
+}
+
+function decreaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  if (value > 1) {
+    input.value = value - 1;
+  }
+}
+
+
+
+async function handleAddToCart() {
+  const productId = getIdFromUrl();
+  const quantity = parseInt(document.getElementById("text_so_luong").value);
+  
+  try {
+    const res = await addToCart(productId, quantity);
+    // fadeInModal();
+    showAddToCartModal(currentProduct, quantity);
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "Thêm giỏ hàng thất bại");
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+ 
+function showAddToCartModal(product, quantity) {
+  if (!product) return;
+
+  document.querySelector(".alert__body-img").src = product.url;
+  document.querySelector(".alert__body-name").innerText = product.name;
+  document.querySelector(".alert__body-amount").innerText =
+    `Số lượng: ${quantity}`;
+  document.querySelector(".alert__body-price").innerText =
+    (product.price * quantity).toLocaleString() + " ₫";
+
+  $('.alert').fadeIn();
+  $('.overlay1').fadeIn();
 }
 
 loadProductDetail();

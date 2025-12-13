@@ -78,7 +78,7 @@ export async function apiGetAuth(path) {
 
 // Hàm PUT
 export async function apiPutAuth(path, body) {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem('token');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'PUT',

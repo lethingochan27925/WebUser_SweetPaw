@@ -90,19 +90,6 @@ function hienthi(id, name){
     $(`.tru${id}`).toggleClass('hidden');
 }
 
-function cong(id) {
-    var value = document.getElementById(`text_so_luong-${id}`).value
-    document.getElementById(`text_so_luong-${id}`).value = parseInt(value) + 1;
-}
-function tru(id) {
-    var value = document.getElementById(`text_so_luong-${id}`).value
-    if(parseInt(value) > 1)
-    {
-        document.getElementById(`text_so_luong-${id}`).value = parseInt(value) - 1;
-    }
-    
-}
-
 
     function validate(evt) {
   var theEvent = evt || window.event;
@@ -122,13 +109,11 @@ function tru(id) {
   }
 }
 
-function xoa(id) {
-    $(`.cart-body-row-${id}`).fadeOut();
-}
+
 
 function handleLogout() {
     //localStorage.removeItem("logged_in");
 
     // Hoặc xóa hết
     localStorage.clear();
-  }
+}

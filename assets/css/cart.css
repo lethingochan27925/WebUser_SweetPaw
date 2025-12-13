@@ -12,6 +12,7 @@
 .cart-body-right {
     width: 28%;
     border-radius: 15px;
+    display: none;
 }
 
 .cart-heding {
@@ -208,4 +209,10 @@
     border-radius: 10px;
     width: 100px;
     height:85px;
+}
+.cart-all-check{
+    width: 78px;
+    height: 15px;
+    align-items: center;
+    margin-top: 10px;
 }

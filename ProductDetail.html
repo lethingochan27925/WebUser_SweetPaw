@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweetpaw</title>
+    <title>SweetPaw - Chi tiết</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -387,13 +387,7 @@
                    </li>
                  
                 </ul>
-                <div class="col-4">
-                  <a href="">
-                    <picture>
-                      <img src="https://media.giphy.com/media/mj7HcKFq23oobJMcOG/giphy.gif" alt="" width="80%">
-                    </picture>
-                  </a>
-                </div>
+                
               </div>
             </div>
           </li>
@@ -439,16 +433,16 @@
                 Loại sản phẩm: <b></b>
               </div>
               <div class="product__price">
-                <h2>550.000đ</h2>
+                <h2></h2>
               </div>
               
 
               <div class="product__wrap">
                 <div class="product__amount">
                   <label for="">Số lượng: </label>
-                  <input type="button" value="-" class="control" onclick="tru()" id="cong">
+                  <input type="button" value="-" class="control"  id="btnDecrease">
                   <input type="text" value="1" class="text-input" id="text_so_luong" onkeypress='validate(event)'> 
-                  <input type="button" value="+" class="control" onclick="cong()">
+                  <input type="button" value="+" class="control" id="btnIncrease">
                   
                 </div>
                  
@@ -457,7 +451,7 @@
               </div>
               <div class="product__shopnow">
                 <button class="shopnow">Mua ngay</button>
-                <button class="add-cart" onclick="fadeInModal()">Thêm vào giỏ</button>
+                <button class="add-cart" id="btnAddToCart">Thêm vào giỏ</button>
                 
               </div>
             </div>
@@ -561,25 +555,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="comment">
-                  <img class="comment-img" src="./assets/img/product/noavatar.png" alt="" >
-                  <div class="comment__content">
-                    <div class="comment__content-heding">
-                      <h4 class="comment__content-name">Nguyễn Quốc Trung</h4>
-                      <span class="comment__content-time">2021-11-12</span>
-                    </div>
-                    <div class="home-product-item__rating" style="font-size: 14px;transform-origin: left;margin-bottom: 5px">
-                      <i class="home-product-item__star--gold fas fa-star"></i>
-                      <i class="home-product-item__star--gold fas fa-star"></i>
-                      <i class="home-product-item__star--gold fas fa-star"></i>
-                      <i class="home-product-item__star--gold fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                    <div class="comment__content-content">
-                      <span>Sản phẩm tốt</span>
-                    </div>
-                  </div>
-                </div> -->
+                
               </div>
             </div>
           </div>
@@ -810,12 +786,7 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
-            </li>
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Lĩnh vực kinh doanh</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -824,21 +795,14 @@
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo hành</a>
-            </li> -->
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách đổi trả</a>
-            </li> -->
+            
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách giao nhận hàng</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo mật</a>
-            </li> -->
+            
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -876,19 +840,19 @@
 
       <div id="alert-cart" class="alert" style="display:none">
         <div class="alert__heading">
-            <h4>Thêm vào giỏ hàng</h4>
+            <h4>ĐÃ THÊM VÀO GIỎ HÀNG</h4>
         </div>
         <div class="alert__body">
-            <img src="./assets/img/product/addidas1.jpg" alt="" class="alert__body-img">
+            <img src="" alt="" class="alert__body-img">
             <div>
-                <h5 class="alert__body-name"></h5>
+                <h2 class="alert__body-name"></h2>
                 
-                <span class="alert__body-amount">Số lượng: 1</span>
-                <h6 class="alert__body-price">2.000.000 VNĐ</h6>
+                <h3 class="alert__body-amount"></h3>
+                <h3 class="alert__body-price"></h3>
             </div>
         </div>
         <div class="alert__footer">
-            <a class="click__cart" style="border-radius: 4px">Xem giỏ hàng</a>
+            <a href="./cart.html" class="click__cart" style="border-radius: 4px">Xem giỏ hàng</a>
         </div>
       </div>
       <div class="overlay1" style="display: none" onclick="fadeout()">
@@ -907,11 +871,6 @@
   });
 </script>
 <script>
-  function fadeInModal()
-  {
-      $('.alert').fadeIn();   
-      $('.overlay1').fadeIn(); 
-  }
   function fadeOutModal()
   {
       $('.alert').fadeOut();
@@ -922,6 +881,6 @@
       $('.overlay1').fadeOut();
       $('.alert').fadeOut();
   }
-  setInterval(fadeOutModal, 7000);
+  setInterval(fadeOutModal, 5000);
 </script>
 </html>
