@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const rowHTML = `
             <div class="row cart-body-row"  data-id="${item.productId}" data-price="${item.price}" style="align-items: center;">
                 <div class="col-md-1 col-2 text-right">
-                    <input type="checkbox" class="cart-item-check" data-id="${item._id}">
+                    <input type="checkbox" class="cart-item-check" data-id="${item._id}" data-des="${item.des}">
                 </div>
 
                 <div class="col-md-11 col-10" style="text-align: center;">
@@ -202,3 +202,40 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.querySelector(".chekout").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const selectedItems = [];
+
+    document.querySelectorAll(".cart-body-row").forEach(row => {
+        const checkbox = row.querySelector(".cart-item-check");
+        if (!checkbox.checked) return;
+
+        const id = row.dataset.id;
+        const price = parseInt(row.dataset.price);
+        const qty = parseInt(row.querySelector(".text-input").value);
+        const name = row.querySelector(".cart-name h5").innerText;
+        const des = checkbox.dataset.des; 
+        const img = row.querySelector(".cart-img").src;
+
+        selectedItems.push({
+            productId: id,
+            name,
+            des,
+            price,
+            quantity: qty,
+            image: img,
+            total: price * qty
+        });
+    });
+
+    if (selectedItems.length === 0) {
+        alert("Vui lòng chọn sản phẩm");
+        return;
+    }
+
+    // GHI ĐÈ → không bị nhầm
+    localStorage.setItem("checkout_items", JSON.stringify(selectedItems));
+
+    window.location.href = "./ordering.html";
+});

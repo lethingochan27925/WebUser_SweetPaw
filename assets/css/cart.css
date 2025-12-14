@@ -14,6 +14,10 @@
     border-radius: 15px;
     display: none;
 }
+.recommend-list{
+    margin-top: 20px;
+    margin-left: 10px;
+}
 
 .cart-heding {
     border-bottom: 2px solid rgba(238, 238, 238, 0.5);
@@ -97,6 +101,7 @@
     width: 40%;
 }
 .container {
+    width: 100%;
 
 }
 .cart-footer-row {
@@ -125,9 +130,11 @@
 .cart-footer-row {
     padding:  30px 0;
 }
-.cart-body-right {
+.btn {
     background-color: var(--white-color);
     padding: 40px 30px;
+    width: 100%;
+    border-radius:15px ;
 }
 .cart-total {
     display: flex;

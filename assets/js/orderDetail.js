@@ -29,12 +29,51 @@ async function loadOrderDetail() {
   document.getElementById("sdt").innerText = order.to_phone;
   document.getElementById("diachi").innerText = order.to_address; 
   document.getElementById("payment_method").innerText = order.payment_method;
-  document.querySelector(".unpaid").innerText = order.payment_status;
+  document.querySelector(".unpaid").innerText =
+  order.payment_status === "SUCCESS"
+    ? "Thanh toán thành công"
+    : "Chưa thanh toán";
+
   document.getElementById("note").innerText = order.note;
   document.getElementById("price-product").innerText = `${order.subtotal.toLocaleString()}đ`;
   document.getElementById("shipping-fee").innerText = `${order.shipping_fee.toLocaleString()} đ`;
-//   document.getElementById("discount").innerText = `${order.discount.toLocaleString()} đ`|| "0";
+  document.getElementById("discount").innerText = `${order.discountAmount.toLocaleString()} đ`|| "0";
   document.getElementById("payment").innerText = `${order.total_price.toLocaleString()} đ`;
+  
+  const items = order.items;
+  const itemsContainer = document.querySelector(".item");
+  itemsContainer.innerHTML = ""; 
+
+  items.forEach(item => {
+    const itemHTML = `
+        <div class="product">
+          <img class="image" src="${item.image}" alt="${item.name}">
+          <div>
+            <a href="./ProductDetail.html?id=${item.productId}"><p><b>${item.name}</b></p></a>
+            <p>Số lượng: ${item.quantity}</p>
+            <p>Giá: ${item.price.toLocaleString()}đ</p>
+          </div>
+        </div>
+     
+    `;
+    itemsContainer.insertAdjacentHTML("beforeend", itemHTML);
+  });
+
+
+
+
+  const stepShipping  = document.querySelector(".timeline .shipping");
+  const stepSuccess  = document.querySelector(".timeline .success");
+  switch (order.display_status) {
+  case "Đang giao hàng":
+    stepShipping.classList.add("active");
+    break;
+
+  case "Đã giao thành công":
+    stepShipping.classList.add("active");
+    stepSuccess.classList.add("active");
+    break;
+}
 
 
   

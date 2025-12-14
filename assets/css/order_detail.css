@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  width: 1100px;
+  width: 100%;
   margin: auto;
   font-size: 16px;
 }
@@ -86,10 +86,12 @@ body {
 
 .status-order{
     margin-top: 20px;
+    padding: 0px 20px 20px 20px;
 }
 
 .price{
-    border-bottom: 1px solid #dddd;
+    /* border-bottom: 1px solid #dddd; */
+    margin-top: 15px;
 }
 .status-left{
     background-color: #2ecc71;
@@ -123,4 +125,11 @@ p{
     color: #FE4B5E;
     font-style: italic;
 }
-
+.product .image{
+  width: 100px;
+  height: 90px;
+}
+.product{
+  padding: 10px;
+  border-bottom: 1px solid #dddd;
+}
