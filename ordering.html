@@ -325,15 +325,19 @@
 
                     <label>Địa chỉ giao hàng</label>
                     <div class="address-input">
-                        <input type="text" value="027, Đường An Thạnh 4, Đức Hòa, Long An" id="diachi">
-                        <button class="btnAddress">Chọn địa chỉ</button>
+                        <!-- <input type="text" value="027, Đường An Thạnh 4, Đức Hòa, Long An" id="diachi"> -->
+                        <select class="diachi">
+                            <option value="">027, Đường An Thạnh 4, Đức Hòa, Long An</option>
+                        </select>
+                        <button class="btnAddress">Thêm địa chỉ</button>
                     </div>
                     
 
                     <label>Phương thức thanh toán</label>
                     <select class="payment-method">
-                        <option value="1">Thanh toán khi nhận hàng</option>
-                        <option value="2">Chuyển khoản</option>
+                        <option value="1">Chuyển khoản</option>
+                        <option value="2">Thanh toán khi nhận hàng</option>
+                        
                     </select>
                 </div>
                 <div class="time-ship">
@@ -402,6 +406,40 @@
         </div>
 
     </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MODAL ADD ADDRESS -->
+    <div class="modal-address" id="modalAddress">
+        <h2>Thêm địa chỉ mới</h2>
+
+        <div class="modal-body">
+            <label>Tên địa chỉ</label>
+            <input type="text" placeholder="VD: Nhà của ABC">
+
+            <label>Số nhà</label>
+            <input type="text" placeholder="VD: 134/56/2">
+
+            <label>Tên đường</label>
+            <input type="text" placeholder="VD: Nguyễn Văn Trỗi">
+
+            <label>Phường/Xã</label>
+            <input type="text" placeholder="VD: 1">
+
+            <label>Quận/Huyện</label>
+            <input type="text" placeholder="VD: Phú Nhuận">
+
+            <label>Thành phố</label>
+            <input type="text" placeholder="VD: Hồ Chí Minh">
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancel" id="btnCancel">Hủy</button>
+            <button class="btn-save">Lưu</button>
+        </div>
+    </div>
+
 
 
     <!-- footer -->
@@ -498,10 +536,33 @@
         <a class="btn-gototop"><i class="fas fa-arrow-up"></i></a>
     </div>
     <!-- end footer -->
+    
 </body>
 <script src="./assets/js/validator.js"></script>
 <script  src="./assets/js/main.js"></script>
 <script type="module" src="./assets/js/ordering.js"></script>
+<script>
+    const btnAddress = document.querySelector('.btnAddress');
+    const modal = document.getElementById('modalAddress');
+    const overlay = document.getElementById('overlay');
+    const btnCancel = document.getElementById('btnCancel');
+
+    btnAddress.addEventListener('click', () => {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+
+    btnCancel.addEventListener('click', () => {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+
+    overlay.addEventListener('click', () => {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+</script>
+
 <!-- <script>
     Validator({
         form: '#form-2',

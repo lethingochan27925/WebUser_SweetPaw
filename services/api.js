@@ -36,7 +36,7 @@ export async function apiPost(path, body) {
 
 export async function apiPostAuth(path, body) {
   const token = localStorage.getItem('token');
-  const admin_id = localStorage.getItem('user_id');
+  const user_id = localStorage.getItem('user_id');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'POST',
