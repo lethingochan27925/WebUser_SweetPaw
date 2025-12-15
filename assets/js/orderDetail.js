@@ -27,11 +27,16 @@ async function loadOrderDetail() {
   const order = res.data;
   orderInfo = order;
   const reviewBtn = document.getElementById("openReview");
+  const payment_status = document.querySelector(".unpaid");
 
   if (order.display_status === "Đã giao thành công") {
     reviewBtn.style.display = "block"; 
   } else {
     reviewBtn.style.display = "none";
+  }
+  //Trang thai thanh toan
+  if (order.payment_status === "SUCCESS") {
+    payment_status.style.color = "green";
   }
   
   document.getElementById("status").innerText = order.display_status;
@@ -201,10 +206,11 @@ function renderReviewItems(items, ratings) {
           ${
             hasRating
               ? `
-                <button class="btn-update">Cập nhật</button>
                 <button class="btn-delete">Xóa</button>
-                <button class="btn-save" style="display:none">Lưu</button>
+                <button class="btn-update">Cập nhật</button>
+                
                 <button class="btn-cancel-edit" style="display:none">Hủy</button>
+                <button class="btn-save" style="display:none">Lưu</button>
               `
               : `
                 <button class="btn-cancel-create">Hủy</button>
