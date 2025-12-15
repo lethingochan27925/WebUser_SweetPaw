@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sweetpaw</title>
+  <title>SweetPaw</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -35,9 +35,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"></script>
+  <!-- import {fetchUserProfile } from "../../services/auth.js"; // Import hàm từ file auth.js -->
+
 </head>
 <style>
-  form.example input[type=text] {
+  form.search input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -46,7 +48,7 @@
     background: #f1f1f1;
   }
 
-  form.example button {
+  form.search button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -58,11 +60,11 @@
     cursor: pointer;
   }
 
-  form.example button:hover {
-    background: #0b7dda;
+  form.search button:hover {
+    background: #2196F3;
   }
 
-  form.example::after {
+  form.search::after {
     content: "";
     clear: both;
     display: table;
@@ -70,6 +72,120 @@
   .wrapper {
     margin-top:30px;
   }
+/* Phần thông tin người dùng bên trái */
+    .heading {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+  .menu-manager {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+  .my-profile{
+    border-bottom: #c4c1c1 solid 0.1px;
+
+}
+
+.form-group input{
+  color: #161616;
+}
+
+  /* Form Hồ sơ của tôi */
+  .detail__my-profile {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Tiêu đề "Hồ sơ của tôi" */
+.heading-edit-account h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Label (Tên trường) */
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #161616;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+/* Input (Ô nhập liệu) */
+.form-control {
+    width: 100%;
+    padding: 25px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #FFC1C3;
+    box-shadow: 0 0 0 0.2rem #FFC1C3;
+    outline: none;
+}
+
+/* Nút Lưu (Submit) */
+.form-submit {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #FFC1C3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.form-submit:hover {
+    background-color: #FE4B5E; /* Đậm hơn khi hover */
+}
+
+.form-submit:active {
+    transform: scale(0.98);
+}
+
+/* Đổi mật khẩu */
+.detail__confirm-password {
+    margin-left: 0 !important;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  
+}
+/* Tiêu đề "Đổi mật khẩu" */
+.heading-edit-password h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+
+
 </style>
 <body>
   <div class="overlay hidden"></div>
@@ -95,23 +211,7 @@
         <a href="" class="abc">Đăng kí</a>
       </li>
     </ul>
-    <!-- <ul class="ul-first-menu">
-      <li>
-        <a href="">Tài khoản của tôi</a>
-      </li>
-      <li>
-        <a href="">Địạ chỉ của tôi</a>
-      </li>
-      <li>
-        <a href="">Đơn mua</a>
-      </li>
-      <li>
-        <a href="" class="list-like-noicte">Danh sách yêu thích</a>
-        <span id="header__second__like--notice" class="header__second__like--notice">3</span>
-      </li>
-      <li>
-        <a href="">Đăng xuất</a>
-      </li> -->
+
     </ul>
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
@@ -308,14 +408,14 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
               </a>
-              <a href="" class="header__second__like--icon">
+              <a href="/listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice">30</span>
               </a>
             </div>
           </div>
           <div class="col-lg-6 m-auto pdt15">
-            <form class="example" action="/action_page.php">
+            <form class="search" action="/action_page.php">
               <input type="text" class="input-search" placeholder="Tìm kiếm.." name="search">
               <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
             </form>
@@ -328,7 +428,7 @@
               </a>
             </div>
             <div class="item-like clearfix">
-              <a href="" class="header__second__like--icon">
+              <a href="listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
                 <span id="header__second__like--notice" class="header__second__like--notice">3</span>
               </a>
@@ -393,6 +493,8 @@
             <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
             <span class="heading-name_acc">Tên người dùng</span>
           </div>
+
+          <!-- TAB: Hồ sơ của tôi -->
           <div class="menu-manager">
             <div class="my-profile" onclick="hienThiDoiThongTin()">
               <div class="my-profile-title active">
@@ -400,12 +502,8 @@
                 <div class="my-profile-name">Hồ sơ của tôi</div>
               </div>
             </div>
-            <!-- <div class="my-order">
-              <div class="my-order-title">
-                <div class="my-order-icon"><i class="fas fa-shopping-bag"></i></div>
-                <div class="my-order-name">Đơn hàng của tôi</div>
-              </div>
-            </div> -->
+
+            <!-- TAB: Đổi mật khẩu -->
             <div class="my-password" onclick="hienThiDoiMatKhau()">
               <div class="my-password-title">
                 <div class="my-password-icon"><i class="fas fa-key"></i></div>
@@ -414,43 +512,37 @@
             </div>
           </div>
         </div>
-
+        
+        <!-- Nội dung tab: Hồ sơ của tôi -->
         <div class="col-8">
-          <div class="detial__my-profile undisplay">
+          <div class="detail__my-profile display">
             <div class="heading-edit-account">
               <h2>Hồ sơ của tôi</h2>
               <div class="form-group">
                 <label for="fullname" class="form-label">Tên đầy đủ</label>
-                <input id="fullname" name="fullname" type="text" placeholder="VD: Quốc Trung" class="form-control"
-                  value="Quốc Trung">
+                <input id="fullname" name="fullname" type="text" placeholder="VD: Nhật Xuân" class="form-control"
+                  value="">
                 <span class="form-message"></span>
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control"
-                  value="abc@gmail.com">
+                <input id="email" name="email" type="text" placeholder="VD: email@gmail.com" class="form-control"
+                  value="" readonly>
                 <span class="form-message"></span>
               </div>
-              <!-- <div class="form-group">
-                <label for="email" class="form-label">Địa chỉ</label>
-                <input id="email" name="email" type="text" placeholder="VD: 86/2/3 Bình Thạnh TP HCM" class="form-control"
-                  value="86 Đinh Bộ Lĩnh Phường 26 Quận Bình Thạnh TP.HCM">
-                <span class="form-message"></span>
-              </div> -->
+
               <div class="form-group">
                 <label for="sdt" class="form-label">Số điện thoại</label>
-                <input id="sdt" name="sdt" type="number" placeholder="VD: 089" class="form-control" value="0912420530">
+                <input id="sdt" name="sdt" type="number" placeholder="VD: 0123456789" class="form-control" value="">
                 <span class="form-message"></span>
               </div>
-              <!-- <div class="form-group">
-                <label for="avatar" class="form-label">Cập nhật avatar</label>
-                <input id="avatar" name="avatar" type="file" class="form-control">
-                <span class="form-message"></span>
-              </div> -->
-              <button class="form-submit">Lưu</button>
+
+              <button class="form-submit" id="saveProfileBtn">Lưu</button>
             </div>
           </div>
-          <!-- Đổi mật khẩu -->
+
+
+          <!-- Nội dung tab: Đổi mật khẩu -->
           <div class="detail__confirm-password undisplay">
             <div class="heading-edit-password">
               <h2>Đổi mật khẩu</h2>
@@ -458,89 +550,37 @@
             <div class="form-group form-group-old-password">
               <div style="display:flex;justify-content: space-between;">
                 <label for="password" class="form-label">Mật khẩu cũ</label>
-                <!-- <span class="show-hide"><i class="fas fa-eye"></i></span> -->
               </div>
-              <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+              <input id="password" name="password" type="password" placeholder="Nhập mật khẩu cũ..." class="form-control">
               <span class="form-message"></span>
             </div>
+
             <div class="form-group form-group-new-password">
               <div style="display:flex;justify-content: space-between;">
                 <label for="password-new" class="form-label">Mật khẩu mới</label>
-                <!-- <span class="show-hide-two"><i class="fas fa-eye fa-eye-2"></i></span> -->
               </div>
-              <input id="password-new" name="password-new" type="password" placeholder="Nhập mật khẩu"
+              <input id="password-new" name="password-new" type="password" placeholder="Nhập mật khẩu mới..."
                 class="form-control">
               <span class="form-message"></span>
             </div>
+
             <div class="form-group form-group-confirm-password">
               <div style="display:flex;justify-content: space-between;">
-                <label for="password-confirm" class="form-label">Mật khẩu mới</label>
-                <!-- <span class="show-hide-three"><i class="fas fa-eye fa-eye-3"></i></span> -->
+                <label for="password-confirm" class="form-label">Nhập lại mật khẩu mới</label>
               </div>
-              <input id="password-confirm" name="password-confirm" type="password" placeholder="Nhập mật khẩu"
+              <input id="password-confirm" name="password-confirm" type="password" placeholder="Nhập lại mật khẩu mới..."
                 class="form-control">
               <span class="form-message"></span>
             </div>
-            <button class="form-submit">Lưu</button>
+
+            <button class="form-submit" id="savePasswordBtn">Lưu</button>
           </div>
-          <!-- <div class="detail__my-order">
-            <div class="heading-edit-password">
-              <h2>Đơn hàng của bạn</h2>
-            </div>
-            <div class="detail__my-order-content">
-              <form action="">
-                <div class="my-order-heading">
-                  <div class="row">
-                    <div class="col-2">MĐH</div>
-                    <div class="col-3">Ngày</div>
-                    <div class="col-3">Tổng tiền</div>
-                    <div class="col-2">Trạng thái</div>
-                    <div class="col-2">Chi tiết</div>
-                  </div>
-                </div>
-                <div class="my-order-body">
-                  <div class="row bd-bottom">
-                    <div class="col-2">#1</div>
-                    <div class="col-3">05-06-2021</div>
-                    <div class="col-3">3.000.000 VNĐ</div>
-                    <div class="col-2">
-                      <span class="btn-stt blue">Đang xác nhận</span>
-                    </div>
-                    <div class="col-2">
-                      <a href="" data-toggle="modal" data-target="#myModal">Xem</a>
-                    </div>
-                  </div>
-                  <div class="row bd-bottom">
-                    <div class="col-2">#2</div>
-                    <div class="col-3">05-06-2021</div>
-                    <div class="col-3">3.000.000 VNĐ</div>
-                    <div class="col-2">
-                      <span class="btn-stt green">Đã giao</span>
-                    </div>
-                    <div class="col-2">
-                      <a href="">Xem</a>
-                    </div>
-                  </div>
-                  <div class="row bd-bottom">
-                    <div class="col-2">#3</div>
-                    <div class="col-3">05-06-2021</div>
-                    <div class="col-3">3.000.000 VNĐ</div>
-                    <div class="col-2">
-                      <span class="btn-stt red">Đã hủy</span>
-                    </div>
-                    <div class="col-2">
-                      <a href="">Xem</a>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
   <!-- end content -->
+
   <!-- footer -->
   <footer class="footer">
     <div class="container">
@@ -572,35 +612,21 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
-            </li>
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Lĩnh vực kinh doanh</a>
-            </li> -->
           </ul>
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-3">
           <div style="display: flex;justify-content:space-between;cursor: pointer;margin-bottom: 8px;"
             data-toggle="collapse" data-target="#demo1">
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo hành</a>
-            </li> -->
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách đổi trả</a>
-            </li> -->
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách giao nhận hàng</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo mật</a>
-            </li> -->
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -617,9 +643,6 @@
             <li class="footer__item">
               <a href="./Product.html" class="footer__item--link">Sản phẩm</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="./orders.html" class="footer__item--link">Đơn hàng</a>
-            </li> -->
             <li class="footer__item">
               <a href="./contact.html" class="footer__item--link">Liên hệ</a>
             </li>
@@ -634,126 +657,28 @@
   <div id="go-to-top">
     <a href="" class="btn-gototop"><i class="fas fa-arrow-up"></i></a>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Chi tiết đơn hàng</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body" style="margin-top:10px">
-          <div class="body-one">
-            <div>Tổng tiền: 3.000.000 VNĐ</div>
-            <div>Giá đã giảm: 1.000.000 VNĐ</div>
-            <div>Phí ship: 30.000 VNĐ</div>
-            <div>Thành Tiền: 3.000.000 VNĐ</div>
-          </div>
-          <form action="">
-            <div class="my-order-heading">
-              <div class="row" style="text-align:center">
-                <div class="col-4">Sản phẩm</div>
-                <div class="col-1">Số lượng</div>
-                <div class="col-3">Giá</div>
-                <div class="col-1">Giảm giá</div>
-                <div class="col-3">Tổng</div>
-              </div>
-            </div>
-            <div class="body-two">
-              <div class="row" style="text-align:center; margin-top:10px">
-                <div class="col-4" style="display: flex;">
-                  <a href=""><img src="./assets/img/product/addidas1.jpg" alt=""
-                      style="width: 50px;height: 50px;margin-right: 5px;"></a>
-                  <h5>Adidas smith</h5>
-                </div>
-                <div class="col-1">3</div>
-                <div class="col-3">1.000.000 VNĐ</div>
-                <div class="col-1">20%</div>
-                <div class="col-3">3.000.000 VNĐ</div>
-              </div>
-            </div>
-            <div class="body-two">
-              <div class="row" style="text-align:center; margin-top:10px">
-                <div class="col-4" style="display: flex;">
-                  <a href=""><img src="./assets/img/product/addidas1.jpg" alt=""
-                      style="width: 50px;height: 50px;margin-right: 5px;"></a>
-                  <h5>Adidas smith</h5>
-                </div>
-                <div class="col-1">3</div>
-                <div class="col-3">1.000.000 VNĐ</div>
-                <div class="col-1">20%</div>
-                <div class="col-3">3.000.000 VNĐ</div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default red" data-dismiss="modal" style="color: white;">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</body>
+  <!-- Xu ly su kien -->
 <script src="./assets/js/main.js"></script>
-<script>
-  const pass_field = document.querySelector('#password');
-  const show_btn = document.querySelector('.fa-eye')
-  show_btn.addEventListener("click", function () {
-    if (pass_field.type === "password") {
-      pass_field.type = "text";
-      show_btn.classList.add("hide");
-    } else {
-      pass_field.type = "password";
-      show_btn.classList.remove("hide");
-    }
-  });
-</script>
-<script>
-  const pass_field2 = document.querySelector('#password-new');
-  const show_btn2 = document.querySelector('.fa-eye-2')
-  show_btn2.addEventListener("click", function () {
-    if (pass_field2.type === "password") {
-      pass_field2.type = "text";
-      show_btn2.classList.add("hide");
-    } else {
-      pass_field2.type = "password";
-      show_btn2.classList.remove("hide");
-    }
-  });
-</script>
-<script>
-  const pass_field3 = document.querySelector('#password-confirm');
-  const show_btn3 = document.querySelector('.fa-eye-3')
-  show_btn3.addEventListener("click", function () {
-    if (pass_field3.type === "password") {
-      pass_field3.type = "text";
-      show_btn3.classList.add("hide");
-    } else {
-      pass_field3.type = "password";
-      show_btn3.classList.remove("hide");
-    }
-  });
-</script>
+<script type="module" src="./assets/js/user.js"></script>
+</body>
+
+
 <script>
   function hienThiDoiMatKhau() {
     $(".detail__confirm-password").removeClass("undisplay");
     $(".detail__confirm-password").addClass("display");
     $(".my-password-title").addClass("active");
     $(".my-profile-title").removeClass("active");
-    $(".detial__my-profile").addClass("undisplay");
-    $(".detial__my-profile").removeClass("display");
+    $(".detail__my-profile").addClass("undisplay");
+    $(".detail__my-profile").removeClass("display");
   }
   function hienThiDoiThongTin() {
-    $(".detial__my-profile").removeClass("undisplay");
-    $(".detial__my-profile").addClass("display");
+    $(".detail__my-profile").removeClass("undisplay");
+    $(".detail__my-profile").addClass("display");
     $(".my-profile-title").addClass("active");
     $(".my-password-title").removeClass("active");
     $(".detail__confirm-password").addClass("undisplay");
     $(".detail__confirm-password").removeClass("display");
   }
 </script>
-
 </html>

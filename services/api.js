@@ -139,12 +139,22 @@ export async function apiDeleteAuth(path) {
   return res.json();
 }
 
+<<<<<<< Updated upstream
 // delete có body
 export async function apiDeleteAuthHasBody(path, body) {
   const token = localStorage.getItem('token');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'DELETE',
+=======
+
+// Hàm PATCH
+export async function apiPatchAuth(path, body) {
+  const token = localStorage.getItem('token');
+
+  const res = await fetch(`${API_URL}${path}`, {
+    method: 'PATCH', // <-- Thay đổi duy nhất là METHOD
+>>>>>>> Stashed changes
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -152,6 +162,7 @@ export async function apiDeleteAuthHasBody(path, body) {
     body: JSON.stringify(body),
   });
 
+<<<<<<< Updated upstream
   // Nếu lỗi trả về JSON có message
   if (!res.ok) {
     const errorData = await res.json().catch(() => null);
@@ -161,5 +172,15 @@ export async function apiDeleteAuthHasBody(path, body) {
   }
 
   return res.json();
+=======
+  if (!res.ok) {
+    const msg = await res.text();
+    throw new Error(`API ${path} lỗi: ${res.status} – ${msg}`);
+  }
+
+  // Lưu ý: Cập nhật PATCH có thể trả về 200/204, 
+  // nếu API của bạn trả về JSON (ví dụ: đối tượng người dùng đã cập nhật) thì giữ lại res.json()
+  return res.json(); 
+>>>>>>> Stashed changes
 }
 
