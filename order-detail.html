@@ -361,7 +361,7 @@
               <p><b>Ghi chú:</b> <span id="note"></span></p>
             </div>
             <div class="rating">
-              <a href="" class="rating-btn">Đánh giá sản phẩm</a>
+              <a href="javascript:void(0)" class="rating-btn" id="openReview">Đánh giá sản phẩm</a>
             </div>
             <div class="status-order">
               <h4>Trạng thái đơn hàng</h4>
@@ -419,6 +419,41 @@
         </div>
       </div>
   <!-- end content -->
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="reviewOverlay"></div>
+
+  <!-- REVIEW MODAL -->
+  <div class="review-modal" id="reviewModal">
+    <h3>Đánh giá sản phẩm</h3>
+
+    <p><b>Mã đơn hàng:</b> <span id="review-order">LKB88Y</span></p>
+    <p>Đặt lúc: <span id="time-order"></span></p>
+    <div id="reviewItems">
+      <!-- <div class="item-review">
+        <p class="product-name">Bánh sữa chua việt quất</p>
+        <div class="stars">
+          <span data-value="1"><i class="fas fa-star"></i></span>
+          <span data-value="2"><i class="fas fa-star"></i></span>
+          <span data-value="3"><i class="fas fa-star"></i></span>
+          <span data-value="4"><i class="fas fa-star"></i></span>
+          <span data-value="5"><i class="fas fa-star"></i></span>
+          
+        </div>
+        <textarea placeholder="Nhập nội dung đánh giá tại đây..."></textarea>
+        <div class="review-action">
+          <button class="btn-cancel">Hủy</button>
+          <button class="btn-submit">Gửi</button>
+        </div>
+      </div> -->
+    </div>
+    
+
+    
+    <button class="btn-cancel">Đóng</button>
+    
+  </div>
+
 
 
   <!-- footer -->
@@ -506,4 +541,57 @@
 </body>
   <script src="./assets/js/main.js"></script>
   <script type="module" src="./assets/js/orderDetail.js"></script>
+  <!-- <script>
+    const openBtn = document.getElementById('openReview');
+    const modal = document.getElementById('reviewModal');
+    const overlay = document.getElementById('reviewOverlay');
+    const cancelBtn = document.querySelector('.btn-cancel');
+
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    cancelBtn.addEventListener('click', closeReview);
+    overlay.addEventListener('click', closeReview);
+
+    function closeReview() {
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+
+    // STAR RATING
+
+    const starSpans = document.querySelectorAll('.stars span');
+    let rating = 0;
+
+    starSpans.forEach(span => {
+      const icon = span.querySelector('i');
+
+      span.addEventListener('click', () => {
+        rating = span.dataset.value;
+        updateStars(rating);
+      });
+
+      span.addEventListener('mouseenter', () => {
+        updateStars(span.dataset.value);
+      });
+
+      span.addEventListener('mouseleave', () => {
+        updateStars(rating);
+      });
+    });
+
+    function updateStars(value) {
+      starSpans.forEach(span => {
+        const icon = span.querySelector('i');
+        icon.classList.toggle(
+          'star-active',
+          span.dataset.value <= value
+        );
+      });
+    }
+    
+</script> -->
+
 </html>

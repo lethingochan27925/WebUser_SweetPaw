@@ -3,6 +3,7 @@ import { addToCart } from "/services/cartApi.js";
 
 let currentProduct = null;
 
+
 function getIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");

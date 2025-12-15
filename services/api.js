@@ -138,3 +138,28 @@ export async function apiDeleteAuth(path) {
 
   return res.json();
 }
+
+// delete có body
+export async function apiDeleteAuthHasBody(path, body) {
+  const token = localStorage.getItem('token');
+
+  const res = await fetch(`${API_URL}${path}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  // Nếu lỗi trả về JSON có message
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    const msg = errorData?.message || `Lỗi ${res.status}`;
+
+    throw new Error(msg);
+  }
+
+  return res.json();
+}
+
