@@ -1,4 +1,4 @@
-export const API_URL = 'https://sweetpaw-be.azurewebsites.net';
+export const API_URL = 'https://sweetpaw-be.azurewebsites.net'; 
 
 // export async function apiPostAuthNonContent(path, body) {
 //   const token = localStorage.getItem('token');

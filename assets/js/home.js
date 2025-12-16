@@ -1,4 +1,4 @@
-import { getRecommendProducts, getNewProducts, getTopProducts, getPopularProducts, getProductById } from "/services/productApi.js";
+import { getRecommendProducts, getNewProducts, getTopProducts, getPopularProducts, getProductById, searchProducts } from "/services/productApi.js";
 import { addToCart } from "/services/cartApi.js";
 
 async function loadRecommendProducts() {
@@ -346,3 +346,31 @@ async function handleAddToCart() {
     alert(err.message || "Thêm giỏ hàng thất bại");
   }
 }
+// ----------
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const form = document.querySelector(".example");
+//   const inputSearch = document.querySelector(".input-search");
+
+//   if (!form || !inputSearch) return;
+
+//   form.addEventListener("submit", async (e) => {
+//     e.preventDefault();
+
+//     const keyword = inputSearch.value.trim();
+//     if (!keyword) return;
+
+//     try {
+//       const res = await searchProducts(keyword);
+
+//       allProducts = res.data || [];
+//       currentIndex = 0;
+//       productContainer.innerHTML = "";
+//       renderProducts();
+//     } catch (err) {
+//       console.error(err);
+//       alert("Không tìm thấy sản phẩm");
+//     }
+//   });
+// });
+

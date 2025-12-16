@@ -1,4 +1,5 @@
-import { getAllProducts, getProductById, getProductsByCategory  } from "/services/productApi.js";
+import { getAllProducts, getProductById, getProductsByCategory, filterProducts, searchProducts   } from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js";
 
 
 $(document).ready(function() {
@@ -164,6 +165,7 @@ async function loadQuickView(id) {
     document.querySelector(".status-product span").innerText = 
         p.stock > 0 ? "Còn hàng" : "Hết hàng";
     document.querySelector(".infor-oder span").innerText = p.category || "Không có";
+    document.getElementById("btnAddToCart").dataset.productId = p._id;
 
   } catch (e) {
     console.error("Lỗi load QuickView:", e);
@@ -175,7 +177,125 @@ initProductPage();
 
 //-----------
 
+function getSelectedPriceRange() {
+  const checked = document.querySelector(".checkGia:checked");
+  if (!checked) return [];
+  return [checked.value]; // API cần mảng
+}
 
+function getSelectedRating() {
+  const ratings = [...document.querySelectorAll(".checksize:checked")]
+    .map(el => Number(el.value));
+
+  if (ratings.length === 0) return null;
+
+  return Math.max(...ratings); // ví dụ tick 3 & 4 → lấy 4
+}
+
+
+function getKeyword() {
+  const input = document.querySelector(".input-search"); 
+  return input ? input.value.trim() : "";
+}
+
+async function applyFilter() {
+  const body = {
+    keyword: getKeyword(),
+    priceRange: getSelectedPriceRange(),
+    rating: getSelectedRating()
+  };
+
+  // Xóa field rỗng
+  if (!body.keyword) delete body.keyword;
+  if (!body.priceRange.length) delete body.priceRange;
+  if (!body.rating) delete body.rating;
+
+  try {
+    const res = await filterProducts(body);
+
+    allProducts = res.data || [];
+    currentIndex = 0;
+    productContainer.innerHTML = "";
+
+    renderProducts();
+  } catch (err) {
+    console.error(err);
+    alert("Lọc sản phẩm thất bại");
+  }
+}
+
+document.querySelectorAll(".checkGia, .checksize")
+  .forEach(el => el.addEventListener("change", applyFilter));
     
 
-    
+//---
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnIncrease")
+    .addEventListener("click", increaseQty);
+
+  document.getElementById("btnDecrease")
+    .addEventListener("click", decreaseQty);
+
+  document.getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+
+function increaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  input.value = value + 1;
+}
+
+function decreaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  if (value > 1) {
+    input.value = value - 1;
+  }
+}
+
+
+
+async function handleAddToCart() {
+  const productId = btnAddToCart.dataset.productId;
+  console.log("productId", productId)
+  const quantity = parseInt(document.getElementById("text_so_luong").value);
+  
+  try {
+    const res = await addToCart(productId, quantity);
+    alert("Đã thêm vào giỏ hàng");
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "Thêm giỏ hàng thất bại");
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".example");
+  const inputSearch = document.querySelector(".input-search");
+
+  if (!form || !inputSearch) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const keyword = inputSearch.value.trim();
+    if (!keyword) return;
+
+    try {
+      const res = await searchProducts(keyword);
+
+      allProducts = res.data || [];
+      currentIndex = 0;
+      productContainer.innerHTML = "";
+      renderProducts();
+    } catch (err) {
+      console.error(err);
+      alert("Không tìm thấy sản phẩm");
+    }
+  });
+});
+
