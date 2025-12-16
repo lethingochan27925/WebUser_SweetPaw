@@ -1,4 +1,4 @@
-import { getCart, updateCartQuantity, removeOneFromCart } from "/services/cartApi.js";
+import { getCart, updateCartQuantity, removeOneFromCart, getRecommendFromCart  } from "/services/cartApi.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -239,3 +239,73 @@ document.querySelector(".chekout").addEventListener("click", (e) => {
 
     window.location.href = "./ordering.html";
 });
+
+// Gợi ý
+const btnOpen = document.getElementById('btnOpenRecommend');
+const modal = document.getElementById('recommendModal');
+const overlay = document.getElementById('recommendOverlay');
+const closeBtn = document.querySelector('.close-recommend');
+
+btnOpen.addEventListener('click', async  () => {
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+    const cartProductIds = [];
+
+    document.querySelectorAll(".cart-body-row").forEach(row => {
+        const checkbox = row.querySelector(".cart-item-check");
+        if (!checkbox.checked) return;
+
+        cartProductIds.push(row.dataset.id);
+    });
+
+
+    if (cartProductIds.length === 0) {
+        alert("Vui lòng chọn sản phẩm");
+        closeRecommend();
+        return;
+    }
+
+  
+    try {
+        const res = await getRecommendFromCart(cartProductIds);
+        renderRecommendProducts(res.products);
+
+    } catch (err) {
+        console.error(err);
+        alert("Không lấy được sản phẩm gợi ý");
+    }
+
+});
+
+function closeRecommend() {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+}
+
+overlay.addEventListener('click', closeRecommend);
+closeBtn.addEventListener('click', closeRecommend);
+
+
+function renderRecommendProducts(products) {
+    const container = document.querySelector(".recommend-body");
+    container.innerHTML = "";
+
+    if (!products || products.length === 0) {
+        container.innerHTML = "<p>Không có sản phẩm gợi ý</p>";
+        return;
+    }
+
+    products.forEach(p => {
+        const html = `
+            <div class="recommend-item">
+                <img src="${p.url}" alt="${p.name}">
+                <div class="info">
+                    <a href="./ProductDetail.html?id=${p._id}" class="name">${p.name}</a>
+                    <p class="des">${p.des}</p>
+                    <p class="price">${p.price.toLocaleString()}</p>
+                </div>
+            </div> 
+        `;
+        container.insertAdjacentHTML("beforeend", html);
+    });
+}

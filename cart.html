@@ -438,13 +438,12 @@
                                 <a style="display: block; text-align: center;" href="./ordering.html" class="chekout">ĐẶT HÀNG</a>
                             </div>
                             <div class="recommend-buttons">
-                                <a style="display: block; text-align: center; background-color: #FE4B5E;" href="" class="chekout">GỢI Ý</a>
+                                <a href="javascript:void(0)" style="display: block; text-align: center; background-color: #FE4B5E;" class="chekout" id="btnOpenRecommend">GỢI Ý</a>
                             </div>
                         </div>
-                         <div class="recommend-list">
-                          <h2>Gợi ý</h2>
-                         </div>
+                         
                       </div>
+                    
                      
                   </form>
               </div>
@@ -452,7 +451,30 @@
         </div>
       </div>
       <!-- end content -->
-      <!-- end content -->
+      <!-- OVERLAY -->
+      <div class="overlay" id="recommendOverlay"></div>
+
+      <!-- RECOMMEND MODAL -->
+      <div class="recommend-modal" id="recommendModal">
+        <div class="recommend-header">
+          <h3>Sản phẩm gợi ý</h3>
+          <span class="close-recommend">&times;</span>
+        </div>
+
+        <div class="recommend-body">
+          <!-- ITEM -->
+          <div class="recommend-item">
+            <img src="" alt="">
+            <div class="info">
+              <p class="name"></p>
+              <p class="des"></p>
+              <p class="price"></p>
+            </div>
+            <button class="btn-add">Thêm</button>
+          </div>
+        </div>
+      </div>
+
   <!-- footer -->
   <footer class="footer">
     <div class="container">

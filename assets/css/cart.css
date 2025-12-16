@@ -223,3 +223,90 @@
     align-items: center;
     margin-top: 10px;
 }
+/* ------ */
+/* dùng chung overlay nếu bạn đã có */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1000;
+}
+
+/* MODAL GỢI Ý */
+.recommend-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-height: 500vh;
+  background: #fff;
+  border-radius: 14px;
+  z-index: 1001;
+  display: none;
+  padding: 20px;
+}
+
+/* HEADER */
+.recommend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.recommend-header h3 {
+  color: #FE4B5E;
+  font-size: 20px;
+}
+
+.close-recommend {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* BODY SCROLL */
+.recommend-body {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* ITEM */
+.recommend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.recommend-item img {
+  width: 100px;
+  height: 90px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.recommend-item .info {
+  flex: 1;
+}
+
+.recommend-item .name {
+  font-weight: bold;
+}
+
+.recommend-item .price {
+  color: #FE4B5E;
+}
+
+.btn-add {
+  background: #FE4B5E;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+

@@ -22,3 +22,10 @@ export async function updateCartQuantity(productId, change) {
 export async function removeOneFromCart(productId) {
   return apiDeleteAuth(`/api/cart/clear/${productId}`);
 }
+
+// Gợi ý sản phẩm từ giỏ hàng
+export async function getRecommendFromCart(cartProductIds) {
+  return apiPostAuth("/api/recommend/cart", {
+    cartProductIds
+  });
+}
