@@ -140,7 +140,7 @@ document.querySelector(".btnDatHang").addEventListener("click", async () => {
         await createOrder(body);
         localStorage.removeItem("checkout_items");
         alert("Đặt hàng thành công");
-        window.location.href = "/order-success.html";
+        window.location.href = "/orders.html";
     } catch (err) {
         alert(err.message);
     }
@@ -213,3 +213,4 @@ function renderAddressSelect(addresses) {
         addressSelect.innerHTML =  `<option value="">Chưa có địa chỉ</option>`;
     }
 }
+

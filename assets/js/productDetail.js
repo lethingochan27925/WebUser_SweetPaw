@@ -29,9 +29,30 @@ async function loadProductDetail() {
 
   // Đổ dữ liệu vào HTML
   document.querySelector(".product__name h1").innerText = p.name;
-  document.querySelector(".status-product b").innerText = p.stock > 0 ? "Còn hàng" : "Hết hàng";
+  // document.querySelector(".status-product b").innerText = p.stock > 0 ? "Còn hàng" : "Hết hàng";
   document.querySelector(".infor-oder b").innerText = p.category || "Không có";
   document.querySelector(".product__price h2").innerText = `${p.price.toLocaleString()} đ`;
+
+  const statusEl = document.querySelector(".status-product b");
+  const btnAddToCart = document.getElementById("btnAddToCart");
+  const btnBuyNow = document.getElementById("btnBuyNow");
+  const qtyInput = document.getElementById("text_so_luong");
+
+  if (p.stock > 0) {
+    statusEl.innerText = "Còn hàng";
+    statusEl.style.color = "green";
+
+    btnAddToCart.disabled = false;
+    btnBuyNow.disabled = false;
+    qtyInput.disabled = false;
+  } else {
+    statusEl.innerText = "Hết hàng";
+    statusEl.style.color = "red";
+
+    btnAddToCart.disabled = true;
+    btnBuyNow.disabled = true;
+    qtyInput.disabled = true;
+  }
 
   // Ảnh chính
   document.getElementById("img-main").src = p.url;
@@ -99,3 +120,33 @@ function showAddToCartModal(product, quantity) {
 }
 
 loadProductDetail();
+
+document.getElementById("btnBuyNow").addEventListener("click", handleBuyNow);
+
+function handleBuyNow() {
+  if (!currentProduct) {
+    alert("Sản phẩm chưa sẵn sàng");
+    return;
+  }
+
+  const quantity = parseInt(document.getElementById("text_so_luong").value) || 1;
+
+  const checkoutItem = {
+    productId: currentProduct._id || currentProduct.id,
+    name: currentProduct.name,
+    price: currentProduct.price,
+    quantity: quantity,
+    image: currentProduct.url,
+    des: currentProduct.des,
+    total: currentProduct.price * quantity
+  };
+
+  // Ghi đè, vì MUA NGAY chỉ mua 1 sản phẩm
+  localStorage.setItem(
+    "checkout_items",
+    JSON.stringify([checkoutItem])
+  );
+  // Chuyển sang trang đặt hàng
+  window.location.href = "/ordering.html";
+}
+
