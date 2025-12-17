@@ -356,7 +356,11 @@
               <p><b>Địa chỉ: </b><span id="diachi"> </span></p>
 
               <p><b>Thanh toán:</b> <span id="payment_method"></span></p>
-              <p class="unpaid">Chưa thanh toán</p>
+              <div class="div-payment">
+                <p class="unpaid">Chưa thanh toán</p>
+                <a href="" class="btnPayment"> --> Thanh toán ngay</a>
+              </div>
+              
 
               <p><b>Ghi chú:</b> <span id="note"></span></p>
             </div>
@@ -452,6 +456,20 @@
     
     <button class="btn-cancel">Đóng</button>
     
+  </div>
+
+   <!-- QR PAYMENT MODAL -->
+  <div id="qrOverlay" class="qr-overlay hidden"></div>
+
+  <div id="qrModal" class="qr-modal hidden">
+      <h3>Thanh toán chuyển khoản</h3>
+      <p>Quét mã QR để thanh toán đơn hàng</p>
+
+      <img id="qrImage" src="" alt="QR thanh toán" />
+
+      <p id="qrAmount" class="qr-amount"></p>
+      <p id="qrDesc" class="qr-desc"></p>
+
   </div>
 
 

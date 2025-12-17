@@ -1,9 +1,13 @@
-import { getMe, createOrder, previewOrder, addAddress  } from "/services/orderApi.js";
+import { getMe, createOrder, previewOrder, addAddress, createPaymentQR, getPaymentStatus  } from "/services/orderApi.js";
 
 let checkoutItems = JSON.parse(localStorage.getItem("checkout_items")) || [];
 let currentUser = null;
 let currentAddress = null;
 let currentDiscountCode = "";
+
+let paymentPollingInterval = null;
+let currentOrderId = null;
+
 
 async function previewOrderPrice() {
     if (!currentAddress || checkoutItems.length === 0) return;
@@ -135,12 +139,44 @@ document.querySelector(".btnDatHang").addEventListener("click", async () => {
             weight: 200
         }))
     };
+    const paymentType = Number(document.querySelector(".payment-method").value);
+
 
     try {
-        await createOrder(body);
+        const  res = await createOrder(body);
+        if(!res.data){
+            alert("Đặt hàng thất bại");
+            return;
+        }
+        const orderId = res.data.orderId || "";
+
         localStorage.removeItem("checkout_items");
         alert("Đặt hàng thành công");
-        window.location.href = "/orders.html";
+
+        if (paymentType === 1 && orderId) {
+            const qrRes = await createPaymentQR(orderId);
+            const qr = qrRes.data;
+            if(!qrRes.data){
+                alert("Lỗi tạo mã QR", qrRes.message);
+            }
+
+            document.getElementById("qrImage").src = qr.qrUrl;
+            document.getElementById("qrAmount").innerText =
+                `Số tiền: ${qr.amount.toLocaleString()} đ`;
+            document.getElementById("qrDesc").innerText =
+                `Nội dung: ${qr.description}`;
+
+            document.getElementById("qrOverlay").classList.remove("hidden");
+            document.getElementById("qrModal").classList.remove("hidden");
+            //Check trạng thái thanh toán
+            startPaymentPolling(orderId);
+        } 
+        // COD 
+        else {
+            window.location.href = "/orders.html";
+        }
+
+        
     } catch (err) {
         alert(err.message);
     }
@@ -214,3 +250,51 @@ function renderAddressSelect(addresses) {
     }
 }
 
+
+// check thanh toán
+function startPaymentPolling(orderId) {
+    // Đảm bảo không bị gọi trùng
+    stopPaymentPolling();
+
+    currentOrderId = orderId;
+
+    paymentPollingInterval = setInterval(async () => {
+        try {
+            const res = await getPaymentStatus(orderId);
+            const status = res?.data?.paymentStatus;
+
+            console.log("Payment status:", status);
+
+            if (status === "SUCCESS") {
+                stopPaymentPolling();
+
+                alert("Thanh toán thành công!");
+                
+                closeQrModal();
+
+                window.location.href = "/orders.html";
+            }
+        } catch (err) {
+            console.error("Lỗi check payment:", err);
+        }
+    }, 3000); // 3 giây gọi 1 lần
+}
+//Dừng
+function stopPaymentPolling() {
+    if (paymentPollingInterval) {
+        clearInterval(paymentPollingInterval);
+        paymentPollingInterval = null;
+    }
+}
+//Đóng QR modal
+function closeQrModal() {
+    stopPaymentPolling();
+
+    document.getElementById("qrOverlay").classList.add("hidden");
+    document.getElementById("qrModal").classList.add("hidden");
+}
+//Sự kiện đóng QR
+document.getElementById("qrOverlay").addEventListener("click", () => {
+    closeQrModal();
+    window.location.href = "/orders.html";
+});

@@ -1,8 +1,10 @@
-import { getOrderDetail  } from "/services/orderApi.js";
+import { getOrderDetail , createPaymentQR, getPaymentStatus } from "/services/orderApi.js";
 import { getMyRatings, createRating, updateRating, deleteRating } from "/services/ratingsApi.js";
 
 let orderItems = [];
 let orderInfo = null;
+
+let paymentPollingInterval = null;
 
 function getIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -28,6 +30,7 @@ async function loadOrderDetail() {
   orderInfo = order;
   const reviewBtn = document.getElementById("openReview");
   const payment_status = document.querySelector(".unpaid");
+  const btnPayment = document.querySelector(".btnPayment");
 
   if (order.display_status === "Đã giao thành công") {
     reviewBtn.style.display = "block"; 
@@ -46,6 +49,14 @@ async function loadOrderDetail() {
   document.getElementById("sdt").innerText = order.to_phone;
   document.getElementById("diachi").innerText = order.to_address; 
   document.getElementById("payment_method").innerText = order.payment_method;
+  //Trang thai thanh toan
+  if (order.payment_method === "Chuyển khoản" && order.payment_status === "PENDING") {
+    btnPayment.style.display= "block";
+  }
+  else{
+    btnPayment.style.display= "none";
+  }
+  
   document.querySelector(".unpaid").innerText =
   order.payment_status === "SUCCESS"
     ? "Thanh toán thành công"
@@ -128,46 +139,6 @@ function closeReview() {
 }
 
 
-
-// function renderReviewItems(items, ratings) {
-//   const container = document.getElementById("reviewItems");
-//   container.innerHTML = "";
-
-//   items.forEach(item => {
-//     const existedRating = ratings.find(r =>
-//       r.productId === item.productId &&
-//       r.orderId === orderInfo.orderId
-//     );
-
-//     const ratingValue = existedRating?.stars || 0;
-//     const commentValue = existedRating?.comment || "";
-
-//     container.insertAdjacentHTML("beforeend", `
-//       <div class="item-review"
-//            data-product-id="${item.productId}"
-//            data-rating-id="${existedRating?.ratingId || ""}">
-
-//         <p><b>${item.name}</b></p>
-
-//         <div class="stars" data-rating="${ratingValue}">
-//           ${[1,2,3,4,5].map(v => `
-//             <span data-value="${v}">
-//               <i class="fas fa-star ${v <= ratingValue ? 'star-active' : ''}"></i>
-//             </span>
-//           `).join("")}
-//         </div>
-
-//         <textarea placeholder="Nhập nội dung đánh giá...">${commentValue}</textarea>
-//         <div class="review-action">
-//           <button class="btn-cancel">Hủy</button>
-//           <button class="btn-submit">Gửi</button>
-//         </div>
-//       </div>
-//     `);
-//   });
-
-//   initStarRating();
-// }
 
 function renderReviewItems(items, ratings) {
   const container = document.getElementById("reviewItems");
@@ -421,3 +392,76 @@ function bindReviewActions() {
 
   });
 }
+
+document.querySelector(".btnPayment").addEventListener("click", async (e) => {
+  e.preventDefault(); 
+  const orderId = getIdFromUrl();
+  try{
+      const qrRes = await createPaymentQR(orderId);
+      const qr = qrRes.data;
+      if(!qrRes.data){
+          alert("Lỗi tạo mã QR", qrRes.message);
+      }
+
+      document.getElementById("qrImage").src = qr.qrUrl;
+      document.getElementById("qrAmount").innerText =
+          `Số tiền: ${qr.amount.toLocaleString()} đ`;
+      document.getElementById("qrDesc").innerText =
+          `Nội dung: ${qr.description}`;
+
+      document.getElementById("qrOverlay").classList.remove("hidden");
+      document.getElementById("qrModal").classList.remove("hidden");
+      //Check trạng thái thanh toán
+      startPaymentPolling(orderId);
+  }
+  catch(err){
+    console.error(err);
+    alert(err.message || "Lỗi tạo mã QR");
+  }
+  
+});
+
+function startPaymentPolling(orderId) {
+    // Đảm bảo không bị gọi trùng
+    stopPaymentPolling();
+
+    paymentPollingInterval = setInterval(async () => {
+        try {
+            const res = await getPaymentStatus(orderId);
+            const status = res?.data?.paymentStatus;
+
+            console.log("Payment status:", status);
+
+            if (status === "SUCCESS") {
+                stopPaymentPolling();
+
+                alert("Thanh toán thành công!");
+                
+                closeQrModal();
+                loadOrderDetail();
+
+            }
+        } catch (err) {
+            console.error("Lỗi check payment:", err);
+        }
+    }, 3000); // 3 giây gọi 1 lần
+}
+//Dừng
+function stopPaymentPolling() {
+    if (paymentPollingInterval) {
+        clearInterval(paymentPollingInterval);
+        paymentPollingInterval = null;
+    }
+}
+//Đóng QR modal
+function closeQrModal() {
+    stopPaymentPolling();
+
+    document.getElementById("qrOverlay").classList.add("hidden");
+    document.getElementById("qrModal").classList.add("hidden");
+}
+//Sự kiện đóng QR
+document.getElementById("qrOverlay").addEventListener("click", () => {
+    closeQrModal();
+    loadOrderDetail();
+});

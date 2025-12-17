@@ -25,3 +25,13 @@ export function createOrder(body) {
 export function previewOrder(body) {
   return apiPostAuth("/api/orders/preview", body);
 }
+
+// Tạo QR thanh toán cho đơn hàng
+export function createPaymentQR(orderId) {
+  return apiPostAuth(`/api/payment/create-payment/${orderId}`, {});
+}
+
+// Lấy trạng thái thanh toán
+export function getPaymentStatus(orderId) {
+  return apiGetAuth(`/api/payment/status/${orderId}`);
+}

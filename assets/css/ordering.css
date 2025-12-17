@@ -368,3 +368,58 @@ h2{
     border-radius: 8px;
     cursor: pointer;
 } */
+
+/* ------ */
+.qr-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+}
+
+.qr-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+    font-size: 18px;
+}
+
+.qr-modal img {
+    width: 400px;
+    margin: 15px auto;
+}
+
+.qr-amount {
+    font-weight: bold;
+    color: #FE4B5E;
+    font-size: 16px;
+}
+
+.qr-desc {
+    font-size: 13px;
+    color: #555;
+    font-size: 14px;
+}
+
+#btnDonePayment {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #FE4B5E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
