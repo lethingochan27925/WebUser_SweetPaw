@@ -10,10 +10,10 @@ export async function getRecommendProducts() {
 
 
 export async function getNewProducts() {
-  return await apiGetAuth("/api/recommend/home");
+  return await apiGetAuth("/api/products/top/new");
 }
 export async function getTopProducts() {
-  return await apiGetAuth("/api/recommend/home");
+  return await apiGetAuth("/api/products/top/selling");
 }
 
 export async function getPopularProducts() {

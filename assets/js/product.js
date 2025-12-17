@@ -207,7 +207,7 @@ async function loadQuickView(id) {
       btnBuy.disabled = false;
       qtyInput.disabled = false;
     }
-    
+
     document.getElementById("btnAddToCart").dataset.productId = p._id;
 
   } catch (e) {
@@ -250,6 +250,7 @@ async function applyFilter() {
     priceRange: getSelectedPriceRange(),
     rating: getSelectedRating()
   };
+  document.querySelector(".coll-name").innerText = "Kết quả";
 
   // Xóa field rỗng
   if (!body.keyword) delete body.keyword;

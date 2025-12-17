@@ -455,6 +455,7 @@ input[type="radio"] + .label-css::after{
 }
 .comment__content-name {
     margin-right: 10px;
+    font-size: 18px;
 }
 .comment__content-content span {
     font-size: 16px;
@@ -576,4 +577,13 @@ input[type="radio"] + .label-css::after{
 
 .alert__body-amount{
     margin-top: 40px;
+}
+
+.comment__content-time{
+    align-items: center;
+    font-size: 14px;
+}
+
+.hasReview{
+    display: none;
 }

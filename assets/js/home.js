@@ -81,12 +81,12 @@ async function loadNewProducts() {
   try {
     const res = await getNewProducts();
 
-    if (!res.success) {
-      console.warn("API trả về success = false");
+    if (res.data == null) {
+      console.warn("message:", res.message);
       return;
     }
 
-    const products = res.products;
+    const products = res.data;
 
     container.innerHTML = ""; // Clear cũ
 
@@ -152,12 +152,12 @@ async function loadTopProducts() {
   try {
     const res = await getTopProducts();
 
-    if (!res.success) {
-      console.warn("API trả về success = false");
+    if (res.data == null) {
+      console.warn("message: ", res.message);
       return;
     }
 
-    const products = res.products;
+    const products = res.data;
 
     container.innerHTML = ""; // Clear cũ
 

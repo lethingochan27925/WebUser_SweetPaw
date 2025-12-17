@@ -15,3 +15,4 @@ export function updateRating(payload) {
 export function deleteRating(body) {
   return apiDeleteAuthHasBody("/api/ratings/deleterating", body);
 }
+

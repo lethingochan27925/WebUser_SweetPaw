@@ -1,6 +1,7 @@
 import { getProductById } from "/services/productApi.js";
 import { addToCart } from "/services/cartApi.js";
 
+
 let currentProduct = null;
 
 
@@ -59,6 +60,7 @@ async function loadProductDetail() {
 
   // Mô tả
   document.querySelector(".product__describe").innerText = p.des;
+  renderRatings(p.ratings);
 
   
 }
@@ -150,3 +152,44 @@ function handleBuyNow() {
   window.location.href = "/ordering.html";
 }
 
+// ----
+function renderRatings(ratings = []) {
+  const container = document.getElementById("rating-list"); 
+  const body_comment = document.querySelector(".body__comment");
+  const hasReview = document.querySelector(".hasReview");
+  if (!ratings.length) {
+    body_comment.style.display = "none";
+    hasReview.style.display = "block";
+    return;
+  }
+
+  container.innerHTML = ratings.map(r => {
+    const stars = Array.from({ length: 5 }, (_, i) =>
+      i < r.stars
+        ? '<i class="home-product-item__star--gold fas fa-star"></i>'
+        : '<i class="fas fa-star"></i>'
+    ).join("");
+
+    const date = new Date(r.createdAt).toLocaleDateString("vi-VN");
+
+    return `
+      <div class="comment">
+        <img class="comment-img" src="./assets/img/product/noavatar.png" alt="">
+        <div class="comment__content">
+          <div class="comment__content-heding">
+            <h4 class="comment__content-name">
+              ${r.userId?.HoTen || "Người dùng"}
+            </h4>
+            <span class="comment__content-time">${date}</span>
+          </div>
+          <div class="home-product-item__rating" style="font-size:14px;margin-bottom:5px">
+            ${stars}
+          </div>
+          <div class="comment__content-content">
+            <span>${r.comment || ""}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
