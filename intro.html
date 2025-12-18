@@ -6,6 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sweetpaw</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link rel="stylesheet" href="./assets/css/intro.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -357,70 +364,170 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="page-title">
-                        <h1 class="title-head">
-                            Giới thiệu
-                        </h1>
-                    </div>
-                    <div class="content-page">
-                        <h2>
-                            <strong>I/ Tầm nhìn</strong>
-                        </h2>
-                        <p>
-                            Tại Sweetpaw, chúng tôi luôn hướng đến việc cải tiến chất lượng
-                             trải nghiệm của khách hàng thông qua việc đa dạng hóa các loại sản phẩm,
-                              đầu tư nghiên cứu để đưa ra những tư vấn phù hợp với từng khách hàng một.
-                               Và với định hướng trở thành một trong những cửa hàng cung cấp các loại bánh ngon, chất lượng nhất Việt Nam,
-                             Sweetpaw luôn hướng đến những giá trị cốt lõi cho khách hàng bao gồm:
-                        </p>
-                        <h3>
-                            <strong>1. Trải nghiệm hoàn hảo</strong>
-                        </h3>
-                        <P>
-                            Thông qua việc tư vấn, hỗ trợ khách hàng tận tâm và nhanh nhất có thể. 
-                        </P>
-                        <h3>
-                            <strong>2. Sản phẩm chính hãng</strong>
-                        </h3>
-                        <P>
-                            Sản phẩm được P&T SHOP mua trực tiếp từ công ty và các trang web
-                             uy tín của Nike, adidas,
-                             Puma v.v… nên các bạn có thể yên tâm về nguồn gốc sản phẩm. 
-                        </P>
-                        <h3>
-                            <strong>3. Chế độ dịch vụ</strong>
-                        </h3>
-                        <P>
-                            Những sản phẩm giày đá banh tại P&T SHOP được bảo hành 3 tháng,
-                             hỗ trợ trả góp 0% lãi suất qua Fundiin, Freeship toàn quốc
-                             khi khách hàng thanh toán chuyển khoản trước, tặng vớ & balo khi mua giày.
-                        </P>
-                        <h2>
-                            <strong>II/ Sứ mệnh</strong>
-                        </h2>
-                        <p>
-                            Đặt khách hàng làm trung tâm. Đáp ứng hiệu quả nhất mọi nhu cầu vì lợi ích khách hàng và chất lượng dịch vụ
-Đặt nhân sự là yếu tố quyết định và là nền tảng của sự phát triển. Không ngừng đào tạo và xây dựng đội ngũ kế thừa.
-Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây dựng và phát triển vì mục tiêu chung của công ty.
-                        </p>
-                        <h2>
-                            <strong>III/ Cửa hàng của P&T SHOP</strong>
-                        </h2>
-                        <p>
-                            <b>P&T SHOP Store I: 86 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM | ĐT: 0123456789</b>
-                            <br>
-                            <b>P&T SHOP Store II: 26 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM | ĐT: 0123456789</b>
-                            <br>
-                            Hoạt động từ 9h tới 21h hàng ngày và cả 7 ngày trong tuần. Rất vui được đón tiếp các bạn.
-                            
-                            <br>
-                            Xin cảm ơn các bạn đã tin tưởng và ủng hộ P&T SHOP.
-                        </p>
+                  <!--hàng giới thiệu-->
+                    <div class="page-title relative w-full h-56 overflow-hidden">
+                      <!-- Ảnh -->
+                      <img
+                        src="https://theme.hstatic.net/200000247827/1000692826/14/footer_bg.jpg?v=2007"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                      <!-- Chữ giới thiệu ở giữa -->
+                      <div
+                        class="absolute inset-0 z-10 flex items-center justify-center text-white/70 font-extrabold tracking-widest text-[30px] md:text-[60px]">
+                        Giới thiệu
+                      </div>
                     </div>
                 </div>
-            </div>
+                <!--phần nội dung-->
+                <div class="content-page">
+                  <section class="mt-20 max-w-7xl mx-auto px-4">
+                    <h1 class="font-bold text-6xl mb-6 text-center">TẦM NHÌN</h1>
+                    <p class="text-center max-w-4xl mx-auto mb-10 text-gray-600">
+                      <span class="text-[#ffc1c3]">Tại SweetPaw</span>
+                      , chúng tôi luôn hướng đến việc cải tiến chất lượng trải nghiệm của khách hàng thông qua việc đa dạng hóa sản phẩm, đầu tư nghiên cứu và mang lại những giá trị cốt lõi bền vững.
+                    </p>
+                    <!-- Swiper cho nó qua lại -->
+                    <div class="swiper mySwiper">
+                      <div class="swiper-wrapper">
+                      <!-- slide đầu -->
+                        <div class="swiper-slide">
+                          <div class="bg-white rounded-lg overflow-hidden shadow">
+                            <img
+                            src="//theme.hstatic.net/200000247827/1000692826/14/img_intro-1.png?v=2007"
+                            class="w-full h-[300px] object-cover"
+                            alt="hình 1"
+                            />
+                            <div class="p-4">
+                              <p class="font-semibold border-l-4 border-black pl-2 mb-2">
+                                Trải nghiệm hoàn hảo
+                              </p>
+                              <p class="text-sm text-gray-600">
+                                Thông qua việc tư vấn và hỗ trợ khách hàng tận tâm,
+                                nhanh chóng và chuyên nghiệp.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      <!-- slide 2 -->
+                        <div class="swiper-slide">
+                          <div class="bg-white rounded-lg overflow-hidden shadow">
+                            <img
+                              src="//theme.hstatic.net/200000247827/1000692826/14/img_intro-5.png?v=2007"
+                              class="w-full h-[300px] object-cover"
+                              alt=""
+                            />
+                            <div class="p-4">
+                              <p class="font-semibold border-l-4 border-black pl-2 mb-2">
+                                Nguyên liệu chính hãng
+                              </p>
+                              <p class="text-sm text-gray-600">
+                                Sản phẩm được nhập trực tiếp từ các thương hiệu uy tín,
+                                đảm bảo nguồn gốc rõ ràng và chất lượng cao.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      <!-- slide 3 -->
+                        <div class="swiper-slide">
+                          <div class="bg-white rounded-lg overflow-hidden shadow">
+                            <img
+                              src="//theme.hstatic.net/200000247827/1000692826/14/img_intro-2.png?v=2007"
+                              class="w-full h-[300px] object-cover"
+                              alt=""
+                            />
+                            <div class="p-4">
+                              <p class="font-semibold border-l-4 border-black pl-2 mb-2">
+                               Chế độ dịch vụ
+                              </p>
+                              <p class="text-sm text-gray-600">
+                                Bảo hành rõ ràng, hỗ trợ đổi trả linh hoạt, freeship toàn quốc cho khách hàng.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   </div>
+                  </section>
+ 
+                  <div class="page-title relative w-full overflow-hidden m-5">
+                    <img
+                      src="https://www.yadea.com.vn/wp-content/uploads/2023/09/background-yadea-2.jpg"
+                      alt=""
+                      class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 z-10 flex flex-col p-10 items-center">
+                      <p class="font-bold">SỨ MỆNH</p>
+                      <p>Đặt khách hàng làm trung tâm. Đáp ứng hiệu quả nhất mọi nhu cầu vì lợi ích khách hàng và chất lượng dịch vụ. Đặt nhân sự là yếu tố quyết định và là nền tảng của sự phát triển. Không ngừng đào tạo và xây dựng đội ngũ kế thừa. Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây dựng và phát triển vì mục tiêu chung của công ty.</p>
+                      <div
+                        id="statsSection"
+                        class="w-full my-40 grid grid-cols-1 md:grid-cols-3 px-6 md:px-24 text-white">
+                        <div class="text-center">
+                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                            CÔNG THỨC RIÊNG
+                          </p>
+                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                            <span id="ctdq">0</span>
+                            <span class="text-2xl md:text-3xl">+ công thức độc quyền</span>
+                          </p>
+                        </div>
+                        <div class="text-center">
+                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                            ĐỘ NGỌT CÂN BẰNG
+                          </p>
+                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                            <span>giảm ~</span>
+                            <span id="dncb">0</span>
+                            <span class="text-2xl md:text-3xl">% đường</span>
+                          </p>
+                        </div>
+                        <div class="text-center">
+                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                            HƯƠNG VỊ PHONG PHÚ
+                          </p>
+                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                            <span id="hvpp">0</span>
+                            <span class="text-2xl md:text-3xl">+ mẫu bánh</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h2>
+                    <strong> Cửa hàng của P&T SHOP</strong>
+                  </h2>
+                  <div class=" flex border-[#e9ecef]">
+                    <div class=" border-[#e9ecef]">
+                      <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2784124874975!2d106.6759338750772!3d10.78997548935964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fa8d4fcd981%3A0xfc423f9114cbaf0!2sAASTU%20-%20Aa%20Flagship%20Store!5e0!3m2!1svi!2s!4v1760334613434!5m2!1svi!2s" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                    </div>
+                    <div class=" px-5">
+                      <div class="w-1/5 border-b-3 mt-5 "></div>
+                      <div class="py-3">
+                          <p class="text-gray-400">Địa chỉ cơ sở 1</p>
+                          <a class="font-normal text-2xl hover:text-red-400" href="https://www.google.com/maps/place/AASTU+-+Aa+Flagship+Store/@10.7899755,106.6785088,15z/data=!4m6!3m5!1s0x31752fa8d4fcd981:0xfc423f9114cbaf0!8m2!3d10.7899755!4d106.6785088!16s%2Fg%2F11ts41vmmh?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">86 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM</a>
+                      </div>
+                      <div class="py-3">
+                          <p class="text-gray-400">Địa chỉ cơ sở 2</p>
+                          <a class="font-normal text-2xl hover:text-red-400" href="https://www.google.com/maps/place/AASTU+-+Aa+The+New+Playground/@10.7900173,106.6785088,15z/data=!4m6!3m5!1s0x31752f4024532b39:0x6cbcc6e23e2f690a!8m2!3d10.7782314!4d106.7010998!16s%2Fg%2F11v62npkjh?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">26 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM</a>
+                      </div>
+                      <div class="py-3">
+                        <p class="text-gray-400">Thời gian làm việc</p>
+                        <p class="font-normal">THỨ 2 - CHỦ NHẬT / 9H - 21H</p>
+                        <p>ĐT: 0123456789</p>
+                      </div>
+                      <div class="w-1/5 border-b-3 "></div>
+                      <p>Xin cảm ơn các bạn đã tin tưởng và ủng hộ 
+                        <span class="text-[#ffc1c3]">SweetPaw</span>
+              </p>
         </div>
+                  </div>
+                </div>
+            </div>
+          </div>
     </div>
+  </div>
   <!-- footer -->
     <footer class="footer">
     <div class="container">
@@ -448,10 +555,12 @@ Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây 
             data-toggle="collapse" data-target="#demo2">
             <h3 class="footer__heading">Thông tin của chúng tôi</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
-          <ul class="footer__list collapse show" id="demo2">
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
-            </li>
+           <ul class="footer__list">
+          <li class="footer__item">
+            <a href="#" class="footer__item--link">
+              Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM
+            </a>
+          </li>
             <!-- <li class="footer__item">
               <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
             </li>
@@ -465,7 +574,7 @@ Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây 
             data-toggle="collapse" data-target="#demo1">
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
-          <ul class="footer__list collapse show" id="demo1">
+            <ul class="footer__list">
             <!-- <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách bảo hành</a>
             </li> -->
@@ -488,7 +597,7 @@ Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây 
             data-toggle="collapse" data-target="#demo">
             <h3 class="footer__heading">Hỗ trợ chung</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
-          <ul class="footer__list collapse show" id="demo">
+           <ul class="footer__list">
             <li class="footer__item">
               <a href="#" class="footer__item--link">Trang chủ</a>
             <li class="footer__item">
@@ -516,5 +625,7 @@ Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây 
   </div>
   <!-- end footer -->
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
+<script src="./assets/js/intro.js"></script>
 </html>
