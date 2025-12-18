@@ -1,4 +1,4 @@
-export const API_URL = 'https://sweetpaw-be.azurewebsites.net';
+export const API_URL = 'https://sweetpaw-be.azurewebsites.net'; 
 
 // export async function apiPostAuthNonContent(path, body) {
 //   const token = localStorage.getItem('token');
@@ -36,7 +36,7 @@ export async function apiPost(path, body) {
 
 export async function apiPostAuth(path, body) {
   const token = localStorage.getItem('token');
-  const admin_id = localStorage.getItem('user_id');
+  const user_id = localStorage.getItem('user_id');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'POST',
@@ -78,7 +78,7 @@ export async function apiGetAuth(path) {
 
 // Hàm PUT
 export async function apiPutAuth(path, body) {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem('token');
 
   const res = await fetch(`${API_URL}${path}`, {
     method: 'PUT',
@@ -138,3 +138,63 @@ export async function apiDeleteAuth(path) {
 
   return res.json();
 }
+
+// delete có body
+export async function apiDeleteAuthHasBody(path, body) {
+  const token = localStorage.getItem('token');
+
+  const res = await fetch(`${API_URL}${path}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+  
+    // Nếu lỗi trả về JSON có message
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    const msg = errorData?.message || `Lỗi ${res.status}`;
+
+    throw new Error(msg);
+  }
+
+  return res.json();
+}
+
+
+// Hàm PATCH
+export async function apiPatchAuth(path, body) {
+  const token = localStorage.getItem('token');
+
+  const res = await fetch(`${API_URL}${path}`, {
+    method: 'PATCH', // <-- Thay đổi duy nhất là METHOD
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  // Nếu lỗi trả về JSON có message
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    const msg = errorData?.message || `Lỗi ${res.status}`;
+
+    throw new Error(msg);
+  }
+
+  return res.json();
+
+  if (!res.ok) {
+    const msg = await res.text();
+    throw new Error(`API ${path} lỗi: ${res.status} – ${msg}`);
+  }
+
+  // Lưu ý: Cập nhật PATCH có thể trả về 200/204, 
+  // nếu API của bạn trả về JSON (ví dụ: đối tượng người dùng đã cập nhật) thì giữ lại res.json()
+  return res.json(); 
+
+}
+

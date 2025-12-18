@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SweetPaw - Chi tiết</title>
+    <title>Sweetpaw - Chi tiết đơn hàng</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -24,11 +24,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- link css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <!-- <link rel="stylesheet" href="./assets/css/base.css"> -->
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/productdetail.css">
+    <link rel="stylesheet" href="./assets/css/order_detail.css">
     <link rel="stylesheet" href="./assets/css/reponsive1.css">
-    <link rel="icon" href="./assets/img/logo/logo.svg" type="image/x-icon"/>
+     <!-- favicon -->
+    <link rel="icon" href="./assets/img/logo/logo.svg" type="image/x-icon" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -62,108 +62,54 @@
     clear: both;
     display: table;
   }
-  .sale-off-2 {
-  top: 14px;
-  right: 14px;
-  }
-        /* Mobile & tablet  */
+/* Mobile & tablet  */
 @media (max-width: 1023px) {
-  .sale-off-2 {
-  top: 1px;
-}
 }
 /* tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
-  .daonguoc {
-    display: flex;
-    flex-direction: column-reverse;
+  .cart-wrap {
+    padding-top: 8px;
+    padding-bottom: 46px
   }
-  #main-img {
-    max-width: unset;
-  }
-  #main-img img {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 0;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 10px;
-  }
-  .all-img > li {
-    display: inline-block;
-  }
-  .all-img {
-    padding: unset;
-  }
-  .img-item img {
-    width: 150px;
-    cursor: pointer;
-    margin: 5px 10px;
-  }
-  textarea {
+  .cart-body-left {
     width: 100%;
   }
-  .btn-comment {
-    display: block;
+  .cart-body-right {
+    margin-top: 8px;
     width: 100%;
-    padding: 25px 0 35px 0;
-    font-size: small;
+    padding: 16px;
   }
 }
 /* mobile */
 @media (max-width: 739px) {
-  .daonguoc {
-    display: flex;
-    flex-direction: column-reverse;
+  .cart-wrap {
+    padding-top:8px;
+    padding-bottom: 46px;
   }
-  #main-img img {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 0;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 10px;
-  }
-  .all-img > li {
-    display: inline-block;
-  }
-  .all-img {
-    padding: unset;
-  }
-  .img-item img {
-    width: 80px;
-    margin: 5px 2px;
-  }
-  .product__price {
-    margin: 15px 0;
-  }
-  .product__wrap {
-    display: block;
-    margin: 15px 0;
-  }
-  .add-cart {
-    width: 100%;
-    padding: 10px 0;
-    margin: 15px 0;
-  }
-  .product__shopnow {
-    display: block;
-  }
-  .shopnow {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  .likenow {
+  .cart-body-left {
     width: 100%;
   }
-  .btn-comment {
+  .cart-body-right {
+    margin-top: 8px;
     width: 100%;
+    padding: 16px;
   }
-  .sale-off-2 {
-    top: 1px;
+  .cart-body-row {
+    flex-direction: row;
+    /* margin-left: -12px;
+    margin-right: -12px; */
   }
-} 
-
+  .card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .card-info-img {
+    grid-row: span 3;
+  }
+  .cart-quantity {
+    margin-top: 5px;
+  }
+}
   </style>
 <body>
   <div class="overlay hidden"></div>
@@ -189,7 +135,7 @@
         <a href="" class="abc">Đăng kí</a>
       </li>
     </ul>
-    <!-- <ul class="ul-first-menu">
+    <ul class="ul-first-menu">
       <li>
         <a href="">Tài khoản của tôi</a>
       </li>
@@ -204,8 +150,8 @@
         <span id="header__second__like--notice" class="header__second__like--notice">3</span>
       </li>
       <li>
-        <a href="">Đăng xuất</a>
-      </li> -->
+        <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
+      </li>
     </ul>
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
@@ -246,7 +192,7 @@
             </ul>
           </li>
           <li class="ng-scope">
-            <a href="./orders.html">Đơn hàng</a>
+            <a href="./news.html">Tin tức</a>
           </li>
           <li class="ng-scope">
             <a href="./contact.html">Liên hệ</a>
@@ -275,20 +221,11 @@
       <div class="top-link clearfix hidden-sm hidden-xs">
         <div class="row">
           <div class="col-6 social_link">
-            <!-- <div class="social-title">Theo dõi: </div>
-            <a href=""><i class="fab fa-facebook" style="font-size: 24px; margin-right: 10px"></i></a>
-            <a href=""><i class="fab fa-instagram" style="font-size: 24px; margin-right: 10px;color: pink;"></i></a>
-            <a href=""><i class="fab fa-youtube" style="font-size: 24px; margin-right: 10px;color: red;"></i></a>
-            <a href=""><i class="fab fa-twitter" style="font-size: 24px; margin-right: 10px"></i></a> -->
+
           </div>
           <div class="col-6 login_link">
             <ul class="header_link right m-auto">
-              <!-- <li>
-                <a href="./Login.html"><i class="fas fa-sign-in-alt mr-3"></i>Đăng nhập</a>
-              </li>
-              <li>
-                <a href="./registration.html"><i class="fas fa-user-plus mr-3" style="margin-left: 10px;"></i>Đăng kí</a>
-              </li> -->
+             
             </ul>
             <ul class="nav nav__first right">
                 <li class="nav-item nav-item__first nav-item__first-user">
@@ -398,102 +335,147 @@
     </nav>
   </header>
   <!-- end header -->
-      <!-- product detail -->
-      <div class="container">
-      <div class="product__detail">
-          <div class="row product__detail-row">
-            <div class="col-lg-6 col-12 daonguoc">
-              <div class="img-product">
-                <ul class="all-img">
-                 
-                  
-                </ul>
-              </div>
-              <div id="main-img" style="cursor: pointer;" >
-                <img style="width: 430px; height: 350px;" src="" class="big-img" alt="ảnh chính" id="img-main" xoriginal="">
-                
-              </div>
-             
+
+  
+      <!-- content -->
+       <div class="container">
+        <h2 class="title">THEO DÕI ĐƠN HÀNG</h2>
+
+        <div class="order-wrapper">
+          <!-- LEFT -->
+          <div class="order-info">
+            <div class="status-left">
+              <span id="status"><b></b></span>
             </div>
-            <div class="col-lg-6 col-12">
-              <span class="home-product-item__like home-product-item__like--liked">
-                <i class="home-product-item__like-icon-empty far fa-heart" style="font-size: 24px;margin-top: 7px;"></i>
-                <i class="home-product-item__like-icon-fill fas fa-heart" style="font-size: 24px;margin-top: 7px;"></i>
-              </span>
-              <div class="product__name">
-                 <h1 style="font-size: 32px;"> </h1>
-                 <h4 style="font-style: italic;" class="product__describe"></h4>
-                 
-              </div>
-              
-              <div class="status-product">
-                Trạng thái: <b>Còn hàng</b>
-              </div>
-              <div class="infor-oder">
-                Loại sản phẩm: <b></b>
-              </div>
-              <div class="product__price">
-                <h2></h2>
+            <div class="order-info-content">
+              <p><b>Mã đơn hàng:</b> <span id="order_id"></span></p>
+
+              <p><b>Đặt lúc:</b> <span id="createAt"></span></p>
+              <p><b>Tên người nhận:</b> <span id="name"></span></p>
+              <p><b>SĐT:</b> <span id="sdt"></span></p>
+              <p><b>Địa chỉ: </b><span id="diachi"> </span></p>
+
+              <p><b>Thanh toán:</b> <span id="payment_method"></span></p>
+              <div class="div-payment">
+                <p class="unpaid">Chưa thanh toán</p>
+                <a href="" class="btnPayment"> --> Thanh toán ngay</a>
               </div>
               
 
-              <div class="product__wrap">
-                <div class="product__amount">
-                  <label for="">Số lượng: </label>
-                  <input type="button" value="-" class="control"  id="btnDecrease">
-                  <input type="text" value="1" class="text-input" id="text_so_luong" onkeypress='validate(event)'> 
-                  <input type="button" value="+" class="control" id="btnIncrease">
-                  
-                </div>
-                 
-                
-                
-              </div>
-              <div class="product__shopnow">
-                <button class="shopnow" id="btnBuyNow">Mua ngay</button>
-                <button class="add-cart" id="btnAddToCart">Thêm vào giỏ</button>
-                
-              </div>
+              <p><b>Ghi chú:</b> <span id="note"></span></p>
             </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="product__comment">
-        <div class="container">
+            <div class="rating">
+              <a href="javascript:void(0)" class="rating-btn" id="openReview">Đánh giá sản phẩm</a>
+            </div>
+            <div class="status-order">
+              <h4>Trạng thái đơn hàng</h4>
+              <ul class="timeline">
+                <li class="active">
+                    <div class="active-div">
+                        <span class="status-active">Đang xử lý</span> <br>
+                        <p>SweetPaw đang xử lý đơn hàng của bạn</p>
+                    </div>
+
+                </li>
+                <li class="shipping">
+                    <div class="shipping-div">
+                        <span class="status-active">Đơn hàng đang được giao đến bạn</span> <br>
+                        <p>SweetPaw đã gửi đơn hàng cho đơn vị vận chuyển</p>
+                    </div>
+
+                </li>
+                <li class="success">
+                    <div class="success-div">
+                        <span class="status-active">Giao hàng thành công</span> <br>
+                        <p>Đơn hàng đã được giao đến bạn</p>
+                    </div>
+
+                </li>
+              </ul>
+            </div>
           
-          <div class="row">
-            <!-- <div class="col-lg-4 col-12 mb-4">
-              <div class="home-product-item__rating" style="font-size: 24px;transform-origin: left;margin-bottom: 5px">
-                <i class="home-product-item__star--gold fas fa-star"></i>
-                <i class="home-product-item__star--gold fas fa-star"></i>
-                <i class="home-product-item__star--gold fas fa-star"></i>
-                <i class="home-product-item__star--gold fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <textarea name="" id="" cols="70" rows="10"></textarea>
-              <button type="submit" class="btn btn-comment">Gửi</button>
-            </div>
-            <div class="comment"> -->
-              
-              <div class="hasReview" style="font-size: 20px;">Chưa có đánh giá</div>
-              <div class="body__comment">
-                <h2 style="font-size: 20px;" class="product__describe-heading">ĐÁNH GIÁ</h2>
-                <div id="rating-list">
-                  
-                
+            
+          </div>
+
+          <!-- RIGHT -->
+          <div class="order-detail">
+            <div class="item">
+              <div class="product">
+                <img class="image" src="" alt="">
+                <div>
+                  <p><b>Bánh sữa chua việt quất</b></p>
+                  <p>Số lượng: 1</p>
+                  <p>Giá: 55.000đ</p>
                 </div>
-                
-                
               </div>
             </div>
+            
+            <div class="price">
+              <p>Tổng tiền hàng: <span id="price-product"></span></p>
+              <p>Phí giao hàng: <span id="shipping-fee"></span></p>
+              <p>Giảm giá: <span id="discount"></span></p>
+              <p class="total">Tổng cộng: <span id="payment"></span></p>
+            </div>
+          
+
+            
           </div>
         </div>
       </div>
-      <!-- end product detail -->
+  <!-- end content -->
 
-      <!-- footer -->
-    <footer class="footer">
+  <!-- OVERLAY -->
+  <div class="overlay" id="reviewOverlay"></div>
+
+  <!-- REVIEW MODAL -->
+  <div class="review-modal" id="reviewModal">
+    <h3>Đánh giá sản phẩm</h3>
+
+    <p><b>Mã đơn hàng:</b> <span id="review-order">LKB88Y</span></p>
+    <p>Đặt lúc: <span id="time-order"></span></p>
+    <div id="reviewItems">
+      <!-- <div class="item-review">
+        <p class="product-name">Bánh sữa chua việt quất</p>
+        <div class="stars">
+          <span data-value="1"><i class="fas fa-star"></i></span>
+          <span data-value="2"><i class="fas fa-star"></i></span>
+          <span data-value="3"><i class="fas fa-star"></i></span>
+          <span data-value="4"><i class="fas fa-star"></i></span>
+          <span data-value="5"><i class="fas fa-star"></i></span>
+          
+        </div>
+        <textarea placeholder="Nhập nội dung đánh giá tại đây..."></textarea>
+        <div class="review-action">
+          <button class="btn-cancel">Hủy</button>
+          <button class="btn-submit">Gửi</button>
+        </div>
+      </div> -->
+    </div>
+    
+
+    
+    <button class="btn-cancel">Đóng</button>
+    
+  </div>
+
+   <!-- QR PAYMENT MODAL -->
+  <div id="qrOverlay" class="qr-overlay hidden"></div>
+
+  <div id="qrModal" class="qr-modal hidden">
+      <h3>Thanh toán chuyển khoản</h3>
+      <p>Quét mã QR để thanh toán đơn hàng</p>
+
+      <img id="qrImage" src="" alt="QR thanh toán" />
+
+      <p id="qrAmount" class="qr-amount"></p>
+      <p id="qrDesc" class="qr-desc"></p>
+
+  </div>
+
+
+
+  <!-- footer -->
+  <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -511,7 +493,7 @@
               <p><i class="fas fa-envelope-square footer__item-icon"></i> Email: <a
                   href="mailto:abc@gmail.com">abc@gmail.com</a></p>
             </li>
-           
+            
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -523,7 +505,7 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-           
+          
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -532,7 +514,7 @@
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            
+           
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
@@ -569,55 +551,65 @@
     <div class="footer__bottom">
       <p class="footer__text">© Bản quyền thuộc về Sweetpaw</p>
     </div>
-    </footer>
+  </footer>
   <div id="go-to-top">
     <a class="btn-gototop"><i class="fas fa-arrow-up"></i></a>
   </div>
   <!-- end footer -->
-
-      <div id="alert-cart" class="alert" style="display:none">
-        <div class="alert__heading">
-            <h4>ĐÃ THÊM VÀO GIỎ HÀNG</h4>
-        </div>
-        <div class="alert__body">
-            <img src="" alt="" class="alert__body-img">
-            <div>
-                <h2 class="alert__body-name"></h2>
-                
-                <h3 class="alert__body-amount"></h3>
-                <h3 class="alert__body-price"></h3>
-            </div>
-        </div>
-        <div class="alert__footer">
-            <a href="./cart.html" class="click__cart" style="border-radius: 4px">Xem giỏ hàng</a>
-        </div>
-      </div>
-      <div class="overlay1" style="display: none" onclick="fadeout()">
-      
-      </div>  
 </body>
-<script src="./assets/js/main.js"></script>
-<script type="module" src="./assets/js/ProductDetail.js"></script>
-<script src="./assets/js/zoomsl.js"></script>
-<script>
-  $(document).ready(function(){
-    $(".big-img").imagezoomsl({
-      zoomrange: [3, 3]
-      
+  <script src="./assets/js/main.js"></script>
+  <script type="module" src="./assets/js/orderDetail.js"></script>
+  <!-- <script>
+    const openBtn = document.getElementById('openReview');
+    const modal = document.getElementById('reviewModal');
+    const overlay = document.getElementById('reviewOverlay');
+    const cancelBtn = document.querySelector('.btn-cancel');
+
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'block';
+      overlay.style.display = 'block';
     });
-  });
-</script>
-<script>
-  function fadeOutModal()
-  {
-      $('.alert').fadeOut();
-      $('.overlay1').fadeOut();
-  }
-  function fadeout()
-  {
-      $('.overlay1').fadeOut();
-      $('.alert').fadeOut();
-  }
-  setInterval(fadeOutModal, 5000);
-</script>
+
+    cancelBtn.addEventListener('click', closeReview);
+    overlay.addEventListener('click', closeReview);
+
+    function closeReview() {
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+
+    // STAR RATING
+
+    const starSpans = document.querySelectorAll('.stars span');
+    let rating = 0;
+
+    starSpans.forEach(span => {
+      const icon = span.querySelector('i');
+
+      span.addEventListener('click', () => {
+        rating = span.dataset.value;
+        updateStars(rating);
+      });
+
+      span.addEventListener('mouseenter', () => {
+        updateStars(span.dataset.value);
+      });
+
+      span.addEventListener('mouseleave', () => {
+        updateStars(rating);
+      });
+    });
+
+    function updateStars(value) {
+      starSpans.forEach(span => {
+        const icon = span.querySelector('i');
+        icon.classList.toggle(
+          'star-active',
+          span.dataset.value <= value
+        );
+      });
+    }
+    
+</script> -->
+
 </html>

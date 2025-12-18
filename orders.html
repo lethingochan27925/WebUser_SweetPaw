@@ -120,8 +120,8 @@
       </li>
       <li>
         <a href="">Đăng xuất</a>
-      </li> -->
-    </ul>
+      </li>
+    </ul> -->
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
         <div class="la-title-nav-items">
@@ -319,15 +319,12 @@
               <div class="row mb-20" style="margin: 20px 0;" id="news">
                   
               </div>
-        </div>
-    </div>
-        <div class="loadmore">
-          <a class="loadmore-btn" style="cursor: pointer;">Tải thêm</a>
-        </div>
-</div>
           </div>
-          
       </div>
+      <div class="loadmore">
+          <a class="loadmore-btn" style="cursor: pointer;">Tải thêm</a>
+      </div>
+    
         
       <!-- end content -->
   <!-- footer -->
@@ -361,12 +358,7 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
-            </li>
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Lĩnh vực kinh doanh</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -375,21 +367,14 @@
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo hành</a>
-            </li> -->
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách đổi trả</a>
-            </li> -->
+            
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách giao nhận hàng</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo mật</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -427,206 +412,6 @@
 </body>
 
 <script src="./assets/js/main.js"></script>
-<script>
-    var page =1;
-    var apiNews = [
-      {
-        orderId: 1,
-        orderDate: '20/10/2024 17:00',
-        orderStatus: 'Đang xử lí',
-        img: './assets/img/product/nikedrifit1.jpg',
-        page: 1
-      },
-      {
-        id: 2,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/stansmithgolf1.jpg',
-        page: 1
-      },
-      {
-        id: 3,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/stansmithgolf2.jpg',
-        page: 1
-      },
-      {
-        id: 4,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/stansmithgolf3.jpg',
-        page: 1
-      },
-      {
-        id: 5,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/stansmithgolf4.jpg',
-        page: 1
-      },
-      {
-        id: 6,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/superfly1.jpg',
-        page: 1
-      },
-      {
-        id: 7,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/superfly2.png',
-        page: 1
-      },
-      {
-        id: 8,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/superfly3.png',
-        page: 1
-      },
-      {
-        id: 9,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/superfly4.png',
-        page: 2
-      },
-      {
-        id: 10,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuicheo1.jpg',
-        page: 2
-      },
-      {
-        id: 11,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuicheo2.jpg',
-        page: 2
-      },
-      {
-        id: 12,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuicheo3.jpg',
-        page: 2
-      },
-      {
-        id: 13,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuicheo4.jpg',
-        page: 2
-      },
-      {
-        id: 14,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/ambush1.jpg',
-        page: 2
-      },
-      {
-        id: 15,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/ambush2.png',
-        page: 2
-      },
-      {
-        id: 16,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/ambush3.png',
-        page: 2
-      },
-      {
-        id: 17,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/ambush4.png',
-        page: 3
-      },
-      {
-        id: 18,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuiprimegreen1.jpg',
-        page: 3
-      },
-      {
-        id: 19,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuiprimegreen2.jpg',
-        page: 3
-      },
-      {
-        id:20,
-        name: 'Nike Mercurial Vapor 14 theo phong cách của Nike Jordan 1 sẽ trông như nào?',
-        description: 'Mới đây Footpack và Soub đã hợp tác với nhau để tạo ra một phiên bản Nike Mercurial Vapor 14 được tùy chỉnh đặc biệt',
-        img: './assets/img/product/tuiprimegreen3.jpg',
-        page: 3
-      },
-    ]
-    var listItem = document.querySelector('#news');
-    console.log(listItem);
-    function initRender() {
-      var listNews = apiNews.map(function(apiNew) {
-        if(apiNew.page == page) {
-          return `<div class="col-lg-3 col-md-6 col-sm-12 mb-20" style="margin-bottom: 20px">
-                    <a href="" class="product__new-item">
-                      <div class="card" style="width: 100%">
-                        <img class="card-img-top" src="${apiNew.img}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title custom__name-product title-orders";>
-                            Mã đơn hàng: ${apiNew.orderId}
-                          </h5>
-                          <p class="card-text custom__name-product" style="font-weight: 400;">Ngày đặt: ${apiNew.orderDate}</p>
-                          <p class="card-text custom__name-product" style="font-weight: 400;">Trạng thái: <span style="color:#35C118;">${apiNew.orderStatus}</span></p>
-                        </div>
-                    </div>
-                    </a>
-                  </div>`
-        }
-      })
-      var renderList = listNews.join('');
-      listItem.innerHTML = renderList;
-    }
-    initRender();
-    var btnLoadMore = document.querySelector('.loadmore-btn');
-    function render() {
-      var listNews = apiNews.map(function(apiNew) {
-        if(apiNew.page == page) {
-          return `<div class="col-lg-3 col-md-6 col-sm-12 mb-20" style="margin-bottom: 20px">
-                    <a href="" class="product__new-item">
-                      <div class="card" style="width: 100%">
-                        <img class="card-img-top" src="${apiNew.img}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title custom__name-product title-news">
-                            ${apiNew.name}
-                          </h5>
-                          <p class="card-text custom__name-product" style="font-weight: 400;">${apiNew.description}</p>
-                        </div>
-                    </div>
-                    </a>
-                  </div>`
-        }
-      })
-      var renderList = listNews.join('');
-      $('#news').append(listNews);
-    }
-    
-    $(btnLoadMore).click(function() {
-      page++;
-      render();
-      if(page > 3)
-      {
-        $(btnLoadMore).fadeOut();
-      }
-      
-    })
-</script>
+<script type="module" src="./assets/js/order.js"></script>
+
 </html>

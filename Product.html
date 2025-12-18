@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SweetPaw - Product</title>
+  <title>SweetPaw - Sản phẩm</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -344,32 +344,28 @@
                   <ul id = "khoanggia" class="product__filter-ckeckbox">
                     <li class="product__filter-item">
                         <label class="form-check-label" for="kg1">
-                            <input type="radio" class="form-check-input checkGia" id="kg1" name="optradio" value="0-1000000" onclick="checkgia(1)"><span>Dưới 1,000,000đ</span>
+                            <input type="radio" class="form-check-input checkGia" id="kg1" name="optradio" value="0-49.999" ><span>Dưới 50.000</span>
                           </label>
                     </li>
                     <li class="product__filter-item">
                         <label class="form-check-label" for="kg2">
-                            <input type="radio" class="form-check-input checkGia" id="kg2" name="optradio" value="1000000-2000000" onclick="checkgia(2)"><span>1,000,000đ->2,000,000đ</span>
+                            <input type="radio" class="form-check-input checkGia" id="kg2" name="optradio" value="50-99.999" ><span>50.000 - 100.000</span>
                           </label>
                     </li>
                     <li class="product__filter-item">
                         <label class="form-check-label" for="kg3">
-                            <input type="radio" class="form-check-input checkGia" id="kg3" name="optradio" value="2000000-3000000" onclick="checkgia(3)"><span>2,000,000đ->3,000,000đ</span>
+                            <input type="radio" class="form-check-input checkGia" id="kg3" name="optradio" value="100-299.999" ><span>100.000 - 300.000</span>
                           </label>
                     </li>
                     <li class="product__filter-item">
                         <label class="form-check-label" for="kg4">
-                            <input type="radio" class="form-check-input checkGia" id="kg4" name="optradio" value="3000000-4000000" onclick="checkgia(4)"><span>3,000,000đ->4,000,000đ</span>
+                            <input type="radio" class="form-check-input checkGia" id="kg4" name="optradio" value="300-1000" ><span>Trên 300.000</span>
                           </label>
                     </li>
-                    <li class="product__filter-item">
-                        <label class="form-check-label" for="kg5">
-                            <input type="radio" class="form-check-input checkGia" id="kg5" name="optradio" value="4000000-100000000" onclick="checkgia(5)"><span>Trên 4,000,000đ</span>
-                          </label>
-                    </li>
+                    
                 </ul>
             </div>
-            <div class="product__filter-trademark">
+            <!-- <div class="product__filter-trademark">
               <h4 class="product__filter-heading">Thương hiệu <i class="fi-rs-minus"
                   onclick="khonghienthidanhsach(2,`thuonghieu`)" id="minus-2"></i> <i class="fi-rs-plus hidden"
                   onclick="khonghienthidanhsach(2,`thuonghieu`)" id="plus-2"></i></h4>
@@ -411,48 +407,65 @@
                   </label>
                 </li>
               </ul>
-            </div>
+            </div> -->
             <div class="product__filter-size">
-              <h4 class="product__filter-heading">Size <i class="fi-rs-minus" onclick="khonghienthidanhsach(3,`size`)"
+              <h4 class="product__filter-heading">Đánh giá <i class="fi-rs-minus" onclick="khonghienthidanhsach(3,`size`)"
                   id="minus-3"></i> <i class="fi-rs-plus hidden" onclick="khonghienthidanhsach(3,`size`)"
                   id="plus-3"></i></h4>
-              <ul id="size" class="product__filter-ckeckbox">
+              <ul id="rating" class="product__filter-ckeckbox">
                 <li class="product__filter-item">
                   <label class="form-check-label" for="size1">
-                    <input type="checkbox" class="form-check-input checksize" id="size1" name="option2"
-                      value="something"><span>37.5</span>
+                    <input type="checkbox" class="form-check-input checksize" id="size1" name="option2" value="5">
+                      <span>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                      </span>
                   </label>
                 </li>
                 <li class="product__filter-item">
                   <label class="form-check-label" for="size2">
-                    <input type="checkbox" class="form-check-input checksize" id="size2" name="option2"
-                      value="something"><span>38</span>
+                    <input type="checkbox" class="form-check-input checksize" id="size2" name="option2" value="4">
+                      <span>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                      </span>
                   </label>
                 </li>
                 <li class="product__filter-item">
                   <label class="form-check-label" for="size3">
-                    <input type="checkbox" class="form-check-input checksize" id="size3" name="option2"
-                      value="something"><span>38.5</span>
+                    <input type="checkbox" class="form-check-input checksize" id="size3" name="option2" value="3">
+                    <span>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                    </span>
                   </label>
                 </li>
                 <li class="product__filter-item">
                   <label class="form-check-label" for="size4">
-                    <input type="checkbox" class="form-check-input checksize" id="size4" name="option2"
-                      value="something"><span>x</span>
+                    <input type="checkbox" class="form-check-input checksize" id="size4" name="option2" value="2">
+                    <span>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                    </span>
+
                   </label>
                 </li>
                 <li class="product__filter-item">
                   <label class="form-check-label" for="size5">
-                    <input type="checkbox" class="form-check-input checksize" id="size5" name="option2"
-                      value="something"><span>xl</span>
+                    <input type="checkbox" class="form-check-input checksize" id="size5" name="option2" value="1">
+                    <span>
+                        <i class="home-product-item__star--gold fas fa-star"></i>
+                        
+                    </span>
                   </label>
                 </li>
-                <li class="product__filter-item">
-                  <label class="form-check-label" for="size6">
-                    <input type="checkbox" class="form-check-input checksize" id="size6" name="option2"
-                      value="something"><span>l</span>
-                  </label>
-                </li>
+                
               </ul>
             </div>
           </div>
@@ -462,32 +475,7 @@
             <div class="sort-left col-12 col-lg-6">
               <h1 class="coll-name" >Tất cả sản phẩm</h1>
             </div>
-            <div class="sort-right col-12 col-lg-6">
-              <div class="sortby">
-                <label for="">Sắp xếp theo:</label>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                    Sản phẩm nổi bật
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" id="sort1">Giá: Tăng dần</a>
-                    <a class="dropdown-item" id="sort2">Giá: giảm dần</a>
-                    <a class="dropdown-item" id="sort3">Tên A->Z</a>
-                    <a class="dropdown-item" id="sort4">Tên Z->A</a>
-                    <a class="dropdown-item" id="sort5">Cũ nhất</a>
-                    <a class="dropdown-item" id="sort6">Mới nhất</a>
-                    <a class="dropdown-item" id="sort7">Bán chạy nhất</a>
-                  </div>
-                </div>
-              </div>
-              <div class="sortby2 hidden" style="float: right;">
-                <div class="dropdown">
-                  <button class="btn btn-dark dropdown-toggle" id="filter">
-                    Lọc sản phẩm
-                  </button>
-                </div>
-              </div>
-            </div>
+            
           </div>
           <div class="row row-product" id="products">
           </div>
@@ -666,12 +654,7 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
-            </li>
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Lĩnh vực kinh doanh</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -680,21 +663,14 @@
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo hành</a>
-            </li> -->
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách đổi trả</a>
-            </li> -->
+            
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách giao nhận hàng</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo mật</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -711,9 +687,7 @@
             <li class="footer__item">
               <a href="./Product.html" class="footer__item--link">Sản phẩm</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="./orders.html" class="footer__item--link">Đơn hàng</a>
-            </li> -->
+           
             <li class="footer__item">
               <a href="./contact.html" class="footer__item--link">Liên hệ</a>
             </li>
@@ -729,7 +703,7 @@
     <a class="btn-gototop"><i class="fas fa-arrow-up"></i></a>
   </div>
   <!-- end footer -->
-    <!-- modal -->
+  <!-- modal -->
   <!-- The Modal -->
     <div class="modal" id="myModal">
     <div class="modal-dialog modal-lg">
@@ -740,7 +714,7 @@
           <div class="row">
             <div class="col-6">
               <div class="mb-2 main-img-2">
-                <img style = "width: 360px; height: 300px;" src="" alt="" id="img-main" xoriginal="./assets/img/product/ars1.jpg">
+                <img style = "width: 360px; height: 300px;" src="" alt="" id="img-main">
               </div>
              
             </div>
@@ -758,7 +732,7 @@
                 </div>
                 <div class="price-product">
                   <div class="special-price">
-                    <span style="font-size: 24px;">540.000đ</span>
+                    <span style="font-size: 24px;"></span>
                   </div>
                   
                 </div>
@@ -769,14 +743,14 @@
                 <div class="product__wrap">
                   <div class="product__amount">
                     <label for="">Số lượng: </label>
-                    <input type="button" value="-" class="control" onclick="tru()">
+                    <input type="button" value="-" class="control" id="btnDecrease">
                     <input type="text" value="1" class="text-input" id="text_so_luong" onkeypress='validate(event)'> 
-                    <input type="button" value="+" class="control" onclick="cong()">
+                    <input type="button" value="+" class="control" id="btnIncrease">
                   </div>
                 </div>
                 <div class="product__shopnow">
                   <button id="btnBuy" class="shopnow2">Mua ngay</button>
-                  <button id="btnAddCart" class="shopnow2">Thêm vào giỏ hàng</button>
+                  <button id="btnAddToCart" class="shopnow2">Thêm vào giỏ hàng</button>
                 </div>
               </div>
             </div>
@@ -793,7 +767,7 @@
   <!-- end modal -->
 </body>
 <script src="./assets/js/main.js"></script>
- <script type="module" src="./assets/js/product.js"></script>
+<script type="module" src="./assets/js/product.js"></script>
 
 
 

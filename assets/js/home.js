@@ -1,4 +1,7 @@
-import { getRecommendProducts, getNewProducts, getTopProducts, getPopularProducts, getProductById } from "/services/productApi.js";
+import { getRecommendProducts, getNewProducts, getTopProducts, getPopularProducts, getProductById, searchProducts } from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js";
+
+let currentProduct = null;
 
 async function loadRecommendProducts() {
   const container = document.getElementById("recommend-products");
@@ -78,12 +81,12 @@ async function loadNewProducts() {
   try {
     const res = await getNewProducts();
 
-    if (!res.success) {
-      console.warn("API trả về success = false");
+    if (res.data == null) {
+      console.warn("message:", res.message);
       return;
     }
 
-    const products = res.products;
+    const products = res.data;
 
     container.innerHTML = ""; // Clear cũ
 
@@ -149,12 +152,12 @@ async function loadTopProducts() {
   try {
     const res = await getTopProducts();
 
-    if (!res.success) {
-      console.warn("API trả về success = false");
+    if (res.data == null) {
+      console.warn("message: ", res.message);
       return;
     }
 
-    const products = res.products;
+    const products = res.data;
 
     container.innerHTML = ""; // Clear cũ
 
@@ -283,7 +286,7 @@ async function loadQuickView(id) {
     if (res.data == null) return;
 
     const p = res.data;
-
+    currentProduct = p;
     // Gán dữ liệu vào modal
     document.querySelector("#myModal .modal-title").innerText = p.name;
     document.getElementById("img-main").src = p.url;
@@ -292,11 +295,115 @@ async function loadQuickView(id) {
     document.querySelector(".price-product .special-price span").innerText = 
         `${p.price.toLocaleString()} đ`;
     document.querySelector(".product-description").innerText = p.des;
-    document.querySelector(".status-product span").innerText = 
-        p.stock > 0 ? "Còn hàng" : "Hết hàng";
+    // document.querySelector(".status-product span").innerText = 
+    //     p.stock > 0 ? "Còn hàng" : "Hết hàng";
     document.querySelector(".infor-oder span").innerText = p.category || "Không có";
+
+    const statusEl = document.querySelector(".status-product span");
+    const btnAddToCart = document.getElementById("btnAddToCart");
+    const btnBuy = document.getElementById("btnBuy");
+    const qtyInput = document.getElementById("text_so_luong");
+
+    // ===== XỬ LÝ HẾT HÀNG =====
+    if (p.stock <= 0) {
+      statusEl.innerText = "Hết hàng";
+      statusEl.style.color = "red";
+
+      btnAddToCart.disabled = true;
+      btnBuy.disabled = true;
+      qtyInput.disabled = true;
+    } else {
+      statusEl.innerText = "Còn hàng";
+      statusEl.style.color = "green";
+
+      btnAddToCart.disabled = false;
+      btnBuy.disabled = false;
+      qtyInput.disabled = false;
+    }
+
+
+    document.getElementById("btnAddToCart").dataset.productId = p._id;
 
   } catch (e) {
     console.error("Lỗi load QuickView:", e);
   }
+}
+//---
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnIncrease")
+    .addEventListener("click", increaseQty);
+
+  document.getElementById("btnDecrease")
+    .addEventListener("click", decreaseQty);
+
+  document.getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+
+function increaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  input.value = value + 1;
+}
+
+function decreaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  if (value > 1) {
+    input.value = value - 1;
+  }
+}
+
+
+
+async function handleAddToCart() {
+  const productId = btnAddToCart.dataset.productId;
+  console.log("productId", productId)
+  const quantity = parseInt(document.getElementById("text_so_luong").value);
+  
+  try {
+    const res = await addToCart(productId, quantity);
+    alert("Đã thêm vào giỏ hàng");
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "Thêm giỏ hàng thất bại");
+  }
+}
+// ----------
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnBuy = document.getElementById("btnBuy");
+  if (btnBuy) {
+    btnBuy.addEventListener("click", handleBuyNow);
+  }
+});
+
+
+function handleBuyNow() {
+  if (!currentProduct) {
+    alert("Sản phẩm chưa sẵn sàng");
+    return;
+  }
+
+  const quantity = parseInt(document.getElementById("text_so_luong").value) || 1;
+
+  const checkoutItem = {
+    productId: currentProduct._id || currentProduct.id,
+    name: currentProduct.name,
+    price: currentProduct.price,
+    quantity: quantity,
+    image: currentProduct.url,
+    des: currentProduct.des,
+    total: currentProduct.price * quantity
+  };
+
+  // Ghi đè, vì MUA NGAY chỉ mua 1 sản phẩm
+  localStorage.setItem(
+    "checkout_items",
+    JSON.stringify([checkoutItem])
+  );
+  // Chuyển sang trang đặt hàng
+  window.location.href = "/ordering.html";
 }

@@ -37,14 +37,31 @@
     transition: 0.3s; 
 }
 
-.card-title.title-orders {
+.card-title {
     color: var(--black-color);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    
 }
 
 .card-text.custom__name-product {
     color: #3d3d3d; 
     font-size: 14px;
     margin-bottom: 2px;
+}
+.card-text{
+    font-size: 16px;
+}
+
+.card-body{
+    height: 170px;
+}
+.order_code{
+    color: #FE4B5E;
+}
+.total_price{
+    color: blue;
+}
+.createdAt{
+    color: rgb(207, 151, 46);
 }

@@ -49,6 +49,7 @@
 .comment{
     width: 800px;
 }
+
 .product__color-item:focus {
     outline:none;
     border:3px solid #333!important;
@@ -128,9 +129,9 @@ input[type="radio"] + .label-css::after{
     height: 40px;
 }
 .control {
-    border-radius: unset;
-    border: 1px solid var(--black-color);
-    background-color: var(--white-color);
+    border-radius: 40px;
+    border: 1px solid #a9a4a49c;
+    background-color: var(--white-color);  
     font-size: 25px;
     text-align: center;
     vertical-align: middle;
@@ -155,6 +156,7 @@ input[type="radio"] + .label-css::after{
     overflow: hidden;
     border: 1px solid #d9121f;
     cursor: pointer;
+    border-radius: 20px;
 }
 .add-cart::before {
     content:"";
@@ -179,9 +181,10 @@ input[type="radio"] + .label-css::after{
 .product__shopnow {
     display: flex;
     justify-content: space-between;
+    
 }
 .shopnow {
-    width: 250px;
+    width: 300px;
     height: 40px;
     background:none;
     color: var(--white-color);
@@ -191,6 +194,7 @@ input[type="radio"] + .label-css::after{
     position: relative;
     overflow: hidden;
     border: 1px solid var(--black-color);
+    border-radius: 20px;
 }
 .shopnow::before {
     content:"";
@@ -427,7 +431,7 @@ input[type="radio"] + .label-css::after{
     border-radius: unset;
 }
 .body__comment {
-    background-color:none;
+    background-color: #FFFBEF;
     height: auto;
     padding: 30px;
     border: 1px solid #dddd;
@@ -451,6 +455,7 @@ input[type="radio"] + .label-css::after{
 }
 .comment__content-name {
     margin-right: 10px;
+    font-size: 18px;
 }
 .comment__content-content span {
     font-size: 16px;
@@ -470,6 +475,7 @@ input[type="radio"] + .label-css::after{
     z-index: 99999;
     box-shadow: 0 5px 8px rgba(121, 90, 90, 0.08);
     animation: slideInLeft ease 0.6s;
+    border-radius: 15px;
     /* , fadeOut linear 1s 3s forwards */
 }
 @keyframes slideInLeft {
@@ -500,12 +506,16 @@ input[type="radio"] + .label-css::after{
     display:flex;
 }
 .alert__body-img{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 150px;
     margin-right: 20px;
+    border: 10px;
 }
 .alert__heading {
     height: 18%;
+    align-items: center;
+    margin-top: 10px;
+    color: #d9121f;
 }
 .alert__body {
     height: 60%;
@@ -564,3 +574,17 @@ input[type="radio"] + .label-css::after{
       text-align: center;
       cursor: pointer;
 }   
+
+.alert__body-amount{
+    margin-top: 40px;
+}
+
+.comment__content-time{
+    align-items: center;
+    font-size: 14px;
+}
+
+.hasReview{
+    display: none;
+}
+
