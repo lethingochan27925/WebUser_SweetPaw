@@ -132,42 +132,24 @@
   <!-- mobile menu -->
   <div class="mobile-main-menu">
     <div class="drawer-header">
-      <a href="">
+      <a href="./accountManagement.html">
         <div class="drawer-header--auth">
           <div class="_object">
-            <img src="./assets/img/product/giayxah2.jpg" alt="">
+            <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
           </div>
-          <div class="_body">Đăng nhập
-            <br>Nhận nhiều ưu đãi hơn
-          </div>
+          <div class="_body">Tên người dùng  </div>
         </div>
       </a>
     </div>
     <ul class="ul-first-menu">
       <li>
-        <a href="">Đăng nhập</a>
+        <a href="./accountManagement.html">Tài khoản của tôi</a>
       </li>
       <li>
-        <a href="" class="abc">Đăng kí</a>
+        <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
       </li>
     </ul>
-    <!-- <ul class="ul-first-menu">
-      <li>
-        <a href="">Tài khoản của tôi</a>
-      </li>
-      <li>
-        <a href="">Địạ chỉ của tôi</a>
-      </li>
-      <li>
-        <a href="">Đơn mua</a>
-      </li>
-      <li>
-        <a href="" class="list-like-noicte">Danh sách yêu thích</a>
-        <span id="header__second__like--notice" class="header__second__like--notice">3</span>
-      </li>
-      <li>
-        <a href="">Đăng xuất</a>
-      </li> -->
+    
     </ul>
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
@@ -179,7 +161,7 @@
             <a href="./index.html">Trang chủ</a>
           </li>
           <li class="ng-scope">
-            <a href="./intro.html">Giới thiệu</a>
+            <a href="./intro.html" class="active">Giới thiệu</a>
           </li>
           <li class="ng-scope ng-has-child1">
             <a href="./Product.html">Sản phẩm <i class="fas fa-plus cong"></i> <i class="fas fa-minus tru hidden"></i></a>
@@ -237,37 +219,24 @@
       <div class="top-link clearfix hidden-sm hidden-xs">
         <div class="row">
           <div class="col-6 social_link">
-            <!-- <div class="social-title">Theo dõi: </div>
-            <a href=""><i class="fab fa-facebook" style="font-size: 24px; margin-right: 10px"></i></a>
-            <a href=""><i class="fab fa-instagram" style="font-size: 24px; margin-right: 10px;color: pink;"></i></a>
-            <a href=""><i class="fab fa-youtube" style="font-size: 24px; margin-right: 10px;color: red;"></i></a>
-            <a href=""><i class="fab fa-twitter" style="font-size: 24px; margin-right: 10px"></i></a> -->
+          
           </div>
           <div class="col-6 login_link">
             <ul class="header_link right m-auto">
-              <!-- <li>
-                <a href="./Login.html"><i class="fas fa-sign-in-alt mr-3"></i>Đăng nhập</a>
-              </li>
-              <li>
-                <a href="./registration.html"><i class="fas fa-user-plus mr-3" style="margin-left: 10px;"></i>Đăng kí</a>
-              </li> -->
+             
             </ul>
             <ul class="nav nav__first right">
                 <li class="nav-item nav-item__first nav-item__first-user">
                   <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
-                  <span class="nav-item__first-name">Quốc Trung</span>
+                  <span class="nav-item__first-name">Người dùng</span>
                   <ul class="nav-item__first-menu">
                     <li class="nav-item__first-item">
-                      <a href="">Tài khoản của tôi</a>
+                      <a href="accountManagement.html">Tài khoản của tôi</a>
                     </li>
+                    
+                    
                     <li class="nav-item__first-item">
-                      <a href="">Địa chỉ của tôi</a>
-                    </li>
-                    <li class="nav-item__first-item">
-                      <a href="">Đơn mua</a>
-                    </li>
-                    <li class="nav-item__first-item">
-                      <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
+                      <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
                     </li>
                   </ul>
                 </li>
@@ -287,11 +256,11 @@
             <div class="mobile_cart visible-sm visible-xs">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -305,13 +274,13 @@
             <div class="item-car clearfix">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
             </div>
             <div class="item-like clearfix">
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -321,8 +290,8 @@
     <nav class="header_nav hidden-sm hidden-xs">
       <div class="container">
         <ul class="header_nav-list nav">
-          <li class="header_nav-list-item "><a href="./index.html" class="active">Trang chủ</a></li>
-          <li class="header_nav-list-item"><a href="./intro.html">Giới thiệu</a></li>
+          <li class="header_nav-list-item "><a href="./index.html" >Trang chủ</a></li>
+          <li class="header_nav-list-item"><a href="./intro.html" class="active">Giới thiệu</a></li>
           <li class="header_nav-list-item has-mega">
             <a href="./Product.html">Sản phẩm<i class="fas fa-angle-right" style="margin-left: 5px;"></i></a>
             <div class="mega-content" style="overflow-x: hidden;">
@@ -360,36 +329,36 @@
     </nav>
   </header>
   <!-- end header -->
-    <div class="content" style="margin-top: 30px">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <!--hàng giới thiệu-->
-                    <div class="page-title relative w-full h-56 overflow-hidden">
-                      <!-- Ảnh -->
-                      <img
-                        src="https://theme.hstatic.net/200000247827/1000692826/14/footer_bg.jpg?v=2007"
-                        alt=""
-                        class="w-full h-full object-cover"
-                      />
-                      <!-- Chữ giới thiệu ở giữa -->
-                      <div
-                        class="absolute inset-0 z-10 flex items-center justify-center text-white/70 font-extrabold tracking-widest text-[30px] md:text-[60px]">
-                        Giới thiệu
-                      </div>
+  <div class="content" style="margin-top: 30px">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--hàng giới thiệu-->
+                  <div class="page-title relative w-full h-56 overflow-hidden">
+                    <!-- Ảnh -->
+                    <img
+                      src="https://theme.hstatic.net/200000247827/1000692826/14/footer_bg.jpg?v=2007"
+                      alt=""
+                      class="w-full h-full object-cover"
+                    />
+                    <!-- Chữ giới thiệu ở giữa -->
+                    <div
+                      class="absolute inset-0 z-10 flex items-center justify-center text-white/70 font-extrabold tracking-widest text-[30px] md:text-[60px]">
+                      Giới thiệu
                     </div>
-                </div>
-                <!--phần nội dung-->
-                <div class="content-page">
-                  <section class="mt-20 max-w-7xl mx-auto px-4">
-                    <h1 class="font-bold text-6xl mb-6 text-center">TẦM NHÌN</h1>
-                    <p class="text-center max-w-4xl mx-auto mb-10 text-gray-600">
-                      <span class="text-[#ffc1c3]">Tại SweetPaw</span>
-                      , chúng tôi luôn hướng đến việc cải tiến chất lượng trải nghiệm của khách hàng thông qua việc đa dạng hóa sản phẩm, đầu tư nghiên cứu và mang lại những giá trị cốt lõi bền vững.
-                    </p>
-                    <!-- Swiper cho nó qua lại -->
-                    <div class="swiper mySwiper">
-                      <div class="swiper-wrapper">
+                  </div>
+              </div>
+              <!--phần nội dung-->
+              <div class="content-page">
+                <section class="mt-20 max-w-7xl mx-auto px-4">
+                  <h1 class="font-bold text-6xl mb-6 text-center">TẦM NHÌN</h1>
+                  <p class="text-center max-w-4xl mx-auto mb-10 text-gray-600">
+                    <span class="text-[#FE4B5E]">Tại SweetPaw</span>
+                    , chúng tôi luôn hướng đến việc cải tiến chất lượng trải nghiệm của khách hàng thông qua việc đa dạng hóa sản phẩm, đầu tư nghiên cứu và mang lại những giá trị cốt lõi bền vững.
+                  </p>
+                  <!-- Swiper cho nó qua lại -->
+                  <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
                       <!-- slide đầu -->
                         <div class="swiper-slide">
                           <div class="bg-white rounded-lg overflow-hidden shadow">
@@ -438,7 +407,7 @@
                             />
                             <div class="p-4">
                               <p class="font-semibold border-l-4 border-black pl-2 mb-2">
-                               Chế độ dịch vụ
+                              Chế độ dịch vụ
                               </p>
                               <p class="text-sm text-gray-600">
                                 Bảo hành rõ ràng, hỗ trợ đổi trả linh hoạt, freeship toàn quốc cho khách hàng.
@@ -446,92 +415,65 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                   </div>
-                  </section>
- 
-                  <div class="page-title relative w-full overflow-hidden m-5">
-                    <img
-                      src="https://www.yadea.com.vn/wp-content/uploads/2023/09/background-yadea-2.jpg"
-                      alt=""
-                      class="w-full h-full object-cover"
-                    />
-                    <div class="absolute inset-0 z-10 flex flex-col p-10 items-center">
-                      <p class="font-bold">SỨ MỆNH</p>
-                      <p>Đặt khách hàng làm trung tâm. Đáp ứng hiệu quả nhất mọi nhu cầu vì lợi ích khách hàng và chất lượng dịch vụ. Đặt nhân sự là yếu tố quyết định và là nền tảng của sự phát triển. Không ngừng đào tạo và xây dựng đội ngũ kế thừa. Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây dựng và phát triển vì mục tiêu chung của công ty.</p>
-                      <div
-                        id="statsSection"
-                        class="w-full my-40 grid grid-cols-1 md:grid-cols-3 px-6 md:px-24 text-white">
-                        <div class="text-center">
-                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
-                            CÔNG THỨC RIÊNG
-                          </p>
-                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
-                            <span id="ctdq">0</span>
-                            <span class="text-2xl md:text-3xl">+ công thức độc quyền</span>
-                          </p>
-                        </div>
-                        <div class="text-center">
-                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
-                            ĐỘ NGỌT CÂN BẰNG
-                          </p>
-                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
-                            <span>giảm ~</span>
-                            <span id="dncb">0</span>
-                            <span class="text-2xl md:text-3xl">% đường</span>
-                          </p>
-                        </div>
-                        <div class="text-center">
-                          <p class="font-semibold text-xl md:text-2xl tracking-wide">
-                            HƯƠNG VỊ PHONG PHÚ
-                          </p>
-                          <p class="font-extrabold text-5xl md:text-7xl mt-2">
-                            <span id="hvpp">0</span>
-                            <span class="text-2xl md:text-3xl">+ mẫu bánh</span>
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                  <h2>
-                    <strong> Cửa hàng của P&T SHOP</strong>
-                  </h2>
-                  <div class=" flex border-[#e9ecef]">
-                    <div class=" border-[#e9ecef]">
+                </section>
+
+                <div class="page-title relative w-full overflow-hidden m-5">
+                  <img
+                    src="https://www.yadea.com.vn/wp-content/uploads/2023/09/background-yadea-2.jpg"
+                    alt=""
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute inset-0 z-10 flex flex-col p-10 items-center">
+                    <p class="font-bold">SỨ MỆNH</p>
+                    <p>Đặt khách hàng làm trung tâm. Đáp ứng hiệu quả nhất mọi nhu cầu vì lợi ích khách hàng và chất lượng dịch vụ. Đặt nhân sự là yếu tố quyết định và là nền tảng của sự phát triển. Không ngừng đào tạo và xây dựng đội ngũ kế thừa. Chia sẽ các quyền lợi với các thành viên trong công ty, cùng xây dựng và phát triển vì mục tiêu chung của công ty.</p>
+                    <div
+                      id="statsSection"
+                      class="w-full my-40 grid grid-cols-1 md:grid-cols-3 px-6 md:px-24 text-white">
+                      <div class="text-center">
+                        <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                          CÔNG THỨC RIÊNG
+                        </p>
+                        <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                          <span id="ctdq">0</span>
+                          <span class="text-2xl md:text-3xl">+ công thức độc quyền</span>
+                        </p>
+                      </div>
+                      <div class="text-center">
+                        <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                          ĐỘ NGỌT CÂN BẰNG
+                        </p>
+                        <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                          <span>giảm ~</span>
+                          <span id="dncb">0</span>
+                          <span class="text-2xl md:text-3xl">% đường</span>
+                        </p>
+                      </div>
+                      <div class="text-center">
+                        <p class="font-semibold text-xl md:text-2xl tracking-wide">
+                          HƯƠNG VỊ PHONG PHÚ
+                        </p>
+                        <p class="font-extrabold text-5xl md:text-7xl mt-2">
+                          <span id="hvpp">0</span>
+                          <span class="text-2xl md:text-3xl">+ mẫu bánh</span>
+                        </p>
+                      </div>
                     </div>
-                    <div class=" px-5">
-                      <div class="w-1/5 border-b-3 mt-5 "></div>
-                      <div class="py-3">
-                          <p class="text-gray-400">Địa chỉ cơ sở 1</p>
-                          <a class="font-normal text-2xl hover:text-red-400" href="https://www.google.com/maps/place/AASTU+-+Aa+Flagship+Store/@10.7899755,106.6785088,15z/data=!4m6!3m5!1s0x31752fa8d4fcd981:0xfc423f9114cbaf0!8m2!3d10.7899755!4d106.6785088!16s%2Fg%2F11ts41vmmh?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">86 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM</a>
-                      </div>
-                      <div class="py-3">
-                          <p class="text-gray-400">Địa chỉ cơ sở 2</p>
-                          <a class="font-normal text-2xl hover:text-red-400" href="https://www.google.com/maps/place/AASTU+-+Aa+The+New+Playground/@10.7900173,106.6785088,15z/data=!4m6!3m5!1s0x31752f4024532b39:0x6cbcc6e23e2f690a!8m2!3d10.7782314!4d106.7010998!16s%2Fg%2F11v62npkjh?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">26 Đinh Bộ Lĩnh, P. 26 Q. Bình Thạnh, TP. HCM</a>
-                      </div>
-                      <div class="py-3">
-                        <p class="text-gray-400">Thời gian làm việc</p>
-                        <p class="font-normal">THỨ 2 - CHỦ NHẬT / 9H - 21H</p>
-                        <p>ĐT: 0123456789</p>
-                      </div>
-                      <div class="w-1/5 border-b-3 "></div>
-                      <p>Xin cảm ơn các bạn đã tin tưởng và ủng hộ 
-                        <span class="text-[#ffc1c3]">SweetPaw</span>
-              </p>
-        </div>
                   </div>
                 </div>
-            </div>
+                
+              </div>
           </div>
-    </div>
+      </div>
   </div>
+  
   <!-- footer -->
     <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px"
-            style="border-radius: 50%;border: 3px solid #000;margin-bottom: 20px;">
+          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px" style="margin-bottom: 20px;">
           <ul class="footer__list">
             <li class="footer__item">
               <p><i class="fas fa-search-location footer__item-icon"></i> Ho Chi Minh, Viet Nam</p>
@@ -596,9 +538,9 @@
           </div>
            <ul class="footer__list">
             <li class="footer__item">
-              <a href="#" class="footer__item--link">Trang chủ</a>
+              <a href="./index.html" class="footer__item--link">Trang chủ</a>
             <li class="footer__item">
-              <a href="./intro.html" class="footer__item--link">Giới thiệu</a>
+              <a href="./intro.html" class="footer__item--link" class="active">Giới thiệu</a>
             </li>
             <li class="footer__item">
               <a href="./Product.html" class="footer__item--link">Sản phẩm</a>
@@ -624,5 +566,5 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
-<script src="./assets/js/intro.js"></script>
+<script type="module" src="./assets/js/intro.js"></script>
 </html>

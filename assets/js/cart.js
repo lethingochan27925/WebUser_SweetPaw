@@ -1,13 +1,21 @@
 import { getCart, updateCartQuantity, removeOneFromCart, getRecommendFromCart  } from "/services/cartApi.js";
+import {getUserLikes } from "/services/listlikeApi.js"; 
 
+const user = JSON.parse(localStorage.getItem("userData"));
+const fullname = user.fullName;
+document.querySelector('.nav-item__first-name').innerText = fullname || 'Người dùng';
+document.querySelector('._body').innerText = fullname || 'Người dùng';
+
+
+loadFavoritesOnce();
 
 document.addEventListener("DOMContentLoaded", async () => {
     const cartBody = document.querySelector(".cart-body");
-    // const totalPriceElement = document.querySelector(".total__price");
 
     try {
         const res = await getCart();
         const items = res.data.items || [];
+        updateCartNotice(items.length); 
 
         cartBody.innerHTML = ""; // xoá mẫu cũ
 
@@ -84,6 +92,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+
+
 window.cong = async function (id) {
     
     try {
@@ -155,6 +165,9 @@ window.xoa = async function (id){
         ?.remove();
 
         updateCartTotal();
+         // CẬP NHẬT LẠI SỐ LƯỢNG GIỎ
+        const remainingItems = document.querySelectorAll(".cart-body-row").length;
+        updateCartNotice(remainingItems);
     } catch (err) {
         alert(err.message);
     }
@@ -307,5 +320,36 @@ function renderRecommendProducts(products) {
             </div> 
         `;
         container.insertAdjacentHTML("beforeend", html);
+    });
+}
+
+// Hiển thị số lượng yêu thích
+async function loadFavoritesOnce() {
+  try {
+    const res = await getUserLikes();
+    if (res?.data) {
+      const favoriteIds = res.data.map(item => item._id);
+      updateLikeNotice(favoriteIds.length);
+
+    }
+  } catch (e) {
+    console.error("Lỗi load favorite:", e);
+  }
+}
+
+function updateLikeNotice(count) {
+    const noticeElements = document.querySelectorAll('#header__second__like--notice');
+    noticeElements.forEach(el => {
+        el.textContent = count > 0 ? count : '';
+        el.style.display = count > 0 ? 'inline-block' : 'none'; 
+    });
+}
+
+
+function updateCartNotice(count) {
+    const noticeElements = document.querySelectorAll('#header__second__cart--notice');
+    noticeElements.forEach(el => {
+        el.textContent = count > 0 ? count : '';
+        el.style.display = count > 0 ? 'inline-block' : 'none'; 
     });
 }

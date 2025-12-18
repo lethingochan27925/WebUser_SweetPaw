@@ -1,6 +1,11 @@
-import { getProductById, toggleFavorite  } from "/services/productApi.js";
-import { addToCart } from "/services/cartApi.js"; 
+import { getProductById} from "/services/productApi.js";
+import { addToCart, getCart } from "/services/cartApi.js"; 
 import { toggleUserLike, getUserLikes } from "/services/listlikeApi.js"; 
+
+const user = JSON.parse(localStorage.getItem("userData"));
+const fullname = user.fullName;
+document.querySelector('.nav-item__first-name').innerText = fullname;
+document.querySelector('._body').innerText = fullname || 'Người dùng';
 
 
 let currentProduct = null;
@@ -221,6 +226,8 @@ function renderRatings(ratings = []) {
   try {
     const favRes = await getUserLikes();
     const favoriteIds = favRes.data.map(item => item._id);
+    updateLikeNotice(favoriteIds.length);
+
 
     if (favoriteIds.includes(productId)) {
       likeBtn.classList.add("home-product-item__like--liked");
@@ -240,3 +247,30 @@ likeBtn.addEventListener("click", async () => {
     alert("Vui lòng đăng nhập");
   }
 });
+
+function updateLikeNotice(count) {
+    const noticeElements = document.querySelectorAll('#header__second__like--notice');
+    noticeElements.forEach(el => {
+        el.textContent = count > 0 ? count : '';
+        el.style.display = count > 0 ? 'inline-block' : 'none'; 
+    });
+}
+
+//Load số lượng giỏ hàng
+async function loadCartOnce() {
+  try {
+    const res = await getCart();
+    const items = res?.data?.items || [];
+    updateCartNotice(items.length);
+  } catch (e) {
+    console.error("Lỗi load cart:", e);
+  }
+}
+function updateCartNotice(count) {
+  const noticeElements = document.querySelectorAll('#header__second__cart--notice');
+  noticeElements.forEach(el => {
+    el.textContent = count > 0 ? count : '';
+    el.style.display = count > 0 ? 'inline-block' : 'none'; 
+  });
+}
+loadCartOnce();

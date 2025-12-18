@@ -116,43 +116,24 @@
   <!-- mobile menu -->
   <div class="mobile-main-menu">
     <div class="drawer-header">
-      <a href="">
+      <a href="./accountManagement.html">
         <div class="drawer-header--auth">
           <div class="_object">
-            <img src="./assets/img/product/giayxah2.jpg" alt="">
+            <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
           </div>
-          <div class="_body">Đăng nhập
-            <br>Nhận nhiều ưu đãi hơn
-          </div>
+          <div class="_body">Tên người dùng  </div>
         </div>
       </a>
     </div>
     <ul class="ul-first-menu">
       <li>
-        <a href="">Đăng nhập</a>
+        <a href="./accountManagement.html">Tài khoản của tôi</a>
       </li>
       <li>
-        <a href="" class="abc">Đăng kí</a>
+        <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
       </li>
     </ul>
-    <ul class="ul-first-menu">
-      <li>
-        <a href="">Tài khoản của tôi</a>
-      </li>
-      <li>
-        <a href="">Địạ chỉ của tôi</a>
-      </li>
-      <li>
-        <a href="">Đơn mua</a>
-      </li>
-      <li>
-        <a href="" class="list-like-noicte">Danh sách yêu thích</a>
-        <span id="header__second__like--notice" class="header__second__like--notice">3</span>
-      </li>
-      <li>
-        <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
-      </li>
-    </ul>
+    
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
         <div class="la-title-nav-items">
@@ -192,7 +173,7 @@
             </ul>
           </li>
           <li class="ng-scope">
-            <a href="./news.html">Tin tức</a>
+            <a href="./orders.html" class="active">Đơn hàng</a>
           </li>
           <li class="ng-scope">
             <a href="./contact.html">Liên hệ</a>
@@ -230,19 +211,15 @@
             <ul class="nav nav__first right">
                 <li class="nav-item nav-item__first nav-item__first-user">
                   <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
-                  <span class="nav-item__first-name">Quốc Trung</span>
+                  <span class="nav-item__first-name">Người dùng</span>
                   <ul class="nav-item__first-menu">
                     <li class="nav-item__first-item">
-                      <a href="">Tài khoản của tôi</a>
+                      <a href="accountManagement.html">Tài khoản của tôi</a>
                     </li>
+                    
+                    
                     <li class="nav-item__first-item">
-                      <a href="">Địa chỉ của tôi</a>
-                    </li>
-                    <li class="nav-item__first-item">
-                      <a href="">Đơn mua</a>
-                    </li>
-                    <li class="nav-item__first-item">
-                      <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
+                      <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
                     </li>
                   </ul>
                 </li>
@@ -262,11 +239,11 @@
             <div class="mobile_cart visible-sm visible-xs">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -280,13 +257,13 @@
             <div class="item-car clearfix">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
             </div>
             <div class="item-like clearfix">
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -296,7 +273,7 @@
     <nav class="header_nav hidden-sm hidden-xs">
       <div class="container">
         <ul class="header_nav-list nav">
-          <li class="header_nav-list-item "><a href="./index.html" class="active">Trang chủ</a></li>
+          <li class="header_nav-list-item "><a href="./index.html">Trang chủ</a></li>
           <li class="header_nav-list-item"><a href="./intro.html">Giới thiệu</a></li>
           <li class="header_nav-list-item has-mega">
             <a href="./Product.html">Sản phẩm<i class="fas fa-angle-right" style="margin-left: 5px;"></i></a>
@@ -328,7 +305,7 @@
               </div>
             </div>
           </li>
-          <li class="header_nav-list-item"><a href="./orders.html">Đơn hàng</a></li>
+          <li class="header_nav-list-item"><a href="./orders.html" class="active">Đơn hàng</a></li>
           <li class="header_nav-list-item"><a href="./contact.html">Liên hệ</a></li>
         </ul>
       </div>
@@ -434,22 +411,7 @@
     <p><b>Mã đơn hàng:</b> <span id="review-order">LKB88Y</span></p>
     <p>Đặt lúc: <span id="time-order"></span></p>
     <div id="reviewItems">
-      <!-- <div class="item-review">
-        <p class="product-name">Bánh sữa chua việt quất</p>
-        <div class="stars">
-          <span data-value="1"><i class="fas fa-star"></i></span>
-          <span data-value="2"><i class="fas fa-star"></i></span>
-          <span data-value="3"><i class="fas fa-star"></i></span>
-          <span data-value="4"><i class="fas fa-star"></i></span>
-          <span data-value="5"><i class="fas fa-star"></i></span>
-          
-        </div>
-        <textarea placeholder="Nhập nội dung đánh giá tại đây..."></textarea>
-        <div class="review-action">
-          <button class="btn-cancel">Hủy</button>
-          <button class="btn-submit">Gửi</button>
-        </div>
-      </div> -->
+      
     </div>
     
 
@@ -479,8 +441,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px"
-            style="border-radius: 50%;border: 3px solid #000;margin-bottom: 20px;">
+          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px" style="margin-bottom: 20px;">
           <ul class="footer__list">
             <li class="footer__item">
               <p><i class="fas fa-search-location footer__item-icon"></i> Ho Chi Minh, Viet Nam</p>
@@ -559,57 +520,6 @@
 </body>
   <script src="./assets/js/main.js"></script>
   <script type="module" src="./assets/js/orderDetail.js"></script>
-  <!-- <script>
-    const openBtn = document.getElementById('openReview');
-    const modal = document.getElementById('reviewModal');
-    const overlay = document.getElementById('reviewOverlay');
-    const cancelBtn = document.querySelector('.btn-cancel');
-
-    openBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
-      overlay.style.display = 'block';
-    });
-
-    cancelBtn.addEventListener('click', closeReview);
-    overlay.addEventListener('click', closeReview);
-
-    function closeReview() {
-      modal.style.display = 'none';
-      overlay.style.display = 'none';
-    }
-
-    // STAR RATING
-
-    const starSpans = document.querySelectorAll('.stars span');
-    let rating = 0;
-
-    starSpans.forEach(span => {
-      const icon = span.querySelector('i');
-
-      span.addEventListener('click', () => {
-        rating = span.dataset.value;
-        updateStars(rating);
-      });
-
-      span.addEventListener('mouseenter', () => {
-        updateStars(span.dataset.value);
-      });
-
-      span.addEventListener('mouseleave', () => {
-        updateStars(rating);
-      });
-    });
-
-    function updateStars(value) {
-      starSpans.forEach(span => {
-        const icon = span.querySelector('i');
-        icon.classList.toggle(
-          'star-active',
-          span.dataset.value <= value
-        );
-      });
-    }
-    
-</script> -->
+  
 
 </html>

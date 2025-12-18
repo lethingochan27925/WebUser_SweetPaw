@@ -86,43 +86,25 @@
     <!-- mobile menu -->
     <div class="mobile-main-menu">
         <div class="drawer-header">
-            <a href="">
-                <div class="drawer-header--auth">
-                    <div class="_object">
-                        <img src="./assets/img/product/giayxah2.jpg" alt="">
-                    </div>
-                    <div class="_body">Đăng nhập
-                        <br>Nhận nhiều ưu đãi hơn
-                    </div>
-                </div>
-            </a>
+        <a href="./accountManagement.html">
+            <div class="drawer-header--auth">
+            <div class="_object">
+                <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
+            </div>
+            <div class="_body">Tên người dùng  </div>
+            </div>
+        </a>
         </div>
         <ul class="ul-first-menu">
             <li>
-                <a href="">Đăng nhập</a>
+                <a href="./accountManagement.html">Tài khoản của tôi</a>
             </li>
             <li>
-                <a href="" class="abc">Đăng kí</a>
+                <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
             </li>
         </ul>
-        <!-- <ul class="ul-first-menu">
-        <li>
-          <a href="">Tài khoản của tôi</a>
-        </li>
-        <li>
-          <a href="">Địạ chỉ của tôi</a>
-        </li>
-        <li>
-          <a href="">Đơn mua</a>
-        </li>
-        <li>
-          <a href="" class="list-like-noicte">Danh sách yêu thích</a>
-          <span id="header__second__like--notice" class="header__second__like--notice">3</span>
-        </li>
-        <li>
-          <a href="">Đăng xuất</a>
-        </li> -->
-        </ul>
+        
+    
         <div class="la-scroll-fix-infor-user">
             <div class="la-nav-menu-items">
                 <div class="la-title-nav-items">
@@ -198,24 +180,20 @@
                             
                         </ul>
                         <ul class="nav nav__first right">
-                        <li class="nav-item nav-item__first nav-item__first-user">
-                            <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
-                            <span class="nav-item__first-name">Quốc Trung</span>
-                            <ul class="nav-item__first-menu">
-                            <li class="nav-item__first-item">
-                                <a href="">Tài khoản của tôi</a>
+                            <li class="nav-item nav-item__first nav-item__first-user">
+                                <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
+                                <span class="nav-item__first-name">Người dùng</span>
+                                <ul class="nav-item__first-menu">
+                                    <li class="nav-item__first-item">
+                                    <a href="accountManagement.html">Tài khoản của tôi</a>
+                                    </li>
+                        
+                        
+                                    <li class="nav-item__first-item">
+                                    <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item__first-item">
-                                <a href="">Địa chỉ của tôi</a>
-                            </li>
-                            <li class="nav-item__first-item">
-                                <a href="">Đơn mua</a>
-                            </li>
-                            <li class="nav-item__first-item">
-                                <a href="./Login.html"  onclick="handleLogout()">Đăng xuất</a>
-                            </li>
-                            </ul>
-                        </li>
                         </ul>
                     </div>
                 </div>
@@ -232,11 +210,11 @@
                         <div class="mobile_cart visible-sm visible-xs">
                             <a href="./cart.html" class="header__second__cart--icon">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
                             </a>
                             <a href="./listlike.html" class="header__second__like--icon">
                                 <i class="far fa-heart"></i>
-                                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                                <span id="header__second__like--notice" class="header__second__like--notice"></span>
                             </a>
                         </div>
                     </div>
@@ -250,13 +228,13 @@
                         <div class="item-car clearfix">
                             <a href="./cart.html" class="header__second__cart--icon">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
                             </a>
                         </div>
                         <div class="item-like clearfix">
                             <a href="./listlike.html" class="header__second__like--icon">
                                 <i class="far fa-heart"></i>
-                                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                                <span id="header__second__like--notice" class="header__second__like--notice"></span>
                             </a>
                         </div>
                     </div>
@@ -266,7 +244,7 @@
         <nav class="header_nav hidden-sm hidden-xs">
             <div class="container">
                 <ul class="header_nav-list nav">
-                    <li class="header_nav-list-item "><a href="./index.html" class="active">Trang chủ</a></li>
+                    <li class="header_nav-list-item "><a href="./index.html" >Trang chủ</a></li>
                     <li class="header_nav-list-item"><a href="./intro.html">Giới thiệu</a></li>
                     <li class="header_nav-list-item has-mega">
                         <a href="./Product.html">Sản phẩm<i class="fas fa-angle-right"
@@ -461,8 +439,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px"
-            style="border-radius: 50%;border: 3px solid #000;margin-bottom: 20px;">
+          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px" style="margin-bottom: 20px;">
           <ul class="footer__list">
             <li class="footer__item">
               <p><i class="fas fa-search-location footer__item-icon"></i> Ho Chi Minh, Viet Nam</p>

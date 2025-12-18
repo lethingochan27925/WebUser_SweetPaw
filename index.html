@@ -98,43 +98,24 @@
   <!-- mobile menu -->
   <div class="mobile-main-menu">
     <div class="drawer-header">
-      <a href="">
+      <a href="./accountManagement.html">
         <div class="drawer-header--auth">
           <div class="_object">
-            <img src="./assets/img/product/giayxah2.jpg" alt="">
+            <img src="./assets/img/product/noavatar.png" alt="" class="heading-img">
           </div>
-          <div class="_body">Đăng nhập
-            <br>Nhận nhiều ưu đãi hơn
-          </div>
+          <div class="_body">Tên người dùng  </div>
         </div>
       </a>
     </div>
     <ul class="ul-first-menu">
       <li>
-        <a href="">Đăng nhập</a>
+        <a href="./accountManagement.html">Tài khoản của tôi</a>
       </li>
       <li>
-        <a href="" class="abc">Đăng kí</a>
+        <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
       </li>
     </ul>
-    <!-- <ul class="ul-first-menu">
-      <li>
-        <a href="">Tài khoản của tôi</a>
-      </li>
-      <li>
-        <a href="">Địạ chỉ của tôi</a>
-      </li>
-      <li>
-        <a href="">Đơn mua</a>
-      </li>
-      <li>
-        <a href="" class="list-like-noicte">Danh sách yêu thích</a>
-        <span id="header__second__like--notice" class="header__second__like--notice">3</span>
-      </li>
-      <li>
-        <a href="">Đăng xuất</a>
-      </li>
-    </ul> -->
+   
     <div class="la-scroll-fix-infor-user">
       <div class="la-nav-menu-items">
         <div class="la-title-nav-items">
@@ -142,7 +123,7 @@
         </div>
         <ul class="la-nav-list-items">
           <li class="ng-scope">
-            <a href="">Trang chủ</a>
+            <a href="./index.html" class="active">Trang chủ</a>
           </li>
           <li class="ng-scope">
             <a href="./intro.html">Giới thiệu</a>
@@ -212,17 +193,13 @@
             <ul class="nav nav__first right">
                 <li class="nav-item nav-item__first nav-item__first-user">
                   <img src="./assets/img/product/noavatar.png" alt="" class="nav-item__first-img">
-                  <span class="nav-item__first-name">Quốc Trung</span>
+                  <span class="nav-item__first-name" >Người dùng</span>
                   <ul class="nav-item__first-menu">
                     <li class="nav-item__first-item">
                       <a href="accountManagement.html">Tài khoản của tôi</a>
                     </li>
-                    <li class="nav-item__first-item">
-                      <a href="">Địa chỉ của tôi</a>
-                    </li>
-                    <li class="nav-item__first-item">
-                      <a href="">Đơn mua</a>
-                    </li>
+                    
+                    
                     <li class="nav-item__first-item">
                       <a href="./Login.html" onclick="handleLogout()">Đăng xuất</a>
                     </li>
@@ -244,11 +221,11 @@
             <div class="mobile_cart visible-sm visible-xs">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -262,13 +239,13 @@
             <div class="item-car clearfix">
               <a href="./cart.html" class="header__second__cart--icon">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="header__second__cart--notice" class="header__second__cart--notice">3</span>
+                <span id="header__second__cart--notice" class="header__second__cart--notice"></span>
               </a>
             </div>
             <div class="item-like clearfix">
               <a href="./listlike.html" class="header__second__like--icon">
                 <i class="far fa-heart"></i>
-                <span id="header__second__like--notice" class="header__second__like--notice">3</span>
+                <span id="header__second__like--notice" class="header__second__like--notice"></span>
               </a>
             </div>
           </div>
@@ -460,8 +437,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px"
-            style="border-radius: 50%;border: 3px solid #000;margin-bottom: 20px;">
+          <img src="./assets/img/logo/logo.svg" alt="" width="80px" height="80px" style="margin-bottom: 20px;">
           <ul class="footer__list">
             <li class="footer__item">
               <p><i class="fas fa-search-location footer__item-icon"></i> Ho Chi Minh, Viet Nam</p>
@@ -486,12 +462,7 @@
             <li class="footer__item">
               <a href="" class="footer__item--link">Địa chỉ: 26 Đường D1, P12, Quận Tân Bình, TP.HCM</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Cơ sở 2: 86 Đinh Bộ Lĩnh, P10, Quận Bình Thanh, TP.HCM</a>
-            </li>
-            <li class="footer__item">
-              <a href="" class="footer__item--link">Lĩnh vực kinh doanh</a>
-            </li> -->
+            
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -500,21 +471,14 @@
             <h3 class="footer__heading">Chính sách</h3><i class="fas fa-chevron-down checkdl1"></i>
           </div>
           <ul class="footer__list collapse show" id="demo1">
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo hành</a>
-            </li> -->
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách đổi trả</a>
-            </li> -->
+           
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách thanh toán</a>
             </li>
             <li class="footer__item">
               <a href="" class="footer__item--link">Chính sách giao nhận hàng</a>
             </li>
-            <!-- <li class="footer__item">
-              <a href="" class="footer__item--link">Chính sách bảo mật</a>
-            </li> -->
+           
           </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -524,7 +488,7 @@
           </div>
           <ul class="footer__list collapse show" id="demo">
             <li class="footer__item">
-              <a href="#" class="footer__item--link">Trang chủ</a>
+              <a href="./index.html" class="footer__item--link" class="active">Trang chủ</a>
             <li class="footer__item">
               <a href="./intro.html" class="footer__item--link">Giới thiệu</a>
             </li>
@@ -612,16 +576,6 @@
 </body>
 <script src="./assets/js/main.js"></script>
 <script type="module" src="./assets/js/home.js"></script>
-<!-- <script>
-  $('.carousel').carousel({
-    interval: 5 // 5 giây
-  })
 
-  $('.owl-carousel').owlCarousel({
-    autoplay: true,
-    autoplayTimeout: 5000, // 5000ms = 5 giây là thời gian chờ
-    smartSpeed: 800 // Thời gian hiệu ứng trượt nhanh hay chậm
-  });
-</script> -->
 
 </html>

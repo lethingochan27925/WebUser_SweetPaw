@@ -1,4 +1,7 @@
 import { getProfile, updateProfile, changePassword, updateAddress, deleteAddress, getAddress, setDefaultAddress, addAddress} from "/services/userApi.js";
+import {getUserLikes } from "/services/listlikeApi.js"; 
+import { getCart  } from "/services/cartApi.js";
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -12,6 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         //Cập nhật tên người dùng ở cột bên trái
         document.querySelector('.heading-name_acc').innerText = profile.fullName || 'Người dùng';
         document.querySelector('.nav-item__first-name').innerText = profile.fullName || 'Người dùng';
+        document.querySelector('._body').innerText = profile.fullName || 'Người dùng';
+
     } catch (error) {
         console.error("Lỗi khi tải profile:", error);
         alert("Không thể tải thông tin hồ sơ. Vui lòng đăng nhập lại.");
@@ -251,3 +256,44 @@ document.querySelector('.form-submit-savebtn')?.addEventListener('click', async 
 });
 
 
+async function loadFavoritesOnce() {
+  try {
+    const res = await getUserLikes();
+    if (res?.data) {
+      const favoriteIds = res.data.map(item => item._id);
+      updateLikeNotice(favoriteIds.length);
+
+    }
+  } catch (e) {
+    console.error("Lỗi load favorite:", e);
+  }
+}
+
+function updateLikeNotice(count) {
+    const noticeElements = document.querySelectorAll('#header__second__like--notice');
+    noticeElements.forEach(el => {
+        el.textContent = count > 0 ? count : '';
+        el.style.display = count > 0 ? 'inline-block' : 'none'; 
+    });
+}
+
+//Load số lượng giỏ hàng
+async function loadCartOnce() {
+  try {
+    const res = await getCart();
+    const items = res?.data?.items || [];
+    updateCartNotice(items.length);
+  } catch (e) {
+    console.error("Lỗi load cart:", e);
+  }
+}
+function updateCartNotice(count) {
+  const noticeElements = document.querySelectorAll('#header__second__cart--notice');
+  noticeElements.forEach(el => {
+    el.textContent = count > 0 ? count : '';
+    el.style.display = count > 0 ? 'inline-block' : 'none'; 
+  });
+}
+loadCartOnce();
+
+loadFavoritesOnce();

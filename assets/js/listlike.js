@@ -1,8 +1,13 @@
 import { getUserLikes, toggleUserLike } from "/services/listlikeApi.js";
 import { getProductById} from "/services/productApi.js";
-import { addToCart } from "/services/cartApi.js";
+import { addToCart, getCart } from "/services/cartApi.js";
 
 let currentProduct = null;
+
+const user = JSON.parse(localStorage.getItem("userData"));
+const fullname = user.fullName;
+document.querySelector('.nav-item__first-name').innerText = fullname;
+document.querySelector('._body').innerText = fullname || 'Người dùng';
 
 const productListContainer = document.querySelector('.listlike .container .row');
 
@@ -115,6 +120,7 @@ async function handleLikeToggle(event) {
                 // Kiểm tra nếu danh sách trống thì hiển thị thông báo
                 if (productListContainer.children.length === 0) {
                      productListContainer.innerHTML = '<div class="col-12 text-center mt-5"><h3>Danh sách yêu thích của bạn đang trống.</h3></div>';
+                     document.querySelector(".title").style.display= "none";
                 }
             }
         } else if (response && response.message === "Unauthorized") {
@@ -148,6 +154,7 @@ async function loadUserLikes() {
             
             if (!likes || likes.length === 0) {
                 productListContainer.innerHTML = '<div class="col-12 text-center mt-5"><h3>Danh sách yêu thích của bạn đang trống.</h3></div>';
+                document.querySelector(".title").style.display= "none";
             } else {
                 likes.forEach(like => renderProduct(like));
             }
@@ -318,3 +325,22 @@ function handleBuyNow() {
   // Chuyển sang trang đặt hàng
   window.location.href = "/ordering.html";
 }
+
+//Load số lượng giỏ hàng
+async function loadCartOnce() {
+  try {
+    const res = await getCart();
+    const items = res?.data?.items || [];
+    updateCartNotice(items.length);
+  } catch (e) {
+    console.error("Lỗi load cart:", e);
+  }
+}
+function updateCartNotice(count) {
+  const noticeElements = document.querySelectorAll('#header__second__cart--notice');
+  noticeElements.forEach(el => {
+    el.textContent = count > 0 ? count : '';
+    el.style.display = count > 0 ? 'inline-block' : 'none'; 
+  });
+}
+loadCartOnce();
