@@ -59,9 +59,9 @@ function renderProduct(product) {
                                 <i class="home-product-item__like-icon-fill fas fa-heart"></i>
                             </span>
                             <div class="home-product-item__rating">
-                                ${generateRatingStars(product.rating)}
+                                ${generateRatingStars(product.rating_avg)}
                             </div>
-                            <span class="home-product-item__sold">${product.sold || 0} đã bán</span>
+                            <span class="home-product-item__sold">${product.sold_count || 0} đã bán</span>
                         </div>
                     </div>
                 </div>

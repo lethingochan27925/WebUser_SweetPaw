@@ -1,4 +1,4 @@
-import { getProfile, updateProfile, changePassword } from "/services/userApi.js";
+import { getProfile, updateProfile, changePassword, updateAddress, deleteAddress, getAddress, setDefaultAddress, addAddress} from "/services/userApi.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -58,3 +58,195 @@ document.getElementById('savePasswordBtn')?.addEventListener('click', async () =
         alert("Lỗi đổi mật khẩu: " + error.message);
     }
 });
+
+let currentEditingAddressIndex = null; 
+
+//4. RENDER Lấy danh sách địa chỉ và hiển thị
+document.addEventListener("DOMContentLoaded", async () => {
+    const activeTab = localStorage.getItem('activeTab');
+    if (activeTab === 'address') {
+        document.querySelector('.detail__my-profile').classList.remove('display');
+        document.querySelector('.detail__my-profile').classList.add('undisplay');
+        
+        document.querySelector('.detail__my-address').classList.remove('undisplay');
+        document.querySelector('.detail__my-address').classList.add('display');
+
+        document.getElementById('address-list-section').classList.remove('undisplay');
+        document.getElementById('address-list-section').classList.add('display');
+        document.getElementById('address-edit-section').classList.add('undisplay');
+        document.getElementById('address-add-section').classList.add('undisplay');
+
+        document.querySelector('.my-profile-title').classList.remove('active'); 
+        document.querySelector('.my-address-title').classList.add('active');
+
+        localStorage.removeItem('activeTab');
+    }
+
+    try {
+        const response = await getAddress();
+        const addressList = response.address || [];
+        
+        const addressContainer = document.querySelector('.address-list');
+        
+        if (!addressContainer) return;
+
+        addressContainer.innerHTML = '';
+
+        if (addressList.length === 0) {
+            addressContainer.innerHTML = '<p style="padding: 20px;">Bạn chưa có địa chỉ nào.</p>';
+            return;
+        }
+
+        addressList.forEach((addr,index) => {
+            const addrDiv = document.createElement('div');
+            addrDiv.className = 'address-item';
+            addrDiv.onclick = () => showEditForm(addr, index); 
+            
+            addrDiv.innerHTML = `
+                <div class="address-name">
+                    <h3>${addr.TenDiaChi || 'Địa chỉ'}</h3>
+                </div>
+                <div class="address-detail">
+                    <p>${addr.SoNha}, ${addr.TenDuong}, ${addr.PhuongXa}, ${addr.QuanHuyen}, ${addr.ThanhPho}</p>
+                </div>
+                </div> ${addr.MacDinh ? '<div class="address-default-yon">Mặc định</div>' : ''}
+            `;
+            addressContainer.appendChild(addrDiv);
+        });
+    } catch (error) {
+        console.error("Lỗi khi tải địa chỉ:", error);
+    }
+});
+
+
+
+// Hàm hiển thị form chỉnh sửa địa chỉ
+document.addEventListener("DOMContentLoaded", () => {
+    window.showEditForm = function(address = {}, index) {
+        currentEditingAddressIndex = index;
+        document.getElementById('address-list-section').classList.add('undisplay');
+        document.getElementById('address-list-section').classList.remove('display');
+        document.getElementById('address-edit-section').classList.remove('undisplay');
+        document.getElementById('address-edit-section').classList.add('display');
+
+        // Điền dữ liệu vào form chỉnh sửa
+        document.getElementById('input-edit-name').value = address.TenDiaChi || '';
+        document.getElementById('input-edit-home-number').value = address.SoNha || '';
+        document.getElementById('input-edit-street').value = address.TenDuong || '';
+        document.getElementById('input-edit-ward').value = address.PhuongXa || '';
+        document.getElementById('input-edit-district').value = address.QuanHuyen || '';
+        document.getElementById('input-edit-city').value = address.ThanhPho || '';
+
+    };
+});
+
+// Hàm cập nhật đia chỉ khi nhấn nút Cập nhật trong form chỉnh sửa
+document.querySelector('.form-submit-updatebtn')?.addEventListener('click', async () => {
+    const user_id = localStorage.getItem('user_id')
+    if (!user_id) {
+        alert("Lỗi: Không tìm thấy ID người dùng. Vui lòng đăng nhập lại.");
+        return;
+    }
+    const addressData = {
+        TenDiaChi: document.getElementById('input-edit-name').value,
+        SoNha: document.getElementById('input-edit-home-number').value,
+        TenDuong: document.getElementById('input-edit-street').value,
+        PhuongXa: document.getElementById('input-edit-ward').value,
+        QuanHuyen: document.getElementById('input-edit-district').value,
+        ThanhPho: document.getElementById('input-edit-city').value,
+
+    };
+    try {
+        await updateAddress(user_id, Number(currentEditingAddressIndex), addressData);  
+    
+        alert("Cập nhật địa chỉ thành công!");
+        localStorage.setItem('activeTab', 'address');
+        location.reload();
+
+
+    } catch (error) {
+        alert("Lỗi cập nhật địa chỉ: " + error.message);
+    }
+});
+
+// Hàm set địa chỉ mặc định
+document.querySelector('.form-submit-defaultbtn')?.addEventListener('click', async () => {
+    const user_id = localStorage.getItem('user_id')
+    if (!user_id) {
+        alert("Lỗi: Không tìm thấy ID người dùng. Vui lòng đăng nhập lại.");
+        return;
+    }
+    try {
+        await setDefaultAddress(user_id, Number(currentEditingAddressIndex));      
+        alert("Đặt địa chỉ mặc định thành công!");  
+        localStorage.setItem('activeTab', 'address');
+
+        location.reload();
+
+    } catch (error) {
+        alert("Lỗi đặt địa chỉ mặc định: " + error.message);
+    }
+});
+
+
+//Hàm xóa địa chỉ khi nhấn nút Xóa trong form chỉnh sửa
+document.querySelector('.form-submit-deletebtn')?.addEventListener('click', async () => {
+    const user_id = localStorage.getItem('user_id');
+    
+    console.log("Giá trị index hiện tại:", currentEditingAddressIndex);
+
+    if (currentEditingAddressIndex === null || currentEditingAddressIndex === undefined) {
+        alert("Lỗi: Không tìm thấy vị trí địa chỉ để xóa.");
+        return;
+    }
+
+    try {
+        await deleteAddress(user_id, currentEditingAddressIndex);
+        alert("Xóa địa chỉ thành công!");
+        localStorage.setItem('activeTab', 'address');
+
+        location.reload();
+    } catch (error) {
+        alert("Lỗi xóa địa chỉ: " + error.message);
+    }
+});
+
+// Hàm THÊM ĐỊA CHỈ MỚI
+document.querySelector('.form-submit-savebtn')?.addEventListener('click', async () => {
+    const user_id = localStorage.getItem('user_id')
+    if (!user_id) {
+        alert("Lỗi: Không tìm thấy ID người dùng. Vui lòng đăng nhập lại.");
+        return;
+    }
+    const ten = document.getElementById('input-add-name').value.trim();
+    const soNha =  document.getElementById('input-add-home-number').value.trim();
+    const tenDuong = document.getElementById('input-add-street').value.trim();
+    const phuongXa = document.getElementById('input-add-ward').value.trim();
+    const quanHuyen = document.getElementById('input-add-district').value.trim();
+    const thanhPho = document.getElementById('input-add-city').value.trim();  
+    console.log({ten, soNha, tenDuong, phuongXa, quanHuyen, thanhPho});    
+    if (!ten || !soNha || !tenDuong || !phuongXa || !quanHuyen || !thanhPho) {
+        alert("Vui lòng điền đầy đủ thông tin địa chỉ.");
+        return;
+    }  
+    const addressData = {
+        TenDiaChi: ten,     
+        SoNha: soNha,
+        TenDuong: tenDuong,                 
+        PhuongXa: phuongXa,
+        QuanHuyen: quanHuyen,
+        ThanhPho: thanhPho,
+        MacDinh: false
+    };
+    try {
+        await addAddress(user_id, addressData);
+        alert("Thêm địa chỉ thành công!");
+        localStorage.setItem('activeTab', 'address');
+
+        location.reload();
+    } catch (error) {
+        alert("Lỗi thêm địa chỉ: " + error.message);
+    }
+});
+
+

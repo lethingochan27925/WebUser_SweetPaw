@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <!-- link css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <!-- <link rel="stylesheet" href="./assets/css/base.css"> -->
@@ -88,10 +89,19 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
   .my-profile{
-    border-bottom: #c4c1c1 solid 0.1px;
+    border-bottom: 2px solid #eee;
 
 }
+  .my-password{
+    border-bottom: 2px solid #eee;
 
+}
+.my-address-title{
+    display: flex;          
+    align-items: center;    
+    gap: 10px;
+    padding: 15px 10px 7px 0;
+}
 .form-group input{
   color: #161616;
 }
@@ -182,6 +192,169 @@
     margin-bottom: 25px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
+}
+
+/* Địa chỉ */
+/* Label (Tên trường) */
+.address-name h3 {
+    display: block;
+    font-weight: 500;
+    color: #161616;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+.address-item {
+    cursor: pointer;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 8px;
+    font-size: 15px;
+    margin-top: 15px;
+}
+.heading-my-address h2{
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    padding-bottom: 0px;
+}
+.heading-my-address .add-new-address-btn{
+    font-size: 16px;
+    color: #FE4B5E;
+    
+}
+.heading-my-address {
+  display: flex;               
+  justify-content: space-between; 
+  border-bottom: 1px solid #eee;
+
+}
+.address-detail-buttons{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.address-detail-buttons .form-submit{
+    margin: 0; 
+    background-color: #fff; 
+    color: #FE4B5E; 
+    border: 1px solid #FE4B5E;
+}
+.address-detail-buttons .form-submit:hover{
+    background-color: #FE4B5E; 
+    color: #fff; 
+}
+.address-detail-buttons .form-submit-default{
+    margin-left: auto; 
+    cursor: pointer;
+    background-color: #fff; 
+    color: #FE4B5E; 
+    font-size: 17px;
+    width: auto;
+}
+
+/* Div: địa chỉ này có mặc định hay hông */
+.address-default-yon {
+    background-color: #f0f0f0;
+    color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+    padding: 2px 5px;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+
+
+/* Nút thêm địa chỉ mới */
+/* Container chứa nút */
+.address-detail-buttons {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nút về bên phải form */
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee; /* Đường kẻ mờ phân cách */
+}
+
+/* 1. Style cho nút Lưu trong tạo địa chỉ mới */
+.form-submit-savebtn {
+    background-color: #fe4b5e; 
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 1.1 Hiệu ứng khi di chuột vào nút Lưu trong tạo địa chỉ mới (Hover) */
+.form-submit-savebtn:hover {
+    background-color: #fe4b5e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Container chứa 3 nút trong địa chỉ chi tiết */
+.address-detail-buttons {
+    display: flex;         
+    gap: 10px;            
+    width: 100%;          
+    align-items: center;  
+}
+/* 2. Style cho nút Cập nhật */
+.form-submit-updatebtn {
+    background-color: #fe4b5e; 
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: left;
+}
+/* 2.1 Hiệu ứng khi di chuột vào (Hover) */
+.form-submit-updatebtn:hover {
+    background-color: #fe4b5e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+/* 3. Style cho nút Đặt làm mặc định */
+
+.form-submit-defaultbtn {
+    margin-left: auto;   
+    background-color: transparent;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-submit-defaultbtn:hover {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+/* 4. Style cho nút Xóa */
+.form-submit-deletebtn {
+    background-color: transparent;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 
@@ -510,6 +683,14 @@
                 <div class="my-password-name">Đổi mật khẩu</div>
               </div>
             </div>
+
+             <!-- TAB: Địa chỉ -->
+            <div class="my-address" onclick="hienThiXemDiaChi()">
+              <div class="my-address-title">
+                <div class="my-address-icon"><i class="fas fa-map"></i></div>
+                <div class="my-address-name">Địa chỉ </div>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -575,6 +756,113 @@
 
             <button class="form-submit" id="savePasswordBtn">Lưu</button>
           </div>
+
+          <!-- Nội dung Tab: Địa chỉ: -->
+           <div class="detail__my-address undisplay">
+    
+            <div id="address-list-section">
+              <div class="heading-my-address">
+                  <h2>Địa chỉ đã lưu</h2>
+                  <div href="" class="add-new-address-btn" onclick="showAddForm()" style="cursor: pointer;">+ Thêm địa chỉ mới</div>
+              </div>
+              <div class="address-list">
+                  <div class="address-item" onclick="showEditForm()">
+                      <div class="address-name"><h3>Nhà của Xuân</h3></div>
+                      <div class="address-detail"><p>123 Đường ABC, Phường XYZ, Quận 1, TP.HCM</p></div>
+                      <div class="address-default-yon">Mặc định</div>
+                  </div>
+
+                  <div class="address-item" onclick="showEditForm()">
+                      <div class="address-name"><h3>Nhà của Chấm</h3></div>
+                      <div class="address-detail"><p>123 Đường ABC, Phường XYZ, Quận 1, TP.HCM</p></div>
+                      <div class="address-default-yon">Mặc định</div>
+
+                  </div>
+              </div>
+          </div>
+          <!-- Chi tiết chỉnh sửa địa chỉ -->
+          <div id="address-edit-section" class="undisplay">
+              <div class="heading-my-address">
+                  <h2>
+                      <span onclick="backToAddressList()" style="cursor:pointer; color: #888;">Địa chỉ đã lưu</span> 
+                      <i class="fas fa-angle-right" style="font-size: 14px; margin: 0 5px; color: #888;"></i> 
+                      Chi tiết
+                  </h2>
+              </div>
+              <div class="edit-form-content" style="margin-top: 20px;">
+                  <div class="form-group">
+                      <label class="form-label">Tên địa chỉ</label>
+                      <input type="text" id="input-edit-name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Số nhà</label>
+                      <input type="text" id="input-edit-home-number" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Tên đường</label>
+                      <input type="text" id="input-edit-street" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Phường/Xã</label>
+                      <input type="text" id="input-edit-ward" class="form-control">
+                  </div>
+                  <div class="form-group"> 
+                      <label class="form-label">Quận/Huyện</label>
+                      <input type="text" id="input-edit-district" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Thành phố</label>
+                      <input type="text" id="input-edit-city" class="form-control">
+                  </div>
+
+                  <div class="address-detail-buttons">
+                      <button class="form-submit-updatebtn" style="margin: 0;">Cập nhật</button>
+                      <button class="form-submit-deletebtn" >Xóa</button>
+                      <button class="form-submit-defaultbtn"> Đặt làm mặc định </button>
+                  </div>
+              </div>
+          </div>
+          <!-- Thêm địa chỉ mới -->
+           <div id="address-add-section" class="undisplay">
+              <div class="heading-my-address">
+                  <h2>
+                      <span onclick="backToAddressList()" style="cursor:pointer; color: #888;">Địa chỉ đã lưu</span> 
+                      <i class="fas fa-angle-right" style="font-size: 14px; margin: 0 5px; color: #888;"></i> 
+                      Thêm địa chỉ mới
+                  </h2>
+              </div>
+              <div class="add-form-content" style="margin-top: 20px;">
+                  <div class="form-group">
+                      <label class="form-label">Tên địa chỉ</label>
+                      <input type="text" id="input-add-name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Số nhà</label>
+                      <input type="text" id="input-add-home-number" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Tên đường</label>
+                      <input type="text" id="input-add-street" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Phường/Xã</label>
+                      <input type="text" id="input-add-ward" class="form-control">
+                  </div>
+                  <div class="form-group"> 
+                      <label class="form-label">Quận/Huyện</label>
+                      <input type="text" id="input-add-district" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Thành phố</label>
+                      <input type="text" id="input-add-city" class="form-control">
+                  </div>
+
+                  <div class="address-detail-buttons">
+                      <button class="form-submit-savebtn" style="margin: 0;">Lưu</button>
+                  </div>
+              </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -669,16 +957,59 @@
     $(".detail__confirm-password").addClass("display");
     $(".my-password-title").addClass("active");
     $(".my-profile-title").removeClass("active");
+    $(".my-address-title").removeClass("active");
     $(".detail__my-profile").addClass("undisplay");
     $(".detail__my-profile").removeClass("display");
+    $(".detail__my-address").addClass("undisplay");
+    $(".detail__my-address").removeClass("display");
+
   }
   function hienThiDoiThongTin() {
     $(".detail__my-profile").removeClass("undisplay");
     $(".detail__my-profile").addClass("display");
     $(".my-profile-title").addClass("active");
     $(".my-password-title").removeClass("active");
+    $(".my-address-title").removeClass("active");
     $(".detail__confirm-password").addClass("undisplay");
     $(".detail__confirm-password").removeClass("display");
+    $(".detail__my-address").addClass("undisplay");
+    $(".detail__my-address").removeClass("display");
   }
+  function hienThiXemDiaChi() {
+    $(".detail__my-address").removeClass("undisplay");
+    $(".detail__my-address").addClass("display");
+    $(".my-address-title").addClass("active");
+    $(".my-password-title").removeClass("active");
+    $(".my-profile-title").removeClass("active");
+    $(".detail__confirm-password").addClass("undisplay");
+    $(".detail__confirm-password").removeClass("display");
+    $(".detail__my-profile").addClass("undisplay");
+    $(".detail__my-profile").removeClass("display");
+  }
+function showEditForm() {
+    $("#address-list-section").addClass("undisplay");
+    $("#address-list-section").removeClass("display");
+
+    $("#address-edit-section").removeClass("undisplay");
+    $("#address-edit-section").addClass("display");
+
+}
+function backToAddressList() {
+    $("#address-list-section").removeClass("undisplay");
+    $("#address-list-section").addClass("display");
+
+    $("#address-edit-section").addClass("undisplay");
+    $("#address-edit-section").removeClass("display");
+    $("#address-add-section").addClass("undisplay");
+    $("#address-add-section").removeClass("display");
+}
+function showAddForm() {
+    $("#address-list-section").addClass("undisplay");
+    $("#address-list-section").removeClass("display");
+
+    $("#address-add-section").removeClass("undisplay");
+    $("#address-add-section").addClass("display");
+
+}
 </script>
 </html>
