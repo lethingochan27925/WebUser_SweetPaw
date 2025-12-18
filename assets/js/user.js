@@ -179,6 +179,7 @@ document.querySelector('.form-submit-defaultbtn')?.addEventListener('click', asy
     try {
         await setDefaultAddress(user_id, Number(currentEditingAddressIndex));      
         alert("Đặt địa chỉ mặc định thành công!");  
+        // thêm dòng này để nó khỏi load sai tab
         localStorage.setItem('activeTab', 'address');
 
         location.reload();
