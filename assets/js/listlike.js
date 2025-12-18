@@ -1,4 +1,8 @@
 import { getUserLikes, toggleUserLike } from "/services/listlikeApi.js";
+import { getProductById} from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js";
+
+let currentProduct = null;
 
 const productListContainer = document.querySelector('.listlike .container .row');
 
@@ -22,6 +26,7 @@ function generateRatingStars(rating) {
     }
     return stars;
 }
+    
 
 // Hàm render một sản phẩm yêu thích
 function renderProduct(product) {
@@ -34,13 +39,13 @@ function renderProduct(product) {
             <a href="./ProductDetail.html?id=${productId}" class="product__new-item">
                 <div class="card" style="width: 100%">
                     <div>
-                        <img class="card-img-top" src="${product.url || './assets/img/product/default.jpg'}" alt="${product.name}">
+                        <img class="card-img-top" src="${product.url}" alt="${product.name}">
                         <form action="" class="hover-icon hidden-sm hidden-xs">
                             <input type="hidden">
-                            <a href="./pay.html" class="btn-add-to-cart" title="Mua ngay">
+                            <a href="./ProductDetail.html?id=${productId}" class="btn-add-to-cart" title="Mua ngay">
                                 <i class="fas fa-cart-plus"></i>
                             </a>
-                            <a data-toggle="modal" data-target="#myModal" class="quickview" title="Xem nhanh">
+                            <a data-toggle="modal" data-target="#myModal" class="quickview" data-id="${productId}" title="Xem nhanh">
                                 <i class="fas fa-search"></i>
                             </a>
                         </form>
@@ -102,7 +107,7 @@ async function handleLikeToggle(event) {
             const productElement = likeToggleBtn.closest('.product-item');
             if (productElement) {
                 productElement.remove();
-                alert("Đã xóa sản phẩm khỏi danh sách yêu thích!");
+                // alert("Đã xóa sản phẩm khỏi danh sách yêu thích!");
                 
                 // Cập nhật lại số lượng yêu thích trên header
                 updateLikeNotice(response.currentLikeCount);
@@ -181,3 +186,135 @@ function updateLikeNotice(count) {
 
 // Khởi chạy khi trang được tải
 document.addEventListener('DOMContentLoaded', loadUserLikes);
+
+// ---------
+
+document.addEventListener("click", async (e) => {
+  if (e.target.closest(".quickview")) {
+    const id = e.target.closest(".quickview").dataset.id;
+    loadQuickView(id);
+  }
+});
+
+async function loadQuickView(id) {
+  try {
+    const res = await getProductById(id);
+
+    if (res.data == null) return;
+
+    const p = res.data;
+    currentProduct = p;
+
+    // Gán dữ liệu vào modal
+    document.querySelector("#myModal .modal-title").innerText = p.name;
+    document.getElementById("img-main").src = p.url;
+    
+    document.querySelector(".price-product .special-price span").innerText = 
+        `${p.price.toLocaleString()} đ`;
+    document.querySelector(".product-description").innerText = p.des;
+    // document.querySelector(".status-product span").innerText = 
+    //     p.stock > 0 ? "Còn hàng" : "Hết hàng";
+    document.querySelector(".infor-oder span").innerText = p.category || "Không có";
+    const statusEl = document.querySelector(".status-product span");
+    const btnAddToCart = document.getElementById("btnAddToCart");
+    const btnBuy = document.getElementById("btnBuy");
+    const qtyInput = document.getElementById("text_so_luong");
+
+    // ===== XỬ LÝ HẾT HÀNG =====
+    if (p.stock <= 0) {
+      statusEl.innerText = "Hết hàng";
+      statusEl.style.color = "red";
+
+      btnAddToCart.disabled = true;
+      btnBuy.disabled = true;
+      qtyInput.disabled = true;
+    } else {
+      statusEl.innerText = "Còn hàng";
+      statusEl.style.color = "green";
+
+      btnAddToCart.disabled = false;
+      btnBuy.disabled = false;
+      qtyInput.disabled = false;
+    }
+
+    document.getElementById("btnAddToCart").dataset.productId = p._id;
+
+  } catch (e) {
+    console.error("Lỗi load QuickView:", e);
+  }
+}
+
+async function handleAddToCart() {
+  const productId = btnAddToCart.dataset.productId;
+  console.log("productId", productId)
+  const quantity = parseInt(document.getElementById("text_so_luong").value);
+  
+  try {
+    const res = await addToCart(productId, quantity);
+    alert("Đã thêm vào giỏ hàng");
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message || "Thêm giỏ hàng thất bại");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnIncrease")
+    .addEventListener("click", increaseQty);
+
+  document.getElementById("btnDecrease")
+    .addEventListener("click", decreaseQty);
+
+  document.getElementById("btnAddToCart")
+    .addEventListener("click", handleAddToCart);
+});
+
+function increaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  input.value = value + 1;
+}
+
+function decreaseQty() {
+  const input = document.getElementById("text_so_luong");
+  let value = parseInt(input.value) || 1;
+  if (value > 1) {
+    input.value = value - 1;
+  }
+}
+// -------
+document.addEventListener("DOMContentLoaded", () => {
+  const btnBuy = document.getElementById("btnBuy");
+  if (btnBuy) {
+    btnBuy.addEventListener("click", handleBuyNow);
+  }
+});
+
+
+function handleBuyNow() {
+  if (!currentProduct) {
+    alert("Sản phẩm chưa sẵn sàng");
+    return;
+  }
+
+  const quantity = parseInt(document.getElementById("text_so_luong").value) || 1;
+
+  const checkoutItem = {
+    productId: currentProduct._id || currentProduct.id,
+    name: currentProduct.name,
+    price: currentProduct.price,
+    quantity: quantity,
+    image: currentProduct.url,
+    des: currentProduct.des,
+    total: currentProduct.price * quantity
+  };
+
+  // Ghi đè, vì MUA NGAY chỉ mua 1 sản phẩm
+  localStorage.setItem(
+    "checkout_items",
+    JSON.stringify([checkoutItem])
+  );
+  // Chuyển sang trang đặt hàng
+  window.location.href = "/ordering.html";
+}

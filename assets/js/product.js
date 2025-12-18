@@ -1,5 +1,6 @@
 import { getAllProducts, getProductById, getProductsByCategory, filterProducts, searchProducts   } from "/services/productApi.js";
 import { addToCart } from "/services/cartApi.js";
+import { toggleUserLike, getUserLikes } from "/services/listlikeApi.js"; 
 
 let currentProduct = null;
 
@@ -25,6 +26,7 @@ function khonghienthidanhsach(id,cc){
 let allProducts = [];
 let currentIndex = 0;
 const LIMIT = 9;
+
 
 const productContainer = document.querySelector("#products");
 const btnLoadMore = document.querySelector(".loadmore-btn");
@@ -54,7 +56,7 @@ function createProductHTML(p) {
                 <p class="card-text price-color product__price-new"> ${p.price.toLocaleString()} đ</p>
             </div>
             <div class="home-product-item__action">
-                <span class="home-product-item__like home-product-item__like--liked">
+                <span class="home-product-item__like" data-id="${p._id}">
                     <i class="home-product-item__like-icon-empty far fa-heart"></i>
                     <i class="home-product-item__like-icon-fill fas fa-heart"></i>
                 </span>
@@ -96,6 +98,7 @@ function renderProducts() {
 
   productContainer.innerHTML += items.map(createProductHTML).join("");
   currentIndex += LIMIT;
+  markFavoriteProducts();
 
   if (currentIndex >= allProducts.length) {
     btnLoadMore.style.display = "none";
@@ -178,7 +181,6 @@ async function loadQuickView(id) {
     // Gán dữ liệu vào modal
     document.querySelector("#myModal .modal-title").innerText = p.name;
     document.getElementById("img-main").src = p.url;
-    document.getElementById("pro-name").innerText = p.name;
     
     document.querySelector(".price-product .special-price span").innerText = 
         `${p.price.toLocaleString()} đ`;
@@ -398,3 +400,39 @@ function handleBuyNow() {
   // Chuyển sang trang đặt hàng
   window.location.href = "/ordering.html";
 }
+
+// ----------
+async function markFavoriteProducts() {
+  try {
+    const res = await getUserLikes();
+    const favoriteIds = res.data.map(item => item._id);
+
+    document.querySelectorAll(".home-product-item__like").forEach(like => {
+      const id = like.dataset.id;
+      if (favoriteIds.includes(String(id))) {
+        like.classList.add("home-product-item__like--liked");
+      }
+    });
+
+  } catch (err) {
+    console.error("Lỗi lấy danh sách yêu thích", err);
+  }
+}
+
+document.addEventListener("click", async (e) => {
+  const likeBtn = e.target.closest(".home-product-item__like");
+  if (!likeBtn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const productId = likeBtn.dataset.id;
+
+  try {
+    await toggleUserLike(productId);
+    likeBtn.classList.toggle("home-product-item__like--liked");
+  } catch (err) {
+    console.error(err);
+    alert("Vui lòng đăng nhập");
+  }
+});

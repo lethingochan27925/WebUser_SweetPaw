@@ -118,12 +118,4 @@ function handleLogout() {
     localStorage.clear();
 } 
 
-$('.carousel').carousel({
-  interval: 5 // 5 giây
-})
 
-$('.owl-carousel').owlCarousel({
-    autoplay: true,
-    autoplayTimeout: 5000, // 5000ms = 5 giây là thời gian chờ
-    smartSpeed: 800 // Thời gian hiệu ứng trượt nhanh hay chậm
-});

@@ -1,9 +1,11 @@
-import { getProductById } from "/services/productApi.js";
-import { addToCart } from "/services/cartApi.js";
+import { getProductById, toggleFavorite  } from "/services/productApi.js";
+import { addToCart } from "/services/cartApi.js"; 
+import { toggleUserLike, getUserLikes } from "/services/listlikeApi.js"; 
 
 
 let currentProduct = null;
-
+const productId = getIdFromUrl();
+const likeBtn = document.querySelector(".home-product-item__like");
 
 function getIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -193,3 +195,48 @@ function renderRatings(ratings = []) {
     `;
   }).join("");
 }
+
+// -------------
+
+// likeBtn.addEventListener("click", async () => {
+//   const productId = getIdFromUrl();
+//   try {
+//     const res = await toggleFavorite(productId);
+
+//     // Toggle UI
+//     likeBtn.classList.toggle("home-product-item__like--liked");
+
+//     // Thông báo từ backend
+//     alert(res.message);
+
+//     console.log("Favorite:", res.data);
+//   } catch (err) {
+//     console.error(err);
+//     alert(err.message || "Vui lòng đăng nhập để sử dụng chức năng này");
+//   }
+// });
+
+// 1. Set trạng thái khi load
+(async () => {
+  try {
+    const favRes = await getUserLikes();
+    const favoriteIds = favRes.data.map(item => item._id);
+
+    if (favoriteIds.includes(productId)) {
+      likeBtn.classList.add("home-product-item__like--liked");
+    }
+  } catch (err) {
+    console.warn("Chưa đăng nhập hoặc chưa có favorite");
+  }
+})();
+
+// 2. Toggle khi click
+likeBtn.addEventListener("click", async () => {
+  try {
+    const res = await toggleUserLike(productId);
+    likeBtn.classList.toggle("home-product-item__like--liked");
+    alert(res.message);
+  } catch (err) {
+    alert("Vui lòng đăng nhập");
+  }
+});

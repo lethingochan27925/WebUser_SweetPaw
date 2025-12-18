@@ -34,3 +34,10 @@ export async function filterProducts(body) {
 export async function searchProducts(keyword) {
   return await apiGetAuth(`/api/products/search?q=${encodeURIComponent(keyword)}`);
 }
+
+// Yêu thích
+export function toggleFavorite(productId) {
+  return apiPostAuth("/api/favorite/toggle", {
+    productId
+  });
+}

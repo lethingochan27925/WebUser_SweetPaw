@@ -141,3 +141,23 @@
 .card{
     height: 350px;
 }
+
+/* -------- */
+/* Mặc định: tim rỗng hiện, tim đầy ẩn */
+.home-product-item__like-icon-fill {
+  display: none;
+  color: #FE4B5E;
+}
+
+.home-product-item__like-icon-empty {
+  display: inline-block;
+}
+
+/* Khi đã yêu thích */
+.home-product-item__like--liked .home-product-item__like-icon-fill {
+  display: inline-block;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-empty {
+  display: none;
+}

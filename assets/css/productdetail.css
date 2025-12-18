@@ -74,20 +74,6 @@
     cursor: pointer;
 }
 .label-css {
-    /* cursor: pointer;
-    outline:none;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(255, 255, 255);
-    color: rgb(17, 17, 17);
-    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
-    border:1px solid rgb(229 229 229); 
-    height:40px; */
     display:block;
     margin: 0;
     width: 60px;
@@ -588,3 +574,19 @@ input[type="radio"] + .label-css::after{
     display: none;
 }
 
+/* --------- */
+.home-product-item__like-icon-fill {
+  display: none;
+  color: red;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-empty {
+  display: none;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-fill {
+  display: inline-block;
+}
+.card{
+    height: 350px;
+}

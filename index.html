@@ -325,7 +325,7 @@
         <div class="mt-4 top-sliders col-md-12">
           <div class="slideshow">
             <!-- Chỉnh thời gian chuyển qua lại giữa cái slide -->
-            <div id="demo" class="carousel slide" data-ride="carousel" data-interval="2600">
+            <div id="demo" class="carousel slide" data-ride="carousel" data-interval="1800">
               <ul class="carousel-indicators">
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
                 <li data-target="#demo" data-slide-to="1"></li>
@@ -612,5 +612,16 @@
 </body>
 <script src="./assets/js/main.js"></script>
 <script type="module" src="./assets/js/home.js"></script>
+<!-- <script>
+  $('.carousel').carousel({
+    interval: 5 // 5 giây
+  })
+
+  $('.owl-carousel').owlCarousel({
+    autoplay: true,
+    autoplayTimeout: 5000, // 5000ms = 5 giây là thời gian chờ
+    smartSpeed: 800 // Thời gian hiệu ứng trượt nhanh hay chậm
+  });
+</script> -->
 
 </html>

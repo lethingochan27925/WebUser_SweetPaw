@@ -1346,3 +1346,7 @@ body {
 .right {
     float: right;
 }
+
+.carousel-item {
+  transition: transform 0.35s ease-in-out;
+}
