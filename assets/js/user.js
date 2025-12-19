@@ -26,16 +26,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // 2. XỬ LÝ CẬP NHẬT HỒ SƠ (Khi nhấn nút Lưu)
 document.getElementById('saveProfileBtn')?.addEventListener('click', async () => {
+    // Lấy dữ liệu từ input
+    const nameVal = document.getElementById('fullname').value;
+    const phoneVal = document.getElementById('sdt').value;
+
     const updateData = {
-        fullName: document.getElementById('fullname').value,
-        phone: document.getElementById('sdt').value,
+        fullName: nameVal,
+        phone: phoneVal,
     };
 
     try {
-        const result = await updateProfile(updateData);
+        const response = await updateProfile(updateData); 
+
+        // 2. Cập nhật lại LocalStorage 
+        let user = JSON.parse(localStorage.getItem('userData'));
+        if (user) {
+            user.fullName = nameVal; // Gán giá trị mới vào object
+            user.phone = phoneVal;
+            localStorage.setItem('userData', JSON.stringify(user)); // Lưu đè lại vào LocalStorage
+        }
+
         alert("Cập nhật hồ sơ thành công!");
-        // Có thể reload trang hoặc cập nhật lại giao diện
+
         location.reload();
+
     } catch (error) {
         alert("Lỗi cập nhật hồ sơ: " + error.message);
     }
