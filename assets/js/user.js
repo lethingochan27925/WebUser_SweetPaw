@@ -35,6 +35,7 @@ document.getElementById('saveProfileBtn')?.addEventListener('click', async () =>
         const result = await updateProfile(updateData);
         alert("Cập nhật hồ sơ thành công!");
         // Có thể reload trang hoặc cập nhật lại giao diện
+        location.reload();
     } catch (error) {
         alert("Lỗi cập nhật hồ sơ: " + error.message);
     }
