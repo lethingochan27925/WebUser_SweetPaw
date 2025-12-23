@@ -177,7 +177,7 @@ function renderRatings(ratings = []) {
         : '<i class="fas fa-star"></i>'
     ).join("");
 
-    const date = new Date(r.createdAt).toLocaleDateString("vi-VN");
+    const date = new Date(r.createdAt).toLocaleString("vi-VN");
 
     return `
       <div class="comment">
