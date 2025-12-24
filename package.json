@@ -13,7 +13,7 @@
     "http-server": "^14.1.1"
   },
   "scripts": {
-  "start": "http-server -p 3000 ."
+  "start": "http-server -p $PORT ."
   }
 }
 
